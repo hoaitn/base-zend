@@ -1,0 +1,72 @@
+<link type="text/css" rel="stylesheet" href="css/newcss.css" />
+<div id="maincol">
+            <div class="boxInfo NoMargin">
+            	<div class="boxInfo_bg">
+                	<div class="boxInfo_ct">
+                        <h4 class="titleNews">testimonials</h4>
+                        <div class="boxTesimonial">
+                        	<div class="boxGray">
+                            	<p class="boxGray_top"></p>
+                            	<?php foreach ($this->Testimonialsviews as $Testimonials):?>                              	                           	
+                                <div class="boxGray_ct"><h6><?php echo $Testimonials->title?></h6>
+                                	<p class="desc-boxGray"><?php echo $Testimonials->detail?></p>
+                                	<p class="star_yellow"><img src="images/<?php echo $Testimonials->score?>star_yellow.gif" /></p>
+                                    <ul class="ulName">
+                                    	<li><img src="<?php echo $Testimonials->getThumbImage()?>" /><p class="titleTT"><?php echo $Testimonials->name?></p>
+                                    		<p class="titleTT">From:&nbsp;<?php $Country = CustomerCountries::getById($Testimonials->customer_countries_id); echo $Country->name?></p>
+                                        </li>
+                                    </ul>
+                                </div>                                
+                                <?php endforeach;?>
+                                <p class="boxGray_bot"></p>
+                            </div><!--e: boxGray-->                 
+                           
+                            <div class="bottomBox">                          
+                            	<p class="btWriteTestmonial FloatLeft"><a href="<?php echo $this->url(array(),'page_tesimonials_views')?>"><input type="submit" value="Write testimonials"></input></a></p>                              
+                                <div class="paging FloatRight">
+                                	<?php echo $this->Pagination($this->Pager,$this->url(array(),'page_tesimonials').'?page={%page}{%Condition}',$_GET)?>
+                                </div>
+                                <div class="ClearBoth"></div>
+                            </div>
+                        	
+                        </div>
+                    </div>
+                </div>
+            </div><!--e: boxInfo-->            
+        </div><!--maincol-->
+        <div id="rightcol">
+        	<?php echo $this->partial('tour/boxsearch.phtml')?>
+           <?php echo $this->partial('tour/gethot.phtml')?>
+           <?php echo $this->partial('tour/discount.phtml')?>
+           <div class="boxNewsLetter">
+            	<div class="hdOrange">
+                	<ul><li class="sprite left"></li>
+                    	<li class="sprite right"></li>
+                        <li class="center"><span>Newsletter Sign Up</span></li>
+                    </ul>
+                </div>
+                <div class="bdNewsLetter">
+                	<div class="contentNewsLetter">
+	                	<p class="description">Sign up to receive exclusive offers and inspirational travel ideas for holidays, hotels, flights, cruises, European holidays, UK breaks, long-haul trips and many more products direct to your</p>
+                    	<p class="tags-NewsLetter">
+                    	<span>
+                    		<input class="inputNewsLetter" name="subscription" value="Enter email address" type="text" onblur="if (this.value=='') this.value='Enter email address';" onfocus="if (this.value=='Enter email address') this.value='';" />
+                    	</span>
+                    	<span>
+                    		<input value="SIGN UP »" class="button_SignUp" type="button" onclick="subscription();">
+                    	</span>
+                    	</p>
+                    </div>
+                </div>
+           </div><!--e: boxOrange-->
+           <div class="boxWeather">
+           		<p class="titleWeather"><b>WEATHER FORECAST</b></p>
+                <p class="weather">
+                	<span class="cbo_city"><select><option>Ha Noi</option></select></span>
+                	<span class="txt-weather">31 <sup>0</sup>C</span>
+                    <span class="img-weather"><img src="images/icon/icon_weather.gif" width="39" height="25"></span>
+                </p>
+           </div><!--e: boxWeather-->
+             <div id="adv_right" class="adv_block"></div>    
+        </div><!--e: rightcol-->
+        <div class="ClearBoth"></div>

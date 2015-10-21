@@ -1,0 +1,37 @@
+<div class="hastable">
+<div id="qlqg" style="padding-bottom: 10px;">
+<a class="btn_no_text btn ui-state-default ui-corner-all tooltip" href="<?php echo $this->url(array('controller'=>'color','action'=>'create'))?>">Thêm màu xe</a>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" class="tbl_list">
+	<tbody>
+		<thead>
+			<th>Màu sắc</th>
+			<th>Hình ảnh</th>			
+			<th>Sửa</th>
+			<th>Xóa</th>
+		</thead>
+		<?php foreach($this->Color as $Product):?>
+		<tr class="<?php ++$i; echo($i%2)?'first':'second'?>">
+			<td align="center"><?php echo $Product->car_paint_color?></td>
+			<td align="center"><img style="max-width:180px;" alt="" src="<?php echo $Product->getThumbImage();?>"> </td>				
+			<td width="30"><a class="btn_no_text btn ui-state-default ui-corner-all tooltip" href="<?php echo $this->url(array('controller'=>'color','action'=>'edit','id'=>$Product->id))?>"><span class="ui-icon ui-icon-wrench"></span></a></td>
+			<td width="30"><a class="btn_no_text btn ui-state-default ui-corner-all tooltip" href="<?php echo $this->url(array('controller'=>'color','action'=>'delete','id'=>$Product->id))?>"><span class="ui-icon ui-icon-circle-close"></span></a></td>
+		</tr>
+		<?php endforeach;?>
+	</tbody>
+</table>
+
+<div class="paging"><?php echo $this->Pagination($this->Pager,$this->url().'?page={%page}')?></div>
+</div>
+<div id="dialog-Review-view" title="Review detail">
+<form>
+<div id="dialog-Review-view_inner"></div>
+</form>
+</div>
+<script type="text/javascript">
+	(function() {
+    initContentDialog();
+	});
+	$('#tim').val('<?php echo $this->filterType?>');
+
+</script>

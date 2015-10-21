@@ -1,0 +1,21 @@
+<div id="middle">
+				<div class="indent">
+					<img alt="" src="images/7-t1.gif" /><br />
+					<p class="p1">
+						<strong class="b_text"><?php echo $this->Details->title?></strong><br />
+						<?php echo $this->Details->content?><br /><br />
+					</p>
+				</div>
+	<div class="olderPosts">
+		<h2>Các tin khác</h2>
+		<?php if($this->Deffirent):?>	
+		<ul>
+		<?php foreach($this->Deffirent as $deffirent):?>
+			<li class="olderPost_list">
+				<a href="<?php echo $this->url(array("controller"=>"news","action"=>"details","id"=>$deffirent->id));?>"><?php echo $deffirent->title?></a>
+			</li>
+		<?php endforeach;?>	
+		</ul>
+		<?php endif;?>
+	</div><!--End .olderPosts-->				
+</div>

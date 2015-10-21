@@ -1,0 +1,31 @@
+	<?php if($this->error):?>
+	<div style="width:100%;margin:0 auto; padding:10px; border: 1px solid #CC0000; background:#FFFFFF; color: #CC0000">
+	<?php foreach($this->error as $error){echo '- '.$error.'<br/>';}?>
+	</div>
+	<?php endif;?>
+<span class="required">*</span>Denotes required field
+	<form method="POST" action="" id="frm_trainers" class="frm_trainers" name="frm_trainers">
+	<dl id="form">
+        
+		<dt><span class="required">*</span>Your Email</dt><dd> <?php echo $this->formText('contact_email',$_REQUEST['contact_email'],array('size'=>60,'class'=>'textfield' ))?></dd>
+       	
+		<dt><span class="required">*</span>First Name</dt><dd> <?php echo $this->formText('contact_first_name',$_REQUEST['contact_first_name'],array('size'=>60,'class'=>'textfield' ))?></dd>
+        
+		<dt><span class="required">*</span>Last Name</dt><dd> <?php echo $this->formText('contact_last_name',$_REQUEST['contact_last_name'],array('size'=>60 ,'class'=>'textfield'))?></dd>
+        
+         <dt>Website</dt><dd> <?php echo $this->formText('website',$_REQUEST['website'],array('size'=>60 ,'class'=>'textfield'))?></dd>
+        
+         <dt><span class="required">*</span>Contact Phone Number</dt><dd> <?php echo $this->formText('contact_phone',$_REQUEST['contact_phone'],array('size'=>60,'class'=>'textfield' ))?></dd>
+        
+        <dt><span class="required">*</span>City</dt><dd> <?php echo $this->formText('city',$_REQUEST['city'],array('size'=>60 ,'class'=>'textfield'))?></dd>
+        
+        <dt><span class="required">*</span>Postcode</dt><dd> <?php echo $this->formText('postcode',$_REQUEST['postcode'],array('size'=>60 ,'class'=>'textfield'))?></dd>
+        <dt><span class="required"></span></dt>
+        <dd> <img src='<?php echo "images/captcha/".$this->captcha_id.".png"?>'/></dd>
+        <dt><span class="required">*</span>Are you human?</dt>
+        <dd><p style="margin:0">Please input the numbers and letters above into the field below</p><?php echo $this->formText('captcha', '', array('size'=>20,'class'=>'password' ));?></dd>
+		<?php echo $this->formHidden('captchaID', $this->captcha_id);?>
+		<input class="contact_type" name="contact_type" type="hidden" value="Get Listed" />
+		</dl>
+<div class="submit"><input name="submit" value="Send" type="submit"> <input value="Cancel" onclick="window.history.back();" type="button"></div>
+</form>

@@ -1,0 +1,23 @@
+<div class="hastable">
+<div id="qlqg" style="padding-bottom: 10px;">
+<a class="btn_no_text btn ui-state-default ui-corner-all tooltip" href="<?php echo $this->url(array('controller'=>'newgroup','action'=>'create'))?>"><button type="button">Add category</button></a>
+<?php echo $this->Pagination($this->Pager,$this->url().'?page={%page}')?>
+</div>
+<h1>Management categories</h1>
+<table cellspacing="0" cellpadding="0" width="100%" class="tbl_list">
+		<thead>
+			<th>Name</th>
+			<th>Status</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</thead>
+		<?php foreach($this->Newgroup as $Content):?>
+		<tr class="<?php ++$i; echo($i%2)?'first':'second'?>">
+			<td><?php echo $Content->name?></td>
+			<td><?php echo ($Content->status?"Yes":"No");?></td>				
+			<td align="center" width="40px;"><a href="<?php echo $this->url(array('controller'=>'newgroup','action'=>'edit','id'=>$Content->id))?>"><img src="<?php echo $this->baseUrl('images/image_edit.png');?>" width="24px;"/></a></td>
+			<td align="center" width="40px;"><a href="<?php echo $this->url(array('controller'=>'newgroup','action'=>'delete','id'=>$Content->id))?>"><img src="<?php echo $this->baseUrl('images/Delete.png');?>" width="24px;"/></a></td>
+		</tr>
+		<?php endforeach;?>
+</table>
+</div>

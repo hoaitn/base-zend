@@ -1,0 +1,8 @@
+<div class="breadcumb">
+<?php if($this->url() == "/"){ ?>
+<a href="/">Trang chủ </a>
+<?php }else{?>
+<a href="/">Trang chủ </a><img src="images/arrow3.png" alt="" />
+<a href="<?php echo $this->url();?>"><?php echo $this->Name;?></a>
+<?php }?>
+</div>

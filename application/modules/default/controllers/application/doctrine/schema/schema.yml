@@ -1,0 +1,1314 @@
+---
+detect_relations: true
+options:
+  charset: utf8
+  type: InnoDB
+
+Countries:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    name:
+      type: string(45)
+      notnull: true
+    name_plain:
+      type: string(45)
+      default: null
+    tags:
+      type: string(125)
+      default: null
+    description:
+      type: clob(16777215)
+      default: null
+    sort_order:
+      type: integer(3)
+      default: null
+    status:
+      type: integer(1)
+      default: null
+    map:
+      type: string(45)
+      default: null
+    video:
+      type: string(45)
+    seo_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    seo:
+      class: Seo
+      local: seo_id
+      foreign: id
+      foreignAlias: countries
+      foreignType: one
+      owningSide: true
+  indexes:
+    fk_countries_seo1:
+      fields: [seo_id]
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+City:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    name:
+      type: string(45)
+      notnull: true
+    name_plain:
+      type: string(45)
+      default: null
+    tags:
+      type: string(125)
+      default: null
+    sort_order:
+      type: integer(3)
+      default: null
+    description:
+      type: clob(16777215)
+      default: null
+    status:
+      type: integer(1)
+      default: null
+    map:
+      type: string(45)
+      default: null
+    video:
+      type: string(45)
+    top:
+      type: integer(1)
+      notnull: true
+    seo_id:
+      type: integer(4)
+      notnull: true
+    countries_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    countries:
+      class: Countries
+      local: countries_id
+      foreign: id
+      foreignAlias: City
+      foreignType: many
+      owningSide: true
+    seo:
+      class: Seo
+      local: seo_id
+      foreign: id
+      foreignAlias: city
+      foreignType: one
+      owningSide: true
+  indexes:
+    fk_city_countries:
+      fields: [countries_id]
+    fk_city_seo1:
+      fields: [seo_id]
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+Promotion:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    promo_code:
+      type: string(45)
+      default: null
+    valid_from:
+      type: date
+      default: null
+    valid_to:
+      type: date
+      default: null
+    price:
+      type: integer(1)
+      default: null
+    rooms_id:
+      type: integer(4)
+      default: null
+    hotels_id:
+      type: integer(4)
+      notnull: true
+    tours_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    tours:
+      class: Tours
+      local: tours_id
+      foreign: id
+      foreignAlias: Promotion
+      foreignType: many
+      owningSide: true
+  indexes:
+    fk_coupon_rooms:
+      fields: [rooms_id]
+    fk_promotion_hotels1:
+      fields: [hotels_id]
+    fk_promotion_tours1:
+      fields: [tours_id]
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+Members:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    username:
+      type: string(45)
+      default: null
+    password:
+      type: string(125)
+      default: null
+    name:
+      type: string(45)
+      default: null
+    email:
+      type: string(125)
+      default: null
+    created_date:
+      type: timestamp
+      default: null
+    last_login:
+      type: timestamp
+      default: null
+    status:
+      type: integer(1)
+      default: null
+    tel:
+      type: string(45)
+      default: null
+    mobile:
+      type: string(45)
+      default: null
+    member_type:
+      type: integer(1)
+      notnull: true
+    address:
+      type: string(125)
+      default: null
+    passport_no:
+      type: string(45)
+      default: null
+    passport_date:
+      type: string(45)
+      default: null
+    passport_address:
+      type: string(125)
+      default: null
+    dept:
+      type: string(45)
+      default: null
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+Groups:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    name:
+      type: string(45)
+      default: null
+    role:
+      type: clob(16777215)
+      default: null
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+MembersGroup:
+  tableName: members_group
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    members_id:
+      type: integer(4)
+      default: null
+    groups_id:
+      type: integer(4)
+      default: null
+  relations:
+    members:
+      class: Members
+      local: members_id
+      foreign: id
+      foreignAlias: MembersGroup
+      foreignType: many
+      owningSide: true
+    groups:
+      class: Groups
+      local: groups_id
+      foreign: id
+      foreignAlias: MembersGroup
+      foreignType: many
+      owningSide: true
+  indexes:
+    fk_members_to_group_members:
+      fields: [members_id]
+    fk_members_to_group_groups:
+      fields: [groups_id]
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+Customers:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    password:
+      type: string(125)
+      default: null
+    title:
+      type: string(45)
+      default: null
+    firstname:
+      type: string(45)
+      default: null
+    lastname:
+      type: string(45)
+      default: null
+    address1:
+      type: string(125)
+      default: null
+    address2:
+      type: string(45)
+      default: null
+    dept:
+      type: string(45)
+      default: null
+    email:
+      type: string(125)
+      default: null
+    postal_code:
+      type: string(45)
+      default: null
+    created_date:
+      type: timestamp
+      default: null
+    last_login:
+      type: timestamp
+      default: null
+    tel:
+      type: string(45)
+      default: null
+    fax:
+      type: string(45)
+      default: null
+    status:
+      type: integer(1)
+      default: null
+    city:
+      type: string(45)
+      default: null
+    phone:
+      type: string(45)
+      default: null
+    customer_type:
+      type: integer(1)
+      notnull: true
+      default: '0'
+    customers_level_id:
+      type: integer(4)
+      notnull: true
+    customer_countries_id:
+      type: integer(4)
+      notnull: true
+    newsletter:
+      type: integer(1)
+      default: '0'
+  relations:
+    customerCountries:
+      class: CustomerCountries
+      local: customer_countries_id
+      foreign: id
+      foreignAlias: Customers
+      foreignType: many
+      owningSide: true
+  indexes:
+    fk_customers_customers_level1:
+      fields: [customers_level_id]
+    fk_customers_customer_countries1:
+      fields: [customer_countries_id]
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+Seo:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    seo_title:
+      type: string(125)
+      default: null
+    seo_description:
+      type: string(255)
+      default: null
+    seo_keyword:
+      type: string(255)
+      default: null
+    seo_meta:
+      type: string(255)
+      default: null
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+BookTracking:
+  tableName: book_tracking
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    note:
+      type: string(125)
+      default: null
+    update_time:
+      type: timestamp
+      notnull: true
+    members_id:
+      type: integer(4)
+      notnull: true
+    booking_status:
+      type: integer(4)
+      notnull: true
+    booking_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    members:
+      class: Members
+      local: members_id
+      foreign: id
+      foreignAlias: BookTracking
+      foreignType: many
+      owningSide: true
+    booking:
+      class: Booking
+      local: booking_id
+      foreign: id
+      foreignAlias: BookTracking
+      foreignType: many
+      owningSide: true
+  indexes:
+    fk_book_tracking_members1:
+      fields: [members_id]
+    fk_book_tracking_booking1:
+      fields: [booking_id]
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+PaymentMethod:
+  tableName: payment_method
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    name:
+      type: string(45)
+      default: null
+    fee:
+      type: string(45)
+      notnull: true
+      default: '0'
+    link:
+      type: string(255)
+      default: null
+    information:
+      type: clob(16777215)
+      default: null
+    status:
+      type: integer(1)
+      notnull: true
+      default: '0'
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+CustomerCountries:
+  tableName: customer_countries
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    code:
+      type: string(45)
+      default: null
+    name:
+      type: string(45)
+      notnull: true
+    national_name:
+      type: string(45)
+      default: null
+    sort_order:
+      type: integer(3)
+      default: null
+    status:
+      type: integer(1)
+      default: null
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+Contact:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    name_title:
+      type: string(45)
+      default: null
+    name:
+      type: string(45)
+      default: null
+    email:
+      type: string(45)
+      default: null
+    phone:
+      type: string(45)
+      default: null
+    booking_id:
+      type: string(45)
+      default: null
+    subject:
+      type: string(125)
+      default: null
+    content:
+      type: clob(16777215)
+      default: null
+    created_date:
+      type: timestamp
+      default: null
+    viewed:
+      type: integer(1)
+      default: null
+    ip:
+      type: string(15)
+      default: null
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+Partner:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    company_type:
+      type: string(45)
+      default: null
+    company_name:
+      type: string(125)
+      default: null
+    dicrector_name:
+      type: string(45)
+      default: null
+    tax_no:
+      type: string(45)
+      default: null
+    address:
+      type: string(45)
+      default: null
+    city:
+      type: string(45)
+      default: null
+    post_code:
+      type: string(45)
+      default: null
+    phone:
+      type: string(45)
+      default: null
+    fax:
+      type: string(45)
+      default: null
+    email:
+      type: string(45)
+      default: null
+    website:
+      type: string(45)
+      default: null
+    customers_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    customers:
+      class: Customers
+      local: customers_id
+      foreign: id
+      foreignAlias: partner
+      foreignType: one
+      owningSide: true
+  indexes:
+    fk_partner_customers1:
+      fields: [customers_id]
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+Feedback:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    name:
+      type: string(125)
+      default: null
+    email:
+      type: string(125)
+      default: null
+    content:
+      type: clob(16777215)
+      default: null
+    category_id:
+      type: integer(1)
+      default: null
+    readed:
+      type: integer(1)
+      default: null
+    ip:
+      type: string(15)
+      default: null
+    created_date:
+      type: timestamp
+      default: null
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+PaymentHolder:
+  tableName: payment_holder
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    token:
+      type: string(125)
+    created_time:
+      type: timestamp
+    ip_address:
+      type: string(15)
+    transaction_detail:
+      type: clob(16777215)
+    payer:
+      type: string(45)
+    booking_id:
+      type: integer(4)
+      notnull: true
+    payment_method_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    paymentMethod:
+      class: PaymentMethod
+      local: payment_method_id
+      foreign: id
+      foreignAlias: paymentHolder
+      foreignType: one
+      owningSide: true
+  indexes:
+    fk_payment_holder_payment_method1:
+      fields: [payment_method_id]
+  options:
+    type: MyISAM
+
+TourType:
+  tableName: tour_type
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    name:
+      type: string(45)
+    name_plain:
+      type: string(45)
+    description:
+      type: clob(65535)
+    orders:
+      type: integer(1)
+    status:
+      type: integer(1)
+    image:
+      type: string(45)
+    seo_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    seo:
+      class: Seo
+      local: seo_id
+      foreign: id
+      foreignAlias: tourType
+      foreignType: one
+      owningSide: true
+  indexes:
+    fk_tour_type_seo1:
+      fields: [seo_id]
+  options:
+    type: MyISAM
+
+TourGroups:
+  tableName: tour_groups
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    name:
+      type: string(45)
+    name_plain:
+      type: string(45)
+    status:
+      type: integer(1)
+    orders:
+      type: integer(1)
+    countries_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    countries:
+      class: Countries
+      local: countries_id
+      foreign: id
+      foreignAlias: TourGroups
+      foreignType: many
+      owningSide: true
+  indexes:
+    fk_tour_groups_countries1:
+      fields: [countries_id]
+  options:
+    type: MyISAM
+
+Tours:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    name:
+      type: string(255)
+    name_plain:
+      type: string(255)
+    description:
+      type: clob(16777215)
+    overview:
+      type: clob(16777215)
+    itinerary:
+      type: clob(16777215)
+    hotels_id:
+      type: string(45)
+    meals:
+      type: clob(16777215)
+    thing_to_do:
+      type: clob(16777215)
+    length_of_the_strip:
+      type: string(45)
+    start_in:
+      type: string(45)
+    end_in:
+      type: string(45)
+    price_of_the_strip:
+      type: float
+    accommodation:
+      type: clob(16777215)
+    status:
+      type: integer(1)
+    created_date:
+      type: timestamp
+    hot:
+      type: integer(1)
+      notnull: true
+    favorite:
+      type: integer(1)
+      notnull: true
+    journey:
+      type: integer(1)
+      notnull: true
+    discount:
+      type: float
+      notnull: true
+    tour_groups_id:
+      type: integer(4)
+      notnull: true
+    tour_type_id:
+      type: integer(4)
+      notnull: true
+    seo_id:
+      type: integer(4)
+      notnull: true
+    city_id:
+      type: integer(4)
+      notnull: true
+    countries_id:
+      type: integer(4)
+      notnull: true
+    members_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    tourGroups:
+      class: TourGroups
+      local: tour_groups_id
+      foreign: id
+      foreignAlias: Tours
+      foreignType: many
+      owningSide: true
+    tourType:
+      class: TourType
+      local: tour_type_id
+      foreign: id
+      foreignAlias: Tours
+      foreignType: many
+      owningSide: true
+    seo:
+      class: Seo
+      local: seo_id
+      foreign: id
+      foreignAlias: tours
+      foreignType: one
+      owningSide: true
+    city:
+      class: City
+      local: city_id
+      foreign: id
+      foreignAlias: Tours
+      foreignType: many
+      owningSide: true
+    countries:
+      class: Countries
+      local: countries_id
+      foreign: id
+      foreignAlias: Tours
+      foreignType: many
+      owningSide: true
+    members:
+      class: Members
+      local: members_id
+      foreign: id
+      foreignAlias: Tours
+      foreignType: many
+      owningSide: true
+  indexes:
+    fk_tours_tour_groups1:
+      fields: [tour_groups_id]
+    fk_tours_tour_type1:
+      fields: [tour_type_id]
+    fk_tours_seo1:
+      fields: [seo_id]
+    fk_tours_city1:
+      fields: [city_id]
+    fk_tours_countries1:
+      fields: [countries_id]
+    fk_tours_members1:
+      fields: [members_id]
+  options:
+    type: MyISAM
+
+Booking:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    booking_id:
+      type: string(45)
+    status:
+      type: integer(1)
+    total_price:
+      type: float
+    total_person:
+      type: integer(4)
+    tour_class_id:
+      type: string(50)
+    created_date:
+      type: timestamp
+    payment_fee:
+      type: float
+    payment_price:
+      type: float
+    grand_total:
+      type: float
+    departure_date:
+      type: timestamp
+      notnull: true
+    tours_id:
+      type: integer(4)
+      notnull: true
+    customers_id:
+      type: integer(4)
+      notnull: true
+    payment_method_id:
+      type: integer(4)
+      notnull: true
+    request_detail:
+      type: clob(16777215)
+    hotel_prefer:
+      type: string(255)
+    members_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    tours:
+      class: Tours
+      local: tours_id
+      foreign: id
+      foreignAlias: Booking
+      foreignType: many
+      owningSide: true
+    customers:
+      class: Customers
+      local: customers_id
+      foreign: id
+      foreignAlias: Booking
+      foreignType: many
+      owningSide: true
+    paymentMethod:
+      class: PaymentMethod
+      local: payment_method_id
+      foreign: id
+      foreignAlias: Booking
+      foreignType: many
+      owningSide: true
+    members:
+      class: Members
+      local: members_id
+      foreign: id
+      foreignAlias: Booking
+      foreignType: many
+      owningSide: true
+  indexes:
+    fk_booking_tour_tours1:
+      fields: [tours_id]
+    fk_booking_tour_customers1:
+      fields: [customers_id]
+    fk_booking_tour_payment_method1:
+      fields: [payment_method_id]
+    fk_booking_members1:
+      fields: [members_id]
+  options:
+    type: MyISAM
+
+TourPrice:
+  tableName: tour_price
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    super_saver:
+      type: float
+    deluxe:
+      type: float
+    luxury:
+      type: float
+    signature:
+      type: float
+    tours_id:
+      type: integer(4)
+      notnull: true
+    price_groups_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    tours:
+      class: Tours
+      local: tours_id
+      foreign: id
+      foreignAlias: tourPrice
+      foreignType: one
+      owningSide: true
+    priceGroups:
+      class: PriceGroups
+      local: price_groups_id
+      foreign: id
+      foreignAlias: TourPrice
+      foreignType: many
+      owningSide: true
+  indexes:
+    fk_tour_price_tours1:
+      fields: [tours_id]
+    fk_tour_price_price_groups1:
+      fields: [price_groups_id]
+  options:
+    type: MyISAM
+
+Newsletter:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    email:
+      type: string(45)
+      default: null
+    created_date:
+      type: timestamp
+      default: null
+    status:
+      type: integer(1)
+      default: null
+  options:
+    charset: utf8
+    type: MyISAM
+
+NewsletterGroups:
+  tableName: newsletter_groups
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    name:
+      type: string(45)
+      default: null
+  options:
+    charset: utf8
+    type: MyISAM
+
+NewsletterToGroups:
+  tableName: newsletter_to_groups
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    newsletter_id:
+      type: integer(4)
+      notnull: true
+    newsletter_groups_id:
+      type: integer(4)
+      notnull: true
+  indexes:
+    fk_newsletter_to_groups_newsletter1:
+      fields: [newsletter_id]
+    fk_newsletter_to_groups_newsletter_groups1:
+      fields: [newsletter_groups_id]
+  options:
+    charset: utf8
+    type: MyISAM
+
+PriceGroups:
+  tableName: price_groups
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    name:
+      type: string(125)
+  options:
+    type: MyISAM
+
+News:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    title:
+      type: string(255)
+      default: null
+    title_plain:
+      type: string(125)
+      default: null
+    description:
+      type: clob(16777215)
+      default: null
+    content:
+      type: clob(65535)
+      default: null
+    created_date:
+      type: timestamp
+      default: null
+    viewed:
+      type: integer(4)
+      notnull: true
+    status:
+      type: integer(1)
+      default: null
+    members_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    members:
+      class: Members
+      local: members_id
+      foreign: id
+      foreignAlias: News
+      foreignType: many
+      owningSide: true
+  indexes:
+    fk_content_members1:
+      fields: [members_id]
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+Reviews:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    title:
+      type: string(125)
+      default: null
+    name:
+      type: string(125)
+      default: null
+    email:
+      type: string(125)
+      default: null
+    detail:
+      type: clob(65535)
+      default: null
+    created_date:
+      type: timestamp
+      default: null
+    status:
+      type: integer(1)
+      default: null
+    rate:
+      type: integer(1)
+      notnull: true
+    tours_id:
+      type: integer(4)
+      notnull: true
+    countries_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    tours:
+      class: Tours
+      local: tours_id
+      foreign: id
+      foreignAlias: Reviews
+      foreignType: many
+      owningSide: true
+    countries:
+      class: Countries
+      local: countries_id
+      foreign: id
+      foreignAlias: Reviews
+      foreignType: many
+      owningSide: true
+  indexes:
+    fk_reviews_tours1:
+      fields: [tours_id]
+    fk_reviews_countries1:
+      fields: [countries_id]
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+Paint:
+  tableName: paints
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+    name:
+      type: string(125)
+    info:
+      type: clob(16777215)
+    price:
+      type: integer(4)
+    status:
+      type: integer(1)
+    paint_group_id:
+      type: integer(4)
+      primary: true
+      notnull: true
+    seo_id:
+      type: integer(4)
+      primary: true
+      notnull: true
+  relations:
+    paintGroup:
+      class: PaintGroup
+      local: paint_group_id
+      foreign: id
+      foreignAlias: paints
+      foreignType: many
+      owningSide: true
+    seo:
+      class: Seo
+      local: seo_id
+      foreign: id
+      foreignAlias: paints
+      foreignType: many
+      owningSide: true
+  indexes:
+    fk_paints_paint_group1:
+      fields: [paint_group_id]
+    fk_paints_seo1:
+      fields: [seo_id]
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+PaintGroup:
+  tableName: paint_group
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+    name:
+      type: string(125)
+    status:
+      type: integer(1)
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+PriceGroup:
+  tableName: price_groups
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+      autoincrement: true
+    name:
+      type: string(125)
+      default: null
+  options:
+    charset: utf8
+    type: MyISAM
+    Design:
+  tableName: designs
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+    name:
+      type: string(125)
+    info:
+      type: clob(16777215)
+    price:
+      type: integer(4)
+    status:
+      type: integer(1)
+    design_group_id:
+      type: integer(4)
+      primary: true
+      notnull: true
+    seo_id:
+      type: integer(4)
+      primary: true
+      notnull: true
+  relations:
+    designGroup:
+      class: DesignGroup
+      local: design_group_id
+      foreign: id
+      foreignAlias: designs
+      foreignType: many
+      owningSide: true
+    seo:
+      class: Seo
+      local: seo_id
+      foreign: id
+      foreignAlias: designs
+      foreignType: many
+      owningSide: true
+  indexes:
+    fk_designs_design_group1:
+      fields: [design_group_id]
+    fk_designs_seo1:
+      fields: [seo_id]
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+
+DesignGroup:
+  tableName: design_group
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      notnull: true
+    name:
+      type: string(125)
+    status:
+      type: integer(1)
+  options:
+    charset: utf8
+    collate: utf8_general_ci
+    type: MyISAM
+    

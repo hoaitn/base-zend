@@ -1,0 +1,101 @@
+<div id="primary" class="column">
+					<div class="block_content">
+						<div class="highslide-gallery">
+							<a href="uploads/<?php echo $this->Product->id?>/gallery/1.jpg" class="highslide" onclick="return hs.expand(this)">
+								<img width="95px" height="60px" src="uploads/<?php echo $this->Product->id?>/gallery/1.jpg" alt="Highslide JS"
+									title="Click to enlarge" />
+							</a>
+							<div class="highslide-caption">
+								<?php echo $this->Product->product_name?>
+							</div>
+							<a href="uploads/<?php echo $this->Product->id?>/gallery/2.jpg" class="highslide" onclick="return hs.expand(this)">
+								<img width="95px" height="60px" src="uploads/<?php echo $this->Product->id?>/gallery/2.jpg" alt="Highslide JS"
+									title="Click to enlarge" />
+							</a>
+							<div class="highslide-caption">
+								<?php echo $this->Product->product_name?>
+							</div>
+							<a href="uploads/<?php echo $this->Product->id?>/gallery/3.jpg" class="highslide" onclick="return hs.expand(this)">
+								<img width="95px" height="60px" src="uploads/<?php echo $this->Product->id?>/gallery/3.jpg" alt="Highslide JS"
+									title="Click to enlarge" />
+							</a>
+							<div class="highslide-caption">
+								<?php echo $this->Product->product_name?>
+							</div>
+							<a href="uploads/<?php echo $this->Product->id?>/gallery/4.jpg" class="highslide" onclick="return hs.expand(this)">
+								<img width="95px" height="60px" src="uploads/<?php echo $this->Product->id?>/gallery/4.jpg" alt="Highslide JS"
+									title="Click to enlarge" />
+							</a>
+							<div class="highslide-caption">
+								<?php echo $this->Product->product_name?>
+							</div>
+							<a href="uploads/<?php echo $this->Product->id?>/gallery/5.jpg" class="highslide" onclick="return hs.expand(this)">
+								<img width="95px" height="60px" src="uploads/<?php echo $this->Product->id?>/gallery/5.jpg" alt="Highslide JS"
+									title="Click to enlarge" />
+							</a>
+							<div class="highslide-caption">
+								<?php echo $this->Product->product_name?>
+							</div>
+							<a href="uploads/<?php echo $this->Product->id?>/gallery/6.jpg" class="highslide" onclick="return hs.expand(this)">
+								<img width="95px" height="60px" src="uploads/<?php echo $this->Product->id?>/gallery/6.jpg" alt="Highslide JS"
+									title="Click to enlarge" />
+							</a>
+							<div class="highslide-caption">
+								<?php echo $this->Product->product_name?>
+							</div>
+							<div class="click">Click vào để xem ảnh to</div>
+						</div>
+						<div class="info_product">
+							<h2><?php echo $this->Product->product_name?></h2>
+							<ul>
+								<li><b>Hãng sản xuất :</b> <?php echo $this->Product->manufacturer?></li>
+								<li><b>Dung tích xi lanh:</b><?php echo $this->Product->product_cylinder?> cc</li>
+								<li><b>Loại xe :</b><?php echo $this->Product->type_of_car?></li>
+								<li><b>Hộp số :</b><?php echo $this->Product->transmission?></li>
+								<li><b>Số chỗ ngồi :</b><?php echo $this->Product->number_of_seats?> chỗ</li>
+								<li><b>Bảo hành :</b><?php echo $this->Product->warranty?> năm</li>
+								<li><b>Giá tiền :</b><?php echo number_format($this->Product->product_price,0,".",",");?> VNĐ</li>
+							</ul>
+							<a href="/buy/product/<?php echo $this->Product->id;?>" class="product_items_buy">Đặt mua</a>
+						</div>
+						<div class="clear"></div>
+						<div class="container">
+							<ul class="tabs">
+								<li><a href="#tab1">Thông số kĩ thuật</a></li>
+								<li><a href="#tab2">Trang bị tiêu chuẩn</a></li>
+								<li><a href="#tab3">Video</a></li>
+								<li><a href="#tab4">Hình ảnh</a></li>
+							</ul>
+							<div class="tab_container">
+								<div id="tab1" class="tab_content">
+									<?php echo $this->Product->product_engine?>
+								</div>
+								<div id="tab2" class="tab_content">
+									<?php echo $this->Product->product_details?>
+								</div>
+								<div id="tab3" class="tab_content">
+									<?php echo $this->Product->product_description?>
+								</div>
+								<div id="tab4" class="tab_content">
+									<?php echo $this->Product->product_option?>
+								</div>
+								<div class="clear"></div>
+							</div><!--End .tab_container-->
+						</div><!--End .container-->
+						<div class="clear"></div><br></br>
+						<?php $Product = Product::getByGroupId($this->Product->id_group_product); if($Product):?>
+						<h2>Sản phẩm khác</h2><br></br>	
+						<div class="clear"></div>
+						<div style="width:545px;float:left;">
+						<?php foreach($Product as $product){?>
+						<div class="items_product_other">
+						<div class="items_other">
+							<a href="product/details/product_id/<?php echo $product->id;?>"><img src="<?php echo $product->getThumbImage();?>" alt="<?php echo $product->product_name;?>"></a>
+						</div>
+						<h2 class="items_name"><a href="product/details/product_id/<?php echo $product->id;?>"><?php echo $product->product_name;?></a></h2>
+						<div class="clear"></div>
+						</div>
+						<?php }endif;?>						
+						</div>					
+					</div><!--End .block_content-->
+                </div><!--End #content-->

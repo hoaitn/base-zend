@@ -1,0 +1,22 @@
+<?php 
+if($this->YouAreHere):
+$counter = count($this->YouAreHere);?>
+<?php foreach($this->YouAreHere as $item): ++$i;?>&gt;
+<?php if($item['id']):?>
+<script type="text/javascript">
+$(function() {
+	$("#<?php echo $item['id']?>").addClass('Selected');
+});
+</script>
+<?php endif;
+	if(($counter-$i)==0):
+		echo $item['name'];
+	else:
+		 if($item['link']):?>
+			<a href="<?php echo $item['link']?>"><?php echo $item['name']?></a>
+	<?php else:?>
+		<a href="<?php echo $this->url(array(),$item['router'])?>"><?php echo $item['name']?></a>		
+	<?php endif;
+	endif;?>
+<?php endforeach;
+endif;?>

@@ -1,0 +1,29 @@
+<div class="hastable">
+<h1>Management contact</h1>
+<div id="qlqg" style="padding-bottom: 10px;">
+<?php echo $this->Pagination($this->Pager,$this->url().'?page={%page}')?>
+<span>&nbsp;</span>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" class="tbl_list">	
+		<thead>
+			<th>Customer name</th>
+			<th>Order date</th>
+			<th>Phone number</th>
+			<th>Order product</th>
+			<th>View</th>
+			<th>Delete</th>			
+		</thead>
+		<?php foreach($this->Contact as $Contact):?>
+		<tr class="<?php ++$i; echo($i%2)?'first':'second'?>">
+			<td><?php echo $Contact->full_name?></td>
+			<td><?php echo $Contact->created_date?></td>
+			<td><?php echo $Contact->phone?></td>
+			<td><?php echo $Contact->name_product?></td>					
+			<td width="30">
+				<a class="btn_no_text btn ui-state-default ui-corner-all tooltip" href="<?php echo $this->url(array('controller'=>'contact','action'=>'view','id'=>$Contact->id))?>"><img title="View details" src="<?php echo $this->baseUrl('images/view.gif');?>" width="24px;"/></a>
+			</td>
+			<td align="center" width="40px;"><a href="<?php echo $this->url(array('controller'=>'contact','action'=>'delete','id'=>$Contact->id))?>"><img title="Delete" src="<?php echo $this->baseUrl('images/Delete.png');?>" width="24px;"/></a></td>			
+		</tr>
+		<?php endforeach;?>	
+</table>
+</div>

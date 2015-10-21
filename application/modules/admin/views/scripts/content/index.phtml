@@ -1,0 +1,37 @@
+<div class="hastable">
+<div id="qlqg" style="padding-bottom: 10px;">
+<a class="btn_no_text btn ui-state-default ui-corner-all tooltip" href="<?php echo $this->url(array('controller'=>'content','action'=>'create'))?>">Add articles</a>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" class="tbl_list">
+	<tbody>
+		<thead>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</thead>
+		<?php foreach($this->Content as $Content):?>
+		<tr class="<?php ++$i; echo($i%2)?'first':'second'?>">
+			<td><?php echo $Content->content_title?></td>
+			<td><?php echo $Content->content_summary?></td>				
+			<td width="30"><a class="btn_no_text btn ui-state-default ui-corner-all tooltip" href="<?php echo $this->url(array('controller'=>'content','action'=>'edit','id'=>$Content->content_id))?>"><span class="ui-icon ui-icon-wrench"></span></a></td>
+			<td width="30"><a class="btn_no_text btn ui-state-default ui-corner-all tooltip" href="<?php echo $this->url(array('controller'=>'content','action'=>'delete','id'=>$Content->content_id))?>"><span class="ui-icon ui-icon-circle-close"></span></a></td>
+		</tr>
+		<?php endforeach;?>
+	</tbody>
+</table>
+
+<div class="paging"><?php echo $this->Pagination($this->Pager,$this->url().'?page={%page}')?></div>
+</div>
+<div id="dialog-Review-view" title="Review detail">
+<form>
+<div id="dialog-Review-view_inner"></div>
+</form>
+</div>
+<script type="text/javascript">
+	(function() {
+    initContentDialog();
+	});
+	$('#tim').val('<?php echo $this->filterType?>');
+
+</script>

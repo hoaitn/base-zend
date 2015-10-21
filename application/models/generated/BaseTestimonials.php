@@ -1,0 +1,40 @@
+<?php
+class BaseTestimonials extends Doctrine_Record{
+	public function setTableDefinition(){
+		$this->setTableName('testimonials');
+		$this->hasColumn('id','integer','11',array(
+				'type'=>'integer',
+				'primary'=>true,
+				'autoincrement'=>true,
+				'length'=>'11'
+				));
+		$this->hasColumn('title','string','255',array(
+				'type'=>'string',
+				'length'=>'255'
+				));
+		$this->hasColumn('content_details','clob','16777215',array(
+				'type'=>'string',
+				'length'=>'16777215'
+				));
+		$this->hasColumn('customer_email','string','255',array(
+				'type'=>'string',
+				'length'=>'255'
+				));
+		$this->hasColumn('customer_name','string','255',array(
+				'type'=>'string',
+				'length'=>'255'
+				));
+		$this->hasColumn('created_date','datetime','0',array(
+				'type'=>'datetime',
+				'length'=>'0'
+				));
+		$this->hasColumn('countries_id','integer','11',array(
+				'type'=>'integer',
+				'length'=>'11'
+				));
+		$this->hasColumn('status','integer','4',array(
+				'type'=>'integer',
+				'length'=>'4'
+				));
+	}
+}

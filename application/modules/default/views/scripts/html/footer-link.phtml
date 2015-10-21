@@ -1,0 +1,12 @@
+<ul>
+	<li class="navBottom">
+	<?php foreach($this->Footer['rows'][0]['item'] as $key=>$Item):?>
+		<?php if($key>0):?><!--&#9734;-->-<?php endif;?> <a href="<?php echo $Item['value']?>" rel="nofollow"><?php echo $Item['name']?></a>
+	<?php endforeach;?>
+	</li>
+	<li class="Normal">
+	<?php foreach($this->Footer['rows'][1]['item'] as $key=>$Item):?>
+		<?php if($key>0):?> - <?php endif;?> <a href="<?php echo $Item['value']?>" rel="nofollow"><?php echo $Item['name']?></a>
+	<?php endforeach;?>
+	</li>
+</ul>

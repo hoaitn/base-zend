@@ -1,0 +1,38 @@
+<?php if($this->error):?>
+<div class="ui-widget">
+<div class="ui-state-error ui-corner-all" style="padding: .7em;">
+<p><span class="ui-icon ui-icon-alert"
+	style="float: left; margin-right: .3em;"></span> <strong>Error message:</strong><br />
+<div style="padding-left: 20px">
+				<?php foreach($this->error as $error){echo '- '.$error.'<br/>';}?>
+				</div>
+</p>
+</div>
+</div>
+<?php endif;?>
+
+<div id="tabs">
+<ul>
+	<li><a href="#tabs-1">Basic Info</a></li>	
+</ul>
+<form action="" method="post">
+<div id="tabs-1" class="hastable">
+<table>
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Title</td>
+		<td><?php echo $this->formText('content_title',$_REQUEST['content_title'],array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130">Description</td>
+		<td><?php echo $this->formTextarea('content_summary',$_REQUEST['content_summary'],array('rows'=>5))?></td>
+	</tr>
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Content</td>
+		<td><?php echo $this->formTextarea('content_detail',$_REQUEST['content_detail'],array('rows'=>5,'class'=>'mceEditor'))?></td>
+	</tr>	
+</table>
+</div>
+<input type="submit" value="Save" class="ui-button ui-widget ui-state-default ui-corner-all"/>
+<input type="button" value="Back" onclick="javascript:history.back();" />
+</form>
+</div>

@@ -1,0 +1,50 @@
+<form action="" method="post">
+<div class="hastable">
+<?php foreach ( $this->Data->rows as $i => $row ) : ?>
+<table width="400" id="table_<?php echo $i?>">
+	<thead>
+		<tr>
+			<td colspan="4" align="right">
+				<?php echo $this->formText ( 'rows[' . $i . '][name]', $row->name )?>
+			</td>			
+			<td>Xóa</td>
+		</tr>
+	</thead>
+	<tbody>
+	<?php if($row->item)foreach ( $row->item as $n => $item ) :?>
+		<tr id="<?php echo 'item_' . $i . '_' . $n?>">
+			<td>Name:</td>
+			<td><?php echo $this->formText ( 'rows[' . $i . '][' . $n . '][name]', $item->name )?></td>
+			<td>Value</td>
+			<td><?php echo $this->formText ( 'rows[' . $i . '][' . $n . '][value]', $item->value )?></td>
+			<td><a onclick="$('#<?php echo 'item_' . $i . '_' . $n?>').remove();" class="btn_no_text btn ui-state-default ui-corner-all tooltip"><span				class="ui-icon ui-icon-circle-close"></span></a></td>
+		</tr>	
+	<?php endforeach;?>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="5">
+				<input type="hidden" id="n_<?php echo $i?>" value="<?php echo $n?>"/>
+				<input type="button" value="+" onclick="addItem(<?php echo $i?>,<?php echo $n?>);" />
+			</td>
+		</tr>
+	</tfoot>
+</table>
+<?php endforeach;?>
+<div align="center"><input type="submit" value="Update" /></div>
+</div>
+</form>
+<script>
+var addItem = function(i,n){
+	n = parseInt($('#n_'+i).val())+1;
+	html='<tr id="item_' +i+ '_'+n+'">';
+	html+='<td>Name:</td>';
+	html+='<td><input type="text" value="" id="rows-0-0-name" name="rows['+i+']['+n+'][name]"></td>';
+	html+='<td>Value</td>';
+	html+='<td><input type="text" value="" id="rows-0-0-value" name="rows['+i+']['+n+'][value]"></td>';
+	html+='<td><a class="btn_no_text btn ui-state-default ui-corner-all tooltip" onclick="$(\'#item_'+i+'_'+n+'\').remove();"><span class="ui-icon ui-icon-circle-close"></span></a></td>';
+	html+='</tr>';
+	$('#table_'+i+' > tbody:last').append(html);
+	$('#n_'+i).val(n);
+}
+</script>

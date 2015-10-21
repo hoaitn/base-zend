@@ -1,0 +1,22 @@
+<div class="hastable">
+<h1>Management video</h1>
+<div id="qlqg" style="padding-bottom: 10px;">
+<a href="<?php echo $this->url(array('controller'=>'video','action'=>'create'))?>"><button>Add video</button></a>
+<?php echo $this->Pagination($this->Pager,$this->url().'?page={%page}')?>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" class="tbl_list">
+		<thead>
+			<th>Name</th>
+			<th>Video link</th>			
+			<th>Edit</th>
+			<th>Delete</th>
+		</thead>
+		<?php foreach($this->Video as $Video):?>
+		<tr class="<?php ++$i; echo($i%2)?'first':'second'?>">
+			<td align="center"><?php echo $Video->name;?></td>				
+			<td align="center"><?php echo $Video->link;?></td>				
+			<td align="center" width="40px;"><a href="<?php echo $this->url(array('controller'=>'video','action'=>'edit','id'=>$Video->id))?>"><img src="<?php echo $this->baseUrl('images/image_edit.png');?>" width="24px;"/></a></td>
+			<td align="center" width="40px;"><a href="<?php echo $this->url(array('controller'=>'video','action'=>'delete','id'=>$Video->id))?>"><img src="<?php echo $this->baseUrl('images/Delete.png');?>" width="24px;"/></a></td>
+		</tr>
+		<?php endforeach;?>	
+</table>

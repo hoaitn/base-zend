@@ -1,0 +1,216 @@
+<?php if($this->error):?>
+<div class="ui-widget">
+<div class="ui-state-error ui-corner-all" style="padding: .7em;">
+<p><span class="ui-icon ui-icon-alert"
+	style="float: left; margin-right: .3em;"></span> <strong>Error message:</strong><br />
+<div style="padding-left: 20px;color:#D94736;font-weight: bold;">
+<?php foreach($this->error as $error){echo '- '.$error.'<br/>';}?>
+</div>
+</p>
+</div>
+</div>
+<?php endif;?>
+
+<div id="tabs">
+<ul>
+	<li><a href="#tabs-1">Thông tin sản phẩm</a></li>
+	<li><a href="#tabs-2">Bộ sưu tập</a></li>		
+</ul>
+<form action="" method="post" enctype="multipart/form-data">
+<div id="tabs-1" class="hastable">
+<table>
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Tên sản phẩm</td>
+		<td><?php echo $this->formText('product_name',$this->Product->product_name,array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130">Dung tích xi lanh(cc)</td>
+		<td><?php echo $this->formText('product_cylinder',$this->Product->product_cylinder,array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130">Loại xe</td>
+		<td><?php echo $this->formText('type_of_car',$this->Product->type_of_car,array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130">Hộp số</td>
+		<td><?php echo $this->formText('transmission',$this->Product->transmission,array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130">Số chỗ ngồi</td>
+		<td><?php echo $this->formText('number_of_seats',$this->Product->number_of_seats,array('size'=>60 ))?> Chỗ</td>
+	</tr>
+	<tr>
+		<td width="130">Thông số kĩ thuật</td>
+		<td><?php echo $this->formTextarea('product_engine',$this->Product->product_engine,array('rows'=>5,'class'=>'mceEditor'))?></td>
+	</tr>
+	
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Trang bị tiêu chuẩn</td>
+		<td><?php echo $this->formTextarea('product_details',$this->Product->product_details,array('rows'=>5,'class'=>'mceEditor'))?></td>
+	</tr>
+	<tr>
+		<td width="130">Video</td>
+		<td><?php echo $this->formTextarea('product_description',$this->Product->product_description,array('rows'=>5,'class'=>'mceEditor'))?></td>
+	</tr>
+	<tr>
+		<td width="130">Hình ảnh</td>
+		<td><?php echo $this->formTextarea('product_option',$this->Product->product_option,array('rows'=>5,'class'=>'mceEditor'))?></td>
+	</tr>
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Giá bán</td>
+		<td><?php echo $this->formText('product_price',$this->Product->product_price,array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Hãng sản xuất</td>
+		<td><?php echo $this->formText('manufacturer',$this->Product->manufacturer,array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Thời hạn bảo hành</td>
+		<td><?php echo $this->formText('warranty',$this->Product->warranty,array('size'=>30 ))?> Năm</td>
+	</tr>
+	<tr>
+		<td width="130">Ảnh đại diện</td>
+		<td><?php echo $this->formFile('product_images',$_REQUEST['product_images'])?> <hr />
+		Ảnh hiện tại : <img width="150" height="120" alt="Ảnh sản phẩm" src="<?php echo  $this->Product->getThumbImage();?>">
+		</td>
+	</tr>
+	<tr>
+		<td width="130">Nhóm sản phẩm</td>
+		<td><?php $group = ProductGroup::getOption(); echo $this->formSelect('id_group_product',$this->Product->id_group_product,null,$group)?> </td>
+	</tr>
+	<tr>
+		<td width="130">Sản phẩm mới</td>
+		<td><?php $new_status = array("1"=>"Yes","0"=>"No"); echo $this->formSelect('new_status',$this->Product->new_status,null,$new_status)?> </td>
+	</tr>
+	<tr>
+		<td width="130">Bán chạy nhất</td>
+		<td><?php $sold = array("1"=>"Yes","0"=>"No"); echo $this->formSelect('sold_out',$this->Product->sold_out,null,$sold)?> </td>
+	</tr>
+	<tr>
+		<td width="130">Trạng thái</td>
+		<td><?php $status = array("1"=>"Yes","0"=>"No"); echo $this->formSelect('status',$this->Product->status,null,$status)?> </td>
+	</tr>				
+</table>
+</div>
+<div id="tabs-2" class="hastable">
+<table>
+	<tr style="display: none;">
+		<td width="130"><input type="button" id="addFile" name="addFile" value="Thêm ảnh"><input type="hidden" value="0" id="for_input" name="for_input"></td>
+		<td><div id="input_file"></div></td>		
+	</tr>
+	<tr>
+		<?php if(is_file("uploads/".$this->Product->id."/gallery/1.jpg")){?>		
+		<td id="image1">
+		<img width="140"  height="120" src="/uploads/<?php echo $this->Product->id?>/gallery/1.jpg">
+		<br></br>
+		<input type="button" id="1" name="1" value="Xóa ảnh" onclick="return del(this.id);"/>
+		</td>
+		<?php }else{?>
+		<td id="image1">
+			<input type='file' id='images1' name='images1' />			
+		</td>
+		<?php }?>
+		<?php if(is_file("uploads/".$this->Product->id."/gallery/2.jpg")){?>		
+		<td id="image2">
+		<img width="140"  height="120" src="/uploads/<?php echo $this->Product->id?>/gallery/2.jpg">
+		<br></br>
+		<input type="button" id="2" name="2" value="Xóa ảnh" onclick="return del(this.id);"/>
+		</td>
+		<?php }else{?>
+		<td id="image2">
+			<input type='file' id='images2' name='images2' />			
+		</td>
+		<?php }?>
+		<?php if(is_file("uploads/".$this->Product->id."/gallery/3.jpg")){?>		
+		<td id="image3">
+		<img width="140"  height="120" src="/uploads/<?php echo $this->Product->id?>/gallery/3.jpg">
+		<br></br>
+		<input type="button" id="3" name="3" value="Xóa ảnh" onclick="return del(this.id);"/>
+		</td>
+		<?php }else{?>
+		<td id="image3">
+			<input type='file' id='images3' name='images3' />			
+		</td>
+		<?php }?>
+		</tr>
+		<tr>
+		<?php if(is_file("uploads/".$this->Product->id."/gallery/4.jpg")){?>		
+		<td id="image4">
+		<img width="140"  height="120" src="/uploads/<?php echo $this->Product->id?>/gallery/4.jpg">
+		<br></br>
+		<input type="button" id="4" name="4" value="Xóa ảnh" onclick="return del(this.id);"/>
+		</td>
+		<?php }else{?>
+		<td id="image4">
+			<input type='file' id='images4' name='images4' />			
+		</td>
+		<?php }?>
+		<?php if(is_file("uploads/".$this->Product->id."/gallery/5.jpg")){?>		
+		<td id="image5">
+		<img width="140"  height="120" src="/uploads/<?php echo $this->Product->id?>/gallery/5.jpg">
+		<br></br>
+		<input type="button" id="5" name="5" value="Xóa ảnh" onclick="return del(this.id);"/>
+		</td>
+		<?php }else{?>
+		<td id="image5">
+			<input type='file' id='images5' name='images5' />			
+		</td>
+		<?php }?>
+		<?php if(is_file("uploads/".$this->Product->id."/gallery/6.jpg")){?>		
+		<td id="image6">
+		<img width="140"  height="120" src="/uploads/<?php echo $this->Product->id?>/gallery/6.jpg">
+		<br></br>
+		<input type="button" id="6" name="6" value="Xóa ảnh" onclick="return del(this.id);"/>
+		</td>
+		<?php }else{?>
+		<td id="image6">
+			<input type='file' id='images6' name='images6' />			
+		</td>
+		<?php }?>
+	</tr>
+</table>
+</div>
+<input type="submit" value="Lưu lại" class="ui-button ui-widget ui-state-default ui-corner-all"/>
+<input type="button" value="Quay lại" onclick="javascript:history.back();" />
+</form>
+</div>
+<script>
+	$("#addFile").click(function(){		
+		var for_in = parseInt($("#for_input").val()) + parseInt(1);	
+		if(for_in <=6){	
+			$("#for_input").val(for_in);				
+			var html ="";
+			html += "<div id='file"+for_in+"'>";
+			html += "<input type='file' id='images"+for_in+"' name='images"+for_in+"' /><input type='button' id='"+for_in+"' name='"+for_in+"' value='cancel' onclick='return cancel(this.id);'/><br/>";
+			html += "</div>";
+			$("#input_file").append(html);
+		}else{
+			alert("Tối đa bạn chỉ được upload 6 file ảnh!")
+		}
+	});
+	cancel = function(id){	
+		var for_in = parseInt($("#for_input").val()) - parseInt(1);	
+		$("#for_input").val(for_in);
+		$("#file"+id).remove();		
+	}	
+</script>
+<script>
+	del = function(image){
+		var answer = confirm("Bạn cón muôn xóa ảnh này không?");
+		if(answer == true){		
+			$.ajax({
+				type:"GET",
+				url:"<?php echo $this->url(array('controller'=>'product','action'=>'edit','id'=>$this->Product->id));?>",
+				data:"image="+image+"&id="+<?php echo $this->Product->id;?>,
+				success:function(msg){
+					if(msg == "complete"){
+						var html = "";
+						html += "<input type='file' id='images"+image+"' name='images"+image+"' /><input type='button' id='"+image+"' name='"+image+"' value='cancel' onclick='return cancel(this.id);'/><br/>";
+						$("#image"+image).text("",true);
+						$("#image"+image).append(html);
+					}	
+				}
+			});
+		}
+	} 
+</script>

@@ -1,0 +1,223 @@
+<?php if($this->choice=='cancel'):?>
+<p><span class="Bold">Please note:</span> Due to the <a href="#">Booking
+Conditions</a> agreed to when this booking was made, a cancellation fee
+will be charged in case of late cancellation.</p>
+<table width="100%" cellspacing="0" cellpadding="0" border="0"
+	class="TableCancel">
+	<tbody>
+		<tr>
+			<td width="16%" class="Bold">Reason for cancellation</td>
+		</tr>
+		<tr>
+			<td width="16%"><textarea name="reason" style="width: 340px"></textarea></td>
+
+		</tr>
+		<tr>
+			<td width="16%" class="ParTop">Click OK to cancel your booking.
+			Alternatively, please <a href="#">click here</a> <br/>
+			to chat to our customer service agent.</td>
+
+		</tr>
+		<tr>
+			<td width="16%" class="TextAlign ButtonPar" colspan="4"><input
+				type="submit" class="ButtonBook" value="Ok" name="button"></td>
+		</tr>
+	</tbody>
+</table>
+<?php elseif($this->choice=='cancel_2'):?>
+
+<div class="BoxCancelBooking">
+<p class="CancelBooking">Your Booking ID <?php echo $this->Booking->getBookingId()?> has been cancelled <br/>
+on <?php echo date('M d, Y')?></p>
+<p class="CancelBooking">The Cancellation Fee: US$ 0.00</p>
+<p class="CancelBooking"><a href="#">Click here</a> to view the cancel
+confirmation</p>
+</div>
+
+<?php elseif($this->choice=='amend'):?>
+
+<p>Please enter your new dates below. Please note that it takes up to 48
+hours for the hotel to confirm your changes. We will notify you by email
+as soon as the hotel updates us.</p>
+<table class="TableDate" align="center" border="0" cellpadding="0"
+	cellspacing="0" width="90%">
+	<tbody>
+		<tr>
+			<td width="16%">Arrive</td>
+			<td width="21%" id="check_in"></td>
+		</tr>
+		<tr>
+			<td width="16%">Depart</td>
+			<td width="21%" id="check_out"></td>
+		</tr>
+		<tr>
+			<td colspan="4" class="TextAlign ButtonPar" width="16%"><input
+				name="button" value="Ok" class="ButtonBook" type="submit"></td>
+		</tr>
+	</tbody>
+</table>
+
+<?php elseif($this->choice=='amend_2'):?>
+Amend successfully, please wait to Saler review your request!
+<?php elseif($this->choice=='voucher'):?>
+
+<div class="BoxResend">
+<p class="Resend FontSiteBig"><a
+	href="<?php echo $this->url(array('controller'=>'booking','action'=>'voucher','module'=>'default','id'=>$this->id))?>"
+	target="_blank">Click here</a> to view / print your Hotel Voucher</p>
+<p class="CancelBooking">Please confirm your email address and click OK
+to resend the hotel voucher</p>
+<p><input name="email" class="InputPass" type="text"
+	value="<?php echo $this->Booking->Customers->email?>"></p>
+<p class="TextAlign ButtonPar"><input name="button" value="Ok"
+	class="ButtonBook" type="submit"></p>
+</div>
+<?php elseif($this->choice=='voucher_2'):?>
+Hotel voucher have been send to your email! 
+<?php elseif($this->choice=='receipt'):?>
+
+<div class="BoxResend">
+<p class="Resend FontSiteBig"><a
+	href="<?php echo $this->url(array('controller'=>'booking','action'=>'receipt','module'=>'default','id'=>$this->id))?>"
+	target="_blank">Click here</a> to view / print your Receipt</p>
+<p class="CancelBooking">Please confirm your email address and click OK
+to resend the Receipt</p>
+<p><input name="email" class="InputPass" type="text"
+	value="<?php echo $this->Booking->Customers->email?>"></p>
+<p class="TextAlign ButtonPar"><input name="button" value="Ok"
+	class="ButtonBook" type="submit"></p>
+</div>
+<?php elseif($this->choice=='special'):?>
+
+<p><span class="Bold">Please note:</span> Due to the <a href="#">Booking
+Conditions</a> agreed to when this booking was made, a cancellation fee
+will be charged in case of late cancellation.</p>
+<table class="TableCancel" border="0" cellpadding="0" cellspacing="0"
+	width="100%">
+	<tbody>
+		<tr>
+			<td width="16%">If you have any specical requests or requirements for
+			your tay, please let us know in the box below. This information will
+			be forwarded directly to the hotel and will be subject to
+			availability upon arrival.</td>
+		</tr>
+		<tr>
+			<td width="16%"><textarea name="request" cols="45" rows="7"><?php echo $this->Booking->special_request?></textarea></td>
+
+		</tr>
+		<tr>
+			<td colspan="4" class="TextAlign ButtonPar" width="16%"><input
+				name="button" value="Ok" class="ButtonBook" type="submit"></td>
+		</tr>
+	</tbody>
+</table>
+<?php elseif($this->choice=='special_2'):?>
+Your request saved!
+<?php elseif($this->choice=='payment'):?>
+
+<div class="BoxPaymentMethod">
+<ul>
+	<li class="Bold">Select payment Method &nbsp; <?php echo $this->formSelect('payment_method_id',$this->Booking->payment_method_id,array('class'=>'Country','onChange'=>'getPaymentForm(this.value,"payment_inner")'),PaymentMethod::getOption())?></li>
+</ul>
+<div id="payment_inner"></div>
+<div class="TextAlign ButtonPar"><input type="submit" class="ButtonBook" value="Ok" name="button"></div>
+</div>
+<?php elseif($this->choice=='payment_2'):?>
+Payment method changed
+<?php elseif($this->choice==''):?>
+<form method="post" id="change_booking"
+	onsubmit="submitbooking($('#change_booking').serialize());return false;">
+<input type="hidden" name="id" value="<?php echo $this->id?>" />
+<div class="LeftAmendBooking" id="booking_<?php echo $this->id?>_inner">
+<div class="BoxBooking">
+                        	<ul>
+                            	<li>
+                                	<span class="LeftTitleInfo">Hotel Name:</span>
+                                    <span class="RightTitleInfo"><?php echo $this->Booking->getHotel()?></span>
+                                    <div class="ClearBoth"></div>
+                                </li>
+                                <li>
+                                	<span class="LeftTitleInfo">Address:</span>
+                                    <span class="RightTitleInfo"><?php echo $this->Booking->getHotelAddress()?></span>
+                                    <div class="ClearBoth"></div>
+                                </li>
+                                <li>
+                                	<span class="LeftTitleInfo">Number of room:</span>
+                                    <span class="RightTitleInfo"><?php echo $this->Booking->getNumOfRoom()?></span>
+                                    <div class="ClearBoth"></div>
+                                </li>
+                                <?php foreach($this->Booking->BookingItem as $Item):?>
+                                <li>
+                                	<span class="LeftTitleInfo">Room <?php echo ++$i;?>:</span>
+                                    <span class="RightTitleInfo"><?php echo $Item->Rooms->name;?></span>
+                                    <div class="ClearBoth"></div>
+                                </li>
+                                <?php endforeach;?>
+                                <li>
+                                	<span class="LeftTitleInfo">Number of Adults:</span>
+                                    <span class="RightTitleInfo"><?php echo $this->Booking->getAdult();?></span>
+                                    <div class="ClearBoth"></div>
+                                </li>
+                                <li>
+                                	<span class="LeftTitleInfo">Number of Children:</span>
+                                    <span class="RightTitleInfo"><?php echo $this->Booking->getChild();?></span>
+                                    <div class="ClearBoth"></div>
+                                </li>
+                                <li>
+                                	<span class="LeftTitleInfo">Promotion:</span>
+                                    <span class="RightTitleInfo"><?php echo $this->Booking->promo_price;?></span>
+                                    <div class="ClearBoth"></div>
+                                </li>
+                                <li>
+                                	<span class="LeftTitleInfo">Grand total cost:</span>
+                                    <span class="RightTitleInfo">US$ <?php echo $this->Booking->total_price;?> <br/><span class="NoteTax">( includes tax and service charge )</span></span>
+                                    <div class="ClearBoth"></div>
+                                </li>
+                                <li>
+                                	<span class="LeftTitleInfo">Payment method:</span>
+                                    <span class="RightTitleInfo"><?php echo $this->Booking->getPaymentMethod();?></span>
+                                    <div class="ClearBoth"></div>
+                                </li>
+                                <li>
+                                	<span class="LeftTitleInfo"><a href="#">Booking Conditions</a></span>
+                                    <span class="RightTitleInfo">&nbsp;</span>
+                                    <div class="ClearBoth"></div>
+                                </li>
+                            </ul>
+                        </div>
+</div>
+<div class="RightAmendBooking">
+<div class="menu14">
+<ul>
+	<li id="choice_cancel"><a href="#"
+		onclick="setChangeBooking('cancel');return false;">Cancel my boooking</a></li>
+	<li id="choice_amend"><a href="#"
+		onclick="setChangeBooking('amend');return false;">Amend my booking</a></li>
+	<?php if($this->Booking->status==6):?>
+	<li id="choice_voucher"><a href="#"
+		onclick="setChangeBooking('voucher');return false;">View / Resend my
+	hotel voucher</a></li>
+	<li id="choice_receipt"><a href="#"
+		onclick="setChangeBooking('receipt');return false;">View / Resend my
+	Receipt</a></li>
+	<?php endif;
+	if(!in_array($this->Booking->status,array(0,6,7,8,3))):?>
+	<li id="choice_special"><a href="#"
+		onclick="setChangeBooking('special');return false;">Send special
+	request</a></li>	
+	<li id="choice_payment"><a href="#"
+		onclick="setChangeBooking('payment');return false;">Change my payment
+	method</a></li>
+	<?php endif;?>
+</ul>
+<input type="hidden" value="" name="booking_choice_handler" /></div>
+</div>
+</form>
+<div class="ClearBoth"></div>
+<?php endif;?>
+<script type="text/javascript">
+$(function() {
+	initDateRange('check_in','<?php echo $this->Booking->getCheckIn()?>','check_out','<?php echo $this->Booking->getCheckOut()?>');
+	getPaymentForm('<?php echo $this->Booking->payment_method_id?>','payment_inner');
+});
+</script>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<admin>		
+		<content name="content">
+			<role code="index" name="Static Pages List" />
+			<role code="create" name="Create a new static page" />
+			<role code="edit" name="Edit a static page" />
+			<role code="delete" name="Delete a static page" />
+		</content>
+		<trainers name="trainers">
+			<role code="index" name="Trainers List" />
+			<role code="create" name="Create a new trainer" />
+			<role code="edit" name="Edit a trainer" />
+			<role code="delete" name="Delete a trainer" />
+		</trainers>	
+		<contact name="Contact">
+			<role code="index" name="Contact List" />
+			<role code="view" name="View detail" />	
+			<role code="delete" name="Delete a contact" />			
+		</contact>		
+		<group name="group">
+			<role code="index" name="Danh sách nhóm thành viên" />
+			<role code="create" name="Thêm nhóm thành viên" />
+			<role code="edit" name="Sửa nhóm thành viên" />
+			<role code="delete" name="Xóa nhóm thành viên" />
+		</group>		
+		
+		<index name="index">
+			<role code="index" name="Trang chủ quản trị" />
+		</index>
+		<member name="member">
+			<role code="index" name="Danh sách thành viên" />
+			<role code="create" name="Thêm mới thành viên" />
+			<role code="edit" name="Sửa thành viên" />
+			<role code="history" name="Lịch trình thao tác" />
+			<role code="export" name="Export nhật ký hoạt động" />
+			<role code="delete" name="Xóa thành viên" />
+			<role code="my" name="Xem thông tin cá nhân" />
+			<role code="profile" name="Sửa thông tin cá nhân" />			
+		</member>
+		<settings name="settings">
+			<role code="index" name="Cài đặt cấu hình" />
+			<role code="create" name="Thêm loại hình khách sạn" />
+			<role code="edit" name="Sửa loại hình khách sạn" />
+			<role code="delete" name="Xóa loại hình khách sạn" />
+			<role code="home" name="Cài đặt nội dung trang chủ" />
+			<role code="footer" name="Cài đặt phụ đề" />
+			<role code="adv" name="Quản lý quảng cáo" />
+			<role code="advfile" name="Quản lý thư viện file quảng cáo" />
+		</settings>
+		
+	</admin>
+</resources>

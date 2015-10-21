@@ -1,0 +1,79 @@
+
+    	<div id="maincol">
+        	<p><img height="300" width="657" src="<?php echo $this->City->getThumbImage()?>"></p>
+            <p class="textnone"><b>Overview:</b> <?php echo $this->City->description?>
+            <div class="boxBlue">
+            	<div class="hdBlue">
+                	<ul><li class="sprite left"></li>
+                    	<li class="sprite right"></li>
+                        <li class="center"><span>TOURS BY COUNTRY</span></li>
+                    </ul>
+                </div>
+                <div class="bdBlue">
+                	<p class="TourByCountry">
+                    	<b>Viet Nam:</b> <a href="#">Vietnam Private Journeys</a> | <a href="#">Vietnam Adventure Tours</a> | <a href="#">Vietnam Cooking Tours</a> | <a href="#">Cruises in Vietnam</a> | <a href="#">
+                    	Vietnam Honeymoon Tours</a> | <a href="#">Vietnam Golf &amp; Spa Tours</a> | <a href="#">Vietnam City Stopovers</a></p>
+                    <p class="TourByCountry">
+                    	<b>Laos:</b> <a href="#">Laos Private Journeys</a> | <a href="#">Laos Adventure Tours</a> | <a href="#">Laos City Stopovers</a> | <a href="#">River Cruises in Laos</a></p>
+                    <p class="TourByCountry">
+                    	<b>Cambodia:</b> <a href="#">Cambodia Private  Journeys</a> | <a href="#">River Cruises in Cambodia</a> | <a href="#">Cambodia Golf Tours</a></p>
+                    <p class="TourByCountry">
+                    	<b>Thailand:</b> <a href="#">Thailand Private Journeys</a> | <a href="#">Thailand Adventure Tours</a> | <a href="#">Thailand Cooking Tours</a> | <a href="#">River 
+                        Cruises in Thailand</a> | <a href="#">Thailand Honeymoon Tours</a> | <a href="#">Thailand Golf Tours</a> | <a href="#">Thailand City Stopovers</a></p>
+                	<p class="TourByCountry">
+                    	<b>Singapore:</b> <a href="#">City Tours</a> | <a href="#">Night Tours</a> | <a href="#">Singapore Flyer</a> | <a href="#">Day Adventure &amp; Duck Tour</a> | <a href="#">City in Transformation Tour</a></p>
+                    <p class="TourByCountry">
+                    	<b>China:</b> <a href="#">Silk Road Tour</a> | <a href="#">Beijing Tours</a> | <a href="#">Xian Tours</a> | <a href="#">Shanghai Tours</a> | <a href="#">Sanya Vacations (Hainan)</a></p>
+                    <div class="ClearBoth"></div>
+                </div>
+           </div><!--e: boxBlue-->
+        </div><!--maincol-->
+        <div id="rightcol">
+        	<div class="boxBlueRight">
+            	<div class="hdBlue">
+                	<ul><li class="sprite left"></li>
+                    	<li class="sprite right"></li>
+                        <li class="center"><span><?php echo $this->Country->name?> tours TYPE</span></li>
+                    </ul>
+                </div>
+                <div class="bdBlue">
+                	<ul class="listType">
+                	<?php foreach ($this->TourType as $TourType):?>	
+                    	<li><b><a href="<?php echo $TourType->getLink(array('country'=>$this->Country->name_plain))?>"><?php echo $TourType->name?></a></b></li>
+                    <?php endforeach;?>	
+                        
+                    </ul>
+                </div>
+           </div><!--e: boxBlueRight-->
+           <div class="video_tour">
+           		<p>
+           		<div id="txtHint"> 
+				<object id="player" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" name="player" width="293" height="240">
+					<param name="movie" value="/images/player-viral.swf" />
+					<param name="autoplay" value="true">
+					<param name="allowfullscreen" value="true" />
+					<param name="AutoRewind" value="True" />
+					<param name="allowscriptaccess" value="always" />
+					<param name="playcount" VALUE="3" />
+					<param name="flashvars" value="file=/uploads/countries/<?php echo $this->Country->id?>/city/<?php echo $this->City->id?>/<?php echo $this->City->video?>" />												
+				<embed
+				type="application/x-shockwave-flash" id="player2" name="player2" src="/images/player-viral.swf" width="293" height="240" autoplay="true"  allowscriptaccess="always" allowfullscreen="true" flashvars="file=/uploads/countries/<?php echo $this->Country->id?>//city/<?php echo $this->City->id?>/<?php echo $this->City->video?>" />
+				</object>
+				</div>
+           		</p>
+           </div><!--e: video_tour-->  
+           
+           <div class="morePictures">
+           		<p class="paddingBottom"><label>More Pictures :</label></p>
+           		<?php
+					$Image = $this->City->getImages ();
+				$i = 0;
+				?>
+           		<?php foreach ( $Image as $image ) : ?>
+                <span><img height="110" width="139" src="<?php echo DATA_DIR . 'countries/' . $this->Country->id . '/city/' . $this->City->id .'/'. $image ['file']?>" class="img_morePictures"></span>
+               <?php $i ++; endforeach ; ?>
+           </div>
+            <div id="adv_right" class="adv_block"></div>
+        </div><!--e: rightcol-->
+        <div class="ClearBoth"></div>
+  

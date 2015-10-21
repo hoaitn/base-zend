@@ -1,0 +1,86 @@
+<div class="block category">
+<h2 class="title"><img src="images/category.png" alt="" />Danh mục sản phẩm</h2>
+      <ul>
+        <li><a href="/product/index/product_group/1" title="">BMW 3 Series</a>
+       		<?php $Product = Product::getByGroupId(1); if(count($Product) > 0):?>
+			<ul> 
+			<?php foreach($Product as $name){?>
+				<li><a href="<?php echo $this->url(array('controller'=>'product','action'=>'details','product_id'=>$name->id))?>"><?php echo $name->product_name;?></a></li> 									
+			<?php }?>
+			</ul>
+			<?php endif;?>
+		</li>
+          <li><a href="/product/index/product_group/2" title="">BMW 5 Series</a>
+          	<?php $Product = Product::getByGroupId(2); if(count($Product) > 0):?>
+			<ul> 
+			<?php foreach($Product as $name){?>
+				<li><a href="<?php echo $this->url(array('controller'=>'product','action'=>'details','product_id'=>$name->id))?>"><?php echo $name->product_name;?></a></li> 									
+			<?php }?>
+			</ul>
+			<?php endif;?>
+          </li>
+          <li><a href="/product/index/product_group/3" title="">BMW 7 Series</a>
+          	<?php $Product = Product::getByGroupId(3); if(count($Product) > 0):?>
+			<ul> 
+			<?php foreach($Product as $name){?>
+				<li><a href="<?php echo $this->url(array('controller'=>'product','action'=>'details','product_id'=>$name->id))?>"><?php echo $name->product_name;?></a></li> 									
+			<?php }?>
+			</ul>
+			<?php endif;?>
+          </li>
+          <li><a href="/product/index/product_group/4" title="">BMW 6 Series</a>
+          	<?php $Product = Product::getByGroupId(4); if(count($Product) > 0):?>
+			<ul> 
+			<?php foreach($Product as $name){?>
+				<li><a href="<?php echo $this->url(array('controller'=>'product','action'=>'details','product_id'=>$name->id))?>"><?php echo $name->product_name;?></a></li> 									
+			<?php }?>
+			</ul>
+			<?php endif;?>
+          </li>
+          <li><a href="/product/index/product_group/5" title="">BMW X1 2011</a>
+          	<?php $Product = Product::getByGroupId(5); if(count($Product) > 0):?>
+			<ul> 
+			<?php foreach($Product as $name){?>
+				<li><a href="<?php echo $this->url(array('controller'=>'product','action'=>'details','product_id'=>$name->id))?>"><?php echo $name->product_name;?></a></li> 									
+			<?php }?>
+			</ul>
+			<?php endif;?>
+          </li>
+          <li><a href="/product/index/product_group/6" title="">BMW X3 2011</a>
+          	<?php $Product = Product::getByGroupId(6); if(count($Product) > 0):?>
+			<ul> 
+			<?php foreach($Product as $name){?>
+				<li><a href="<?php echo $this->url(array('controller'=>'product','action'=>'details','product_id'=>$name->id))?>"><?php echo $name->product_name;?></a></li> 									
+			<?php }?>
+			</ul>
+			<?php endif;?>
+          </li>
+          <li><a href="/product/index/product_group/7" title="">BMW X5 2011</a>
+          	<?php $Product = Product::getByGroupId(7); if(count($Product) > 0):?>
+			<ul> 
+			<?php foreach($Product as $name){?>
+				<li><a href="<?php echo $this->url(array('controller'=>'product','action'=>'details','product_id'=>$name->id))?>"><?php echo $name->product_name;?></a></li> 									
+			<?php }?>
+			</ul>
+			<?php endif;?>
+          </li>
+          <li><a href="/product/index/product_group/8" title="">BMW X6 2011</a>
+          	<?php $Product = Product::getByGroupId(8); if(count($Product) > 0):?>
+			<ul> 
+			<?php foreach($Product as $name){?>
+				<li><a href="<?php echo $this->url(array('controller'=>'product','action'=>'details','product_id'=>$name->id))?>"><?php echo $name->product_name;?></a></li> 									
+			<?php }?>
+			</ul>
+			<?php endif;?>
+          </li>
+          <li><a href="/product/index/product_group/9" title="">BMW Z4 23i 2010</a>
+          	<?php $Product = Product::getByGroupId(9); if(count($Product) > 0):?>
+			<ul> 
+			<?php foreach($Product as $name){?>
+				<li><a href="<?php echo $this->url(array('controller'=>'product','action'=>'details','product_id'=>$name->id))?>"><?php echo $name->product_name;?></a></li> 									
+			<?php }?>
+			</ul>
+			<?php endif;?>
+          </li>
+     </ul>
+</div>

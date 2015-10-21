@@ -1,0 +1,62 @@
+<div id="maincol">
+            <div class="boxInfo">
+            	<div class="boxInfo_bg">
+                	<div class="boxInfo_ct">
+                        <ul class="NewsEvent">
+                        	<li><h2><?php echo $this->NewsDetail->title?></h2>
+                                <p class="date"><?php echo $this->NewsDetail->getCreatedDateDetail()?></p><br />
+                                <p class="font11px Color333"><?php echo $this->NewsDetail->description?></p>
+                                <p><img width="150" height="150" src="<?php echo $this->NewsDetail->getThumbImage()?>"/></p>
+                        		<br /><p><b class="font11px Color333"><?php echo $this->NewsDetail->content?></b></p>                                
+                                <br /><p class="font11px Color333"><b>Nguồn:</b> <span class="linkBlue"><a href="#">Tin tức du lịch</a>, <a href="#">Sự kiện du lịch,</a> <a href="#">Phóng sự du lịch,</a> <a href="#">Nổi bật trong tháng</a>, <a href="#">Khuyến mại du lịch</a></p>
+                            </li>
+                        </ul>
+                       <div class="othernews">
+                       		<h6>Tin cũ hơn:</h6>
+                       		<?php $News = News::getByCreateDate($this->NewsDetail->created_date);?>
+                       		<ul>
+                       		<?php foreach ($News as $Oldnews):?>
+                       		<li><b><?php echo $Oldnews->getCreatedDateDetail()?></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $Oldnews->getlink()?>"><?php echo $Oldnews->title?></a></li>                            	
+                                <?php endforeach;?>
+                            </ul>
+                       </div><!--e: othernews-->
+                    </div>
+                </div>
+            </div><!--e: boxInfo-->            
+        </div><!--maincol-->
+        <div id="rightcol">
+        	<?php echo $this->partial('tour/boxsearch.phtml')?>
+           <?php echo $this->partial('tour/gethot.phtml')?>
+           <?php echo $this->partial('tour/discount.phtml')?>
+           <div class="boxNewsLetter">
+            	<div class="hdOrange">
+                	<ul><li class="sprite left"></li>
+                    	<li class="sprite right"></li>
+                        <li class="center"><span>Newsletter Sign Up</span></li>
+                    </ul>
+                </div>
+                <div class="bdNewsLetter">
+                	<div class="contentNewsLetter">
+	                	<p class="description">Sign up to receive exclusive offers and inspirational travel ideas for holidays, hotels, flights, cruises, European holidays, UK breaks, long-haul trips and many more products direct to your</p>
+                    	<p class="tags-NewsLetter">
+                    	<span>
+                    		<input class="inputNewsLetter" name="subscription" value="Enter email address" type="text" onblur="if (this.value=='') this.value='Enter email address';" onfocus="if (this.value=='Enter email address') this.value='';" />
+                    	</span>
+                    	<span>
+                    		<input value="SIGN UP »" class="button_SignUp" type="button" onclick="subscription();">
+                    	</span>
+                    	</p>
+                    </div>
+                </div>
+           </div><!--e: boxOrange-->
+           <div class="boxWeather">
+           		<p class="titleWeather"><b>WEATHER FORECAST</b></p>
+                <p class="weather">
+                	<span class="cbo_city"><select><option>Ha Noi</option></select></span>
+                	<span class="txt-weather">31 <sup>0</sup>C</span>
+                    <span class="img-weather"><img src="images/icon/icon_weather.gif" width="39" height="25"></span>
+                </p>
+           </div><!--e: boxWeather-->
+                
+        </div><!--e: rightcol-->
+        <div class="ClearBoth"></div>

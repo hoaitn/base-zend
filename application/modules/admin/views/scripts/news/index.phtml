@@ -1,0 +1,25 @@
+<div class="hastable">
+<h1>Management articles</h1>
+<a href="<?php echo $this->url(array('controller'=>'news','action'=>'create'))?>"><button type="button">Add new</button></a>
+<?php echo $this->Pagination($this->Pager,$this->url().'?page={%page}')?>
+<table cellpadding="0" cellspacing="0" width="100%" class="tbl_list">
+		<thead>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Category</th>
+			<th>Status</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</thead>
+		<?php foreach($this->News as $Content):?>
+		<tr class="<?php ++$i; echo($i%2)?'first':'second'?>">
+			<td><?php echo $Content->title?></td>
+			<td><?php echo $Content->description?></td>
+			<td><?php $Group = Newgroup::getById($Content->group_id); echo $Group->name;?></td>
+			<td><?php echo ($Content->status?"Yes":"No")?></td>				
+			<td align="center" width="40px;"><a href="<?php echo $this->url(array('controller'=>'news','action'=>'edit','id'=>$Content->id))?>"><img src="<?php echo $this->baseUrl('images/image_edit.png');?>" width="24px;"/></a></td>
+			<td align="center" width="40px;"><a href="<?php echo $this->url(array('controller'=>'news','action'=>'delete','id'=>$Content->id))?>"><img src="<?php echo $this->baseUrl('images/Delete.png');?>" width="24px;"/></a></td>
+		</tr>
+		<?php endforeach;?>
+</table>
+</div>

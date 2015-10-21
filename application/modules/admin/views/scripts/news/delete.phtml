@@ -1,0 +1,20 @@
+<?php if($this->News):?>
+<form method="post">
+<div class="ui-widget">
+<div style="margin: 10px 0; padding: 0.7em;" class="ui-state-highlight ui-corner-all">
+<p><span style="float: left; margin-right: 0.3em;"
+	class="ui-icon ui-icon-info"></span> <strong>Note!</strong> Are you sure you want to delete: <b><?php echo $this->News->title?></b>?</p>
+</div>
+</div>
+<input type="submit" value="Ok" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"/>
+<input type="button" value="Cancel" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" onclick="javascript:history.back()"/>
+</form>
+<?php else:?>
+<div class="ui-widget">
+<div class="ui-state-error ui-corner-all" style="padding: .7em;">
+<p><span class="ui-icon ui-icon-alert"
+	style="float: left; margin-right: .3em;"></span> <strong>Error message:</strong>
+Delete the data you need does not exist. Please check back</p>
+</div>
+</div>
+<?php endif;?>

@@ -1,0 +1,100 @@
+<!doctype html>
+<!--[if lt IE 8 ]><html lang="en" class="no-js ie ie7"><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie"><![endif]-->
+<!--[if (gt IE 8)|!(IE)]><!--><html lang="en" class="no-js"><!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<?php echo $this->headMeta(); ?> 
+	<?php echo $this->headTitle(); ?> 
+	<!-- Global stylesheets -->
+	<link href="<?php echo $this->baseUrl('admin_themes/css/reset.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo $this->baseUrl('admin_themes/css/common.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo $this->baseUrl('admin_themes/css/form.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo $this->baseUrl('admin_themes/css/standard-alt.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo $this->baseUrl('admin_themes/css/960.gs.fluid.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo $this->baseUrl('admin_themes/css/table.css') ?>" rel="stylesheet" type="text/css">	
+	<!-- Custom styles -->
+	<link href="<?php echo $this->baseUrl('admin_themes/css/simple-lists.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo $this->baseUrl('admin_themes/css/block-lists.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo $this->baseUrl('admin_themes/css/planning.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo $this->baseUrl('admin_themes/admin/tables.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo $this->baseUrl('admin_themes/css/calendars.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo $this->baseUrl('admin_themes/css/wizard.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?php echo $this->baseUrl('admin_themes/css/gallery.css') ?>" rel="stylesheet" type="text/css">
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->baseUrl('favicon.ico')?>">
+	<link rel="icon" type="image/png" href="<?php echo $this->baseUrl('favicon-large.png')?>">
+	<!-- Modernizr for support detection, all javascript libs are moved right above </body> for better performance -->
+	<script src="<?php echo $this->baseUrl('admin_themes/js/libs/modernizr.custom.min.js')?>"></script>
+		<!-- Generic libs -->
+	<script src="<?php echo $this->baseUrl('admin_themes/js/libs/jquery-1.6.3.min.js')?>"></script>
+	<script src="<?php echo $this->baseUrl('admin_themes/js/old-browsers.js')?>"></script>		<!-- remove if you do not need older browsers detection -->
+	<script src="<?php echo $this->baseUrl('admin_themes/js/libs/jquery.hashchange.js')?>"></script>	
+	<script src="<?php echo $this->baseUrl('admin_themes/js/tiny_mce/tiny_mce.js');?>"></script>	
+	<script src="<?php echo $this->baseUrl('admin_themes/js/list.js');?>"></script>	
+	<!-- Template libs -->
+	<script src="<?php echo $this->baseUrl('admin_themes/js/jquery.accessibleList.js')?>"></script>
+	<script src="<?php echo $this->baseUrl('admin_themes/js/searchField.js')?>"></script>
+	<script src="<?php echo $this->baseUrl('admin_themes/js/common.js')?>"></script>
+	<script src="<?php echo $this->baseUrl('admin_themes/js/mobile.js')?>"></script>
+	<script src="<?php echo $this->baseUrl('admin_themes/js/standard.js')?>"></script>
+	<!--[if lte IE 8]><script src="<?php echo $this->baseUrl('admin_themes/js/standard.ie.js')?>"></script><![endif]-->
+	<script src="<?php echo $this->baseUrl('admin_themes/js/jquery.tip.js')?>"></script>
+	<script src="<?php echo $this->baseUrl('admin_themes/js/jquery.contextMenu.js')?>"></script>
+</head>
+
+<body>	
+	<!-- Header -->	
+	<!-- Server status -->
+	<header><div class="container_12">
+<!-- 		<p id="skin-name"><small>Constellation<br> admin_themes Skin</small> <strong>1.2</strong></p> -->
+<!-- 		<div class="server-info">Server: <strong>Apache 2.2.14</strong></div> -->
+		<div class="server-info"><a href="<?php echo $this->url(array("controller"=>"index","action"=>"index","module"=>"default"));?>" target="_blank"><strong>View site</strong></a></div>		
+	</div></header>
+	<!-- End server status -->
+	
+	<!-- Logo section -->
+	<div id="header-bg">
+		<p style="color:#ffffff;font-size: 20px;font-weight: bold;">Administrator - Qsoft Zend</p>		
+	</div>
+	<!-- Sub nav -->
+	<div id="sub-nav"><div class="container_12">
+		<?php echo $this->partial("menu/menu.phtml");?>
+	</div></div>
+	<!-- End sub nav -->
+	<!-- Status bar -->
+	<div id="status-bar"><div class="container_12">
+	
+		<ul id="status-infos">
+			<li class="spaced">Logged as: <strong><?php $ss = new Zend_Session_Namespace('member'); echo $ss->__get('Member')->name;?></strong></li>
+			<li><a href="<?php echo $this->url(array("controller"=>"member","action"=>"login","module"=>"admin"));?>" class="button red" title="Logout"><span class="smaller">LOGOUT</span></a></li>
+		</ul>
+	</div></div>
+	<!-- End status bar -->
+	
+	<div id="header-shadow"></div>
+	<!-- End header -->
+	
+	<!-- Content -->
+	<article class="container_12">	
+		<section class="grid_12">
+			<div class="block-border">            
+    			<div class="block-content">
+    				<?php echo $this->layout()->content;?>				
+    			</div>
+            </div>
+		</section>		
+		<div class="clear"></div>		
+	</article>
+	<!-- End content -->	
+	<footer>		
+		<div class="float-left">			
+			<a class="button">Copyright © 2011 - 2012 by Hoài Nam Trần - Email: itllsvn@gmail.com. Mobile: 0978667966.</a>
+		</div>		
+		<div class="float-right">
+			<a href="#top" class="button"><img src="<?php echo $this->baseUrl('images/icons/fugue/navigation-090.png');?>" width="16" height="16">Back top</a>
+		</div>		
+	</footer>	
+</body>
+</html>

@@ -1,0 +1,12 @@
+<div style="margin: 10px;">
+<?php foreach($this->Color as $color):?>
+<a href="<?php echo $color->getThumbImage();?>" class="highslide" onclick="return hs.expand(this)" style="padding:3px;display:inline-block;margin-bottom:10px;border:none;">
+	<img style="width:125px;height:90px;border:none;"width="170" height="60" src="<?php echo $color->getThumbImage();?>" alt="Highslide JS"
+		title="<?php echo $color->car_paint_color;?>" />
+</a>
+<div class="highslide-caption">
+	<?php echo $color->car_paint_color;?>
+</div>						
+<?php endforeach;?>
+</div>
+	

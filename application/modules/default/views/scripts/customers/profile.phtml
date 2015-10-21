@@ -1,0 +1,68 @@
+<div class="LeftCol"> <?php echo $this->action('menu','customers')?></div>
+
+<!-- //Left --> <!-- InstanceBeginEditable name="content" -->
+<div class="RightCol">
+<span class="Red"><h3><?php echo $this->erorr?></h3></span>
+<div class="BoxChange">
+       	  
+       	  <form method="post" action="<?php echo $this->url(array(),'customers_profile')?>">
+           	<h3>Customent Profile</h3>
+                <div class="InsiteChangePass">
+                	<ul>
+                   	  <li>
+                        	<span class="LeftCusPro">Name:</span>
+                            <span class="RightChange"><select id="title" name="title" class="Name"><option value="">Mr</option><option value="">Mrs</option></select>
+                            First:<input name="firstname" type="text" class="InputPass" value="<?php echo $this->Customer->firstname?>"/>
+                            Last :<input name="lastname" type="text" class="InputPass" value="<?php echo $this->Customer->lastname?> "/>
+                            <span class="Red"> * </span></span>
+                            <div class="ClearBoth"></div>
+                      </li>
+                        <li>
+                        	<span class="LeftCusPro">Nationality:</span>
+                            <span class="RightChange"><?php echo $this->formSelect('customer_countries_id',$this->Customer->customer_countries_id,array('class'=>'City'),CustomerCountries::getOption(array('-'=>'---Select---')))?></span>
+                            <div class="ClearBoth"></div>
+                        </li>                       
+                        <li>
+                        	<span class="LeftCusPro">Email:</span>
+                            <span class="RightChange"><input name="email" type="text" class="InputPass" value="<?php echo $this->Customer->email?>"/> <span class="Red"> * </span></span>
+                            <div class="ClearBoth"></div>
+                        </li>                       
+                        <li>
+                        	<span class="LeftCusPro">Phone:</span>
+                            <span class="RightChange"><input name="phone" type="text" class="InputPhone" value="<?php echo $this->Customer->phone?>"/></span>
+                            <div class="ClearBoth"></div>
+                        </li>
+                        <li>
+                        	<span class="LeftCusPro">Address:</span>
+                            <span class="RightChange"><input name="address1" type="text" class="InputPhone" value="<?php echo $this->Customer->address1?>"/> &nbsp;&nbsp;&nbsp;
+                             <input name="address2" type="text" class="InputPhone" value="<?php echo $this->Customer->address2?>"/></span>
+                            <div class="ClearBoth"></div>
+                        </li>
+                         <li>
+                        	<span class="LeftCusPro">City:</span>
+                            <span class="RightChange"><input name="city"  type="text" value="<?php echo $this->Customer->city?>" class="InputPhone"/></span>
+                            <div class="ClearBoth"></div>
+                        </li>
+                        <li>
+                        	<p>Conrrespondece</p>
+                        </li>
+                        <li>
+                        	<input name="check" type="checkbox" value="" /> &nbsp;I would like to receive your Special Offers & Promotions
+                            <div class="ClearBoth"></div>
+                        </li>
+                        <li>
+                       	<span class="LeftChange">&nbsp;</span>
+                        <span class="RightChange TextAlign">
+                       	<input name="button" type="submit" value="Update" class="ButtonBook" />
+                       	</span></li>
+                        <div class="ClearBoth"></div>
+                    </ul>
+            </div>
+            </form>
+          </div>
+          
+        </div>
+   	  	<!-- //Right -->
+   	  	<!-- InstanceEndEditable -->
+   	  	
+ 

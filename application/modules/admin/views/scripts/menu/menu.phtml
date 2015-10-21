@@ -1,0 +1,99 @@
+<ul>
+	<li class="current"><a href="<?php echo $this->url(array("controller"=>"index","action"=>"index","module"=>"admin"))?>" title="Home page"><img src="/images/admin/onebit_01.png" width="30px;"/></a></li>
+	<li><a href="<?php echo $this->url(array("controller"=>"member","action"=>"profile","module"=>"admin"))?>" title="My profile">My profile</a></li>
+	<li class="menu-opener"><a href="<?php echo $this->url(array("controller"=>"news","action"=>"index","module"=>"admin"))?>" title="Management articles">Articles</a>
+		<div class="menu-arrow">
+			<img src="<?php echo $this->baseUrl('images/menu-open-arrow.png');?>" width="16" height="16">
+		</div>
+		<div class="menu">
+			<ul>
+				<li class="icon_address"><a href="<?php echo $this->url(array("controller"=>"sections","action"=>"index","module"=>"admin"))?>">Sections</a>
+					<ul>
+						<li class="icon_blog"><a href="<?php echo $this->url(array("controller"=>"sections","action"=>"index","module"=>"admin"))?>">List sections</a></li>
+						<li class="icon_blog"><a href="<?php echo $this->url(array("controller"=>"sections","action"=>"create","module"=>"admin"))?>">Add section</a></li>
+					</ul>
+				</li>
+				<li class="icon_address"><a href="<?php echo $this->url(array("controller"=>"category","action"=>"index","module"=>"admin"))?>">Categories</a>
+					<ul>
+						<li class="icon_blog"><a href="<?php echo $this->url(array("controller"=>"category","action"=>"index","module"=>"admin"))?>">List categories</a></li>
+						<li class="icon_blog"><a href="<?php echo $this->url(array("controller"=>"category","action"=>"create","module"=>"admin"))?>">Add categories</a></li>
+					</ul>
+				</li>
+				<li class="icon_address"><a href="<?php echo $this->url(array("controller"=>"news","action"=>"index","module"=>"admin"))?>">Articles</a>
+					<ul>
+						<li class="icon_blog"><a href="<?php echo $this->url(array("controller"=>"news","action"=>"index","module"=>"admin"))?>">List articles</a></li>
+						<li class="icon_blog"><a href="<?php echo $this->url(array("controller"=>"news","action"=>"create","module"=>"admin"))?>">Add articles</a></li>
+					</ul>
+				</li>				
+			</ul>
+		</div>		
+	</li>
+	<li><a href="<?php echo $this->url(array("controller"=>"contact","action"=>"index","module"=>"admin"))?>" title="Contact">Contact</a></li>
+	<li><a href="<?php echo $this->url(array("controller"=>"testimonials","action"=>"index","module"=>"admin"))?>" title="Testimonials">Testimonials</a></li>
+	<li class="menu-opener"><a href="<?php echo $this->url(array("controller"=>"member","action"=>"index","module"=>"admin"))?>" title="Management members">Members</a>
+		<div class="menu-arrow">
+			<img src="<?php echo $this->baseUrl('images/menu-open-arrow.png');?>" width="16" height="16">
+		</div>
+		<div class="menu">
+			<ul>
+				<li class="icon_address"><a href="<?php echo $this->url(array("controller"=>"group","action"=>"index","module"=>"admin"))?>">Group member</a>
+					<ul>
+						<li class="icon_blog"><a href="<?php echo $this->url(array("controller"=>"group","action"=>"index","module"=>"admin"))?>">List group</a></li>
+						<li class="icon_blog"><a href="<?php echo $this->url(array("controller"=>"group","action"=>"create","module"=>"admin"))?>">Add group</a></li>
+					</ul>
+				</li>
+				<li class="icon_address"><a href="<?php echo $this->url(array("controller"=>"member","action"=>"index","module"=>"admin"))?>">User</a>
+					<ul>
+						<li class="icon_blog"><a href="<?php echo $this->url(array("controller"=>"member","action"=>"index","module"=>"admin"))?>">List user</a></li>
+						<li class="icon_blog"><a href="<?php echo $this->url(array("controller"=>"member","action"=>"create","module"=>"admin"))?>">Add user</a></li>
+					</ul>
+				</li>
+				<li class="icon_address"><a href="<?php echo $this->url(array("controller"=>"member","action"=>"history","module"=>"admin"))?>">History</a>				
+				</li>				
+			</ul>
+		</div>		
+	</li>
+	<li class="menu-opener"><a href="<?php echo $this->url(array("controller"=>"product","action"=>"index","module"=>"admin"))?>" title="Management product">Product</a>
+		<div class="menu-arrow">
+			<img src="<?php echo $this->baseUrl('images/menu-open-arrow.png');?>" width="16" height="16">
+		</div>
+		<div class="menu">
+			<ul>
+				<li class="icon_address"><a href="<?php echo $this->url(array("controller"=>"productgroup","action"=>"index","module"=>"admin"))?>">Product group</a>
+					<ul>						
+						<li class="icon_blog"><a href="<?php echo $this->url(array("controller"=>"productgroup","action"=>"create","module"=>"admin"))?>">Add group</a></li>
+					</ul>
+				</li>
+				<li class="icon_address"><a href="<?php echo $this->url(array("controller"=>"product","action"=>"index","module"=>"admin"))?>">Product</a>
+					<ul>						
+						<li class="icon_blog"><a href="<?php echo $this->url(array("controller"=>"product","action"=>"create","module"=>"admin"))?>">Add product</a></li>
+					</ul>
+				</li>			
+			</ul>
+		</div>		
+	</li>
+	<li class="menu-opener"><a href="#" title="Management medias">Medias</a>
+		<div class="menu-arrow">
+			<img src="<?php echo $this->baseUrl('images/menu-open-arrow.png');?>" width="16" height="16">
+		</div>
+		<div class="menu">
+			<ul>
+				<li class="icon_address"><a href="<?php echo $this->url(array("controller"=>"banner","action"=>"index","module"=>"admin"))?>">Banner</a></li>
+				<li class="icon_address"><a href="<?php echo $this->url(array("controller"=>"video","action"=>"index","module"=>"admin"))?>">Video</a></li>
+				<li class="icon_address"><a href="#">File</a></li>				
+			</ul>
+		</div>		
+	</li>
+	<li class="menu-opener"><a href="#" title="Config system">Config system</a>
+		<div class="menu-arrow">
+			<img src="<?php echo $this->baseUrl('images/menu-open-arrow.png');?>" width="16" height="16">
+		</div>
+		<div class="menu">
+			<ul>
+				<li class="icon_address"><a href="<?php echo $this->url(array("controller"=>"settings","action"=>"index","module"=>"admin"))?>">Settings</a></li>
+				<li class="icon_address"><a href="<?php echo $this->url(array("controller"=>"settings","action"=>"route","module"=>"admin"))?>">Config route</a></li>
+				<li class="icon_address"><a href="#">File</a></li>				
+			</ul>
+		</div>		
+	</li>
+</ul>

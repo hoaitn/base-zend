@@ -1,0 +1,15 @@
+<div class="cate_product"> 
+	<?php $counter = count($this->Product); $i=0; $number_of_row = ceil($counter/3);?>     
+	 <?php foreach ($this->Product as $newStatus):?> 
+	 <?php if($i%$number_of_row == 0){ $class = "last";}?>                 	
+		<div class="cate_product_items <?php echo $class;?>">
+			<h2 class="product_items_title"><a href="<?php echo $this->url(array("controller"=>"product","action"=>"details","product_id"=>$newStatus->id));?>"><?php echo $newStatus->product_name?></a></h2>
+			<div class="product_items_images">
+				<a href="<?php echo $this->url(array("controller"=>"product","action"=>"details","product_id"=>$newStatus->id));?>"><img src="<?php echo $newStatus->getThumbImage();?>" alt="<?php echo $newStatus->product_name?>" data-tooltip="sticky"/></a>
+			</div>
+			<span class="product_items_price"><?php echo number_format ($newStatus->product_price,0,".",",");?> VNĐ</span>
+			<a href="<?php echo $this->url(array("controller"=>"product","action"=>"details","product_id"=>$newStatus->id));?>" class="product_items_buy">Xem chi tiết</a>								
+		</div><!--End .cate_product_items-->  
+		<?php endforeach;?>
+		<div class="clear"></div>
+</div><!--End .cate_product-->

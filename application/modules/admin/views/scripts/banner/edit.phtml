@@ -1,0 +1,40 @@
+<div class="block-controls">	
+	<ul class="controls-tabs js-tabs same-height with-children-tip">
+		<li class="current" title="Basic info"><a title="" href="#tabs-1"><img height="24" width="24" src="<?php echo $this->baseUrl('images/icons/web-app/24/Profile.png');?>"></a></li>
+	</ul>	
+</div>
+<?php if($this->error):?>
+<div class="block-content no-title dark-bg">
+    <p class="mini-infos">          
+          <?php foreach($this->error as $error){echo '- '.$error.'<br/>';}?>
+    </p>
+</div>    
+<?php endif;?>
+<h1>Create a banner</h1>
+<form action="" method="post" enctype="multipart/form-data">
+<div id="tabs-1" class="hastable">
+<table>
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Banner name</td>
+		<td><?php echo $this->formText('name',$this->Banner->name,array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130">Description</td>
+		<td><?php echo $this->formTextarea('description',$this->Banner->description,array('rows'=>5))?></td>
+	</tr>
+	<tr>
+		<td width="130">Image</td>
+		<td><?php echo $this->formFile('images',$_REQUEST['images'])?> <hr/>
+		Photo is uploaded: &nbsp; <img width="170" height="80" alt="" src="<?php echo $this->Banner->getThumbImage();?>">
+		</td>
+	</tr>	
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Attach link</td>
+		<td><?php echo $this->formText('link',$this->Banner->link,array('size'=>60 ))?></td>
+	</tr>	
+</table>
+</div>
+<button type="submit">Save</button>
+<button type="button" onclick="javascript:history.back();">Cancel</button>
+</form>
+</div>

@@ -1,0 +1,119 @@
+<div class="block-controls">	
+	<ul class="controls-tabs js-tabs same-height with-children-tip">
+		<li class="current" title="Charts"><a  href="#tab-stats"><img height="24" width="24" src="<?php echo $this->baseUrl('images/icons/web-app/24/Profile.png');?>"></a></li>
+		<li class="" title="Comments"><a href="#tab-comments"><img height="24" width="24" src="<?php echo $this->baseUrl('images/icons/web-app/24/Profile.png');?>"></a></li>
+	</ul>	
+</div>
+<?php if($this->error):?>
+<div class="block-content no-title dark-bg">
+    <p class="mini-infos">          
+          <?php foreach($this->error as $error){echo '- '.$error.'<br/>';}?>
+    </p>
+</div>    
+<?php endif;?>
+<h1>Create a product</h1>
+<form action="" method="post" enctype="multipart/form-data" id="product_form" name="product_form">
+<div id="tab-stats" class="hastable">
+<table>
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Tên sản phẩm</td>
+		<td><?php echo $this->formText('product_name',$_REQUEST['product_name'],array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130">Dung tích xi lanh(cc)</td>
+		<td><?php echo $this->formText('product_cylinder',$_REQUEST['product_cylinder'],array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130">Loại xe</td>
+		<td><?php echo $this->formText('type_of_car',$_REQUEST['type_of_car'],array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130">Hộp số</td>
+		<td><?php echo $this->formText('transmission',$_REQUEST['transmission'],array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130">Số chỗ ngồi</td>
+		<td><?php echo $this->formText('number_of_seats',$_REQUEST['number_of_seats'],array('size'=>60 ))?> Chỗ</td>
+	</tr>
+	<tr>
+		<td width="130">Thông số kĩ thuật</td>
+		<td><?php echo $this->formTextarea('product_engine',$_REQUEST['product_engine'],array('rows'=>5,'class'=>'mceEditor'))?></td>
+	</tr>
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Trang bị tiêu chuẩn</td>
+		<td><?php echo $this->formTextarea('product_details',$_REQUEST['product_details'],array('rows'=>5,'class'=>'mceEditor'))?></td>
+	</tr>
+	<tr>
+		<td width="130">Video</td>
+		<td><?php echo $this->formTextarea('product_description',$_REQUEST['product_description'],array('rows'=>5,'class'=>'mceEditor'))?></td>
+	</tr>
+	<tr>
+		<td width="130">Hình ảnh</td>
+		<td><?php echo $this->formTextarea('product_option',$_REQUEST['product_option'],array('rows'=>5,'class'=>'mceEditor'))?></td>
+	</tr>
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Giá bán</td>
+		<td><?php echo $this->formText('product_price',$_REQUEST['product_price'],array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Hãng sản xuất</td>
+		<td><?php echo $this->formText('manufacturer',$_REQUEST['manufacturer'],array('size'=>60 ))?></td>
+	</tr>
+	<tr>
+		<td width="130"><span style="color:#CC0000;">*</span>Thời hạn bảo hành</td>
+		<td><?php echo $this->formText('warranty',$_REQUEST['warranty'],array('size'=>30 ))?> Năm</td>
+	</tr>
+	<tr>
+		<td width="130">Ảnh đại diện</td>
+		<td><?php echo $this->formFile('product_images',$_REQUEST['product_images'])?> </td>
+	</tr>
+	<tr>
+		<td width="130">Nhóm sản phẩm</td>
+		<td><?php $group = ProductGroup::getOption(); echo $this->formSelect('id_group_product',$_REQUEST['id_group_product'],null,$group)?> </td>
+	</tr>
+	<tr>
+		<td width="130">Sản phẩm mới</td>
+		<td><?php $new_status = array("1"=>"Yes","0"=>"No"); echo $this->formSelect('new_status',$_REQUEST['new_status'],null,$new_status)?> </td>
+	</tr>
+	<tr>
+		<td width="130">Bán chạy nhất</td>
+		<td><?php $sold = array("1"=>"Yes","0"=>"No"); echo $this->formSelect('sold_out',$_REQUEST['sold_out'],null,$sold)?> </td>
+	</tr>
+	<tr>
+		<td width="130">Trạng thái</td>
+		<td><?php $status = array("1"=>"Yes","0"=>"No"); echo $this->formSelect('status',$_REQUEST['status'],null,$status)?> </td>
+	</tr>				
+</table>
+</div>
+<div id="tab-comments" class="hastable" style="display:none;">
+<table>
+	<tr>
+		<td width="130"><input type="button" id="addFile" name="addFile" value="Thêm ảnh"><input type="hidden" value="0" id="for_input" name="for_input"></td>
+		<td><div id="input_file"></div></td>		
+	</tr>
+</table>
+</div>
+<button type="submit">Save</button>
+&nbsp;
+<button type="button" onclick="javascript:history.back()">Cancel</button>
+</form>
+<script>	
+	$("#addFile").click(function(){
+		var for_in = parseInt($("#for_input").val()) + parseInt(1);	
+		if(for_in <=6){	
+			$("#for_input").val(for_in);				
+			var html ="";
+			html += "<div id='file"+for_in+"'>";
+			html += "<input type='file' id='images"+for_in+"' name='images"+for_in+"' /><input type='button' id='"+for_in+"' name='"+for_in+"' value='cancel' onclick='return cancel(this.id);'/><br/>";
+			html += "</div>";
+			$("#input_file").append(html);
+		}else{
+			alert("Maximun upload 6 image!")
+		}
+	});
+	cancel = function(id){	
+		var for_in = parseInt($("#for_input").val()) - parseInt(1);	
+		$("#for_input").val(for_in);
+		$("#file"+id).remove();
+	}
+</script>

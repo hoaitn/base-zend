@@ -1,0 +1,40 @@
+<div id="Center"><!-- InstanceBeginEditable name="content" -->
+  	  <div class="NamePageLogin">
+      	<p>Login<br/></p>
+      	
+        <div class="LeftLogin">        
+        	<h3 class="BgTitleLogin">LOGIN Customer</h3>
+            <div class="BgLogin">
+            	<div class="LeftInputLogin">
+            	<form method="post" action="">
+                	<ul>
+                    	<li>
+                        	<span class="TextLogin">ID</span>
+                            <span class="BoxInputLogin"><input type="text" class="InputPhone" name="email"></span>
+                            <div class="ClearBoth"></div>
+                        </li>
+                        <li>
+                        	<span class="TextLogin">Password</span>
+                            <span class="BoxInputLogin"><input type="password" class="InputPhone" name="password"></span>
+                            <div class="ClearBoth"></div>
+                        </li>
+                        <li>
+                        	<span class="TextLogin">&nbsp;</span>
+                            <span class="BoxInputLogin TextAlign"><input type="submit" class="ButtonLoginTravel" value="Login" name="submit"></span>
+                            <div class="ClearBoth"></div>
+                        </li>
+                        <li>
+                        	<span class="TextLogin">&nbsp;</span>
+                            <span class="BoxInputLogin TextAlign"><a href="<?php echo $this->url(array(),'customers_forgot_password')?>">Forgotten password / ID</a></span>
+                            <div class="ClearBoth"></div>
+                        </li>
+                    </ul>
+                    </form>
+                </div>
+                <div class="RightInputLogin"><?php echo $this->error?></div>
+                <div class="ClearBoth"></div>
+            </div>
+            <div class="BgBottomLogin">&nbsp;</div>
+        </div>
+      </div>
+    </div>

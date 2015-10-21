@@ -1,0 +1,136 @@
+<div class="hastable">
+<div class="block-controls">	
+	<ul class="controls-tabs js-tabs same-height with-children-tip">
+		<li class="current" title="Config System"><a title="" href="#tabs-1"><img height="24" width="24" src="<?php echo $this->baseUrl('images/icons/System-64.png');?>"></a></li>
+		<li title="Config Email"><a title="" href="#tabs-2"><img height="24" width="24" src="<?php echo $this->baseUrl('images/icons/mail.png');?>"></a></li>
+		<li title="Seo Web"><a title="" href="#tabs-3"><img height="24" width="24" src="<?php echo $this->baseUrl('images/icons/website-optimization_64.png');?>"></a></li>
+		<li title="Support Online"><a title="" href="#tabs-4"><img height="24" width="24" src="<?php echo $this->baseUrl('images/icons/premium_support.png');?>"></a></li>
+	</ul>	
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+<div id="tabs-1">
+<table>
+	<tr>
+		<td>Domain:</td>
+		<td><?php echo $this->formText('Setting[DOMAIN]',$this->Setting->DOMAIN,array('size'=>90))?></td>
+	</tr>
+	<tr>
+		<td>Title website</td>
+		<td><?php echo $this->formText('Setting[WEBSITE_NAME]',$this->Setting->WEBSITE_NAME,array('size'=>90))?></td>
+	</tr>
+	<tr>
+		<td>Logo</td>
+		<td><?php echo $this->formFile('Setting[HEADER]')?></td>
+	</tr>
+	<tr>
+		<td>Footer</td>
+		<td><?php echo $this->formTextarea('Setting[FOOTER]',$this->Setting->FOOTER,array('rows'=>5, 'class'=>'mceEditor'))?></td>
+	</tr>	
+	<tr>
+		<td>Google Maps Key</td>
+		<td><?php echo $this->formText('Setting[GOOGLE_API_KEY]',$this->Setting->GOOGLE_API_KEY,array('size'=>110))?></td>
+	</tr>
+	<tr>
+		<td>Format date</td>
+		<td><?php echo $this->formText('Setting[default_time_format]',$this->Setting->default_time_format)?> (<?php echo date(Zend_Registry::get('Setting')->default_time_format)?>)</td>
+	</tr>	
+	<tr>
+		<td>Format date time</td>
+		<td><?php echo $this->formText('Setting[default_time_format_long]',$this->Setting->default_time_format_long)?> (<?php echo date(Zend_Registry::get('Setting')->default_time_format_long)?>)</td>
+	</tr>	
+</table>
+</div>
+<div id="tabs-2">
+<table>
+	<tr>
+		<td width="150">SMTP Host:</td>
+		<td><?php echo $this->formText('Setting[EMAIL_SMTP_HOST]',$this->Setting->EMAIL_SMTP_HOST)?></td>
+	</tr>
+	<tr>
+		<td>SMTP Username</td>
+		<td><?php echo $this->formText('Setting[EMAIL_SMTP_USER]',$this->Setting->EMAIL_SMTP_USER)?></td>
+	</tr>
+	<tr>
+		<td>SMTP Password</td>
+		<td><?php echo $this->formText('Setting[EMAIL_SMTP_PASS]',$this->Setting->EMAIL_SMTP_PASS)?></td>
+	</tr>
+		<tr>
+		<td>SMTP Port</td>
+		<td><?php echo $this->formText('Setting[EMAIL_SMTP_PORT]',$this->Setting->EMAIL_SMTP_PORT)?></td>
+	</tr>
+	<tr>
+		<td>SMTP</td>
+		<td><?php echo $this->formText('Setting[EMAIL_SMTP_SSL]',$this->Setting->EMAIL_SMTP_SSL)?></td>
+	</tr>
+	<tr>
+		<td>Contact Email</td>
+		<td><?php echo $this->formText('Setting[webmaster_email]',$this->Setting->webmaster_email)?></td>
+	</tr>
+</table>
+</div>
+<div id="tabs-3">
+<table>
+	<tr>
+		<td width="100">Title:</td>
+		<td><?php echo $this->formText('Setting[TITLE]',$this->Setting->TITLE,array('size'=>90))?></td>
+	</tr>
+	<tr>
+		<td>Keyword</td>
+		<td><?php echo $this->formTextarea('Setting[KEYWORD]',$this->Setting->KEYWORD,array('rows'=>5))?></td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td><?php echo $this->formTextarea('Setting[DESCRIPTION]',$this->Setting->DESCRIPTION,array('rows'=>5))?></td>
+	</tr>	
+</table>
+</div>
+<div id="tabs-4">
+<table>
+	<tr>
+		<td colspan="2" style="color:#3A93EF;"><b>Sales support</b></td>		
+	</tr>
+	<tr>
+		<td width="100">Yahoo</td>
+		<td><?php echo $this->formText('Setting[Yahoo_nick1]',$this->Setting->Yahoo_nick1,array('size'=>60))?></td>
+	</tr>
+	<tr>
+		<td>Phone number</td>
+		<td><?php echo $this->formText('Setting[Phone1]',$this->Setting->Phone1,array('size'=>60))?></td>
+	</tr>
+	<tr>
+		<td colspan="2" style="color:#3A93EF;"><b>Sales support</b></td>		
+	</tr>
+	<tr>
+		<td width="100">Yahoo</td>
+		<td><?php echo $this->formText('Setting[Yahoo_nick2]',$this->Setting->Yahoo_nick2,array('size'=>60))?></td>
+	</tr>
+	<tr>
+		<td>Phone number</td>
+		<td><?php echo $this->formText('Setting[Phone2]',$this->Setting->Phone2,array('size'=>60))?></td>
+	</tr>
+	<tr>
+		<td colspan="2" style="color:#3A93EF;"><b>Technical Support</b></td>		
+	</tr>
+	<tr>
+		<td>Yahoo</td>
+		<td><?php echo $this->formText('Setting[Yahoo_nick3]',$this->Setting->Yahoo_nick3,array('size'=>60))?></td>
+	</tr>
+	<tr>
+		<td>Phone number</td>
+		<td><?php echo $this->formText('Setting[Phone3]',$this->Setting->Phone3,array('size'=>60))?></td>
+	</tr>
+	<tr>
+		<td colspan="2" style="color:#3A93EF;"><b>HotLine</b></td>		
+	</tr>
+	<tr>
+		<td>Phone number</td>
+		<td><?php echo $this->formText('Setting[Hotline]',$this->Setting->Hotline,array('size'=>60))?></td>
+	</tr>	
+</table>
+</div>
+	<button type="submit">Update</button>	
+</form>
+</div>
+<script>
+$('textarea').attr('rows',5);
+</script>

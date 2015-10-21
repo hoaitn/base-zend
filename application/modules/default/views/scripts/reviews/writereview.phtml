@@ -1,0 +1,121 @@
+    <script type="text/javascript" src="js/star-rating/jquery.rating.pack.js"></script>
+    <link href='js/star-rating/jquery.rating.css' type="text/css" rel="stylesheet"/>
+    <style>
+		div.star-rating, div.star-rating a {height:20px;width:33px}
+		div.star-rating, div.star-rating a {background:url("/images/icon/smile.gif");}
+		div.star-rating-on a {background-position:-4px -34px !important;}
+		div.rating-cancel a, div.star-rating a {background-position:-4px -9px;}
+		div.star-rating-hover a{background-position:-4px -34px }
+		</style>
+         <div class="LeftCol">
+	<?php echo $this->action('getsearchform','hotel')?>          
+			<!-- BEGIN PHP Live! code, (c) OSI Codes Inc. -->
+			<script language="JavaScript" src="http://tuntravel.com/support/js/status_image.php?base_url=http://tuntravel.com/support&l=admin&x=1&deptid=1&"></script>
+			<!-- END PHP Live! code : (c) OSI Codes Inc. -->
+         </div>  
+       
+   	  	<!-- InstanceBeginEditable name="content" -->
+   	  	<div class="RightCol">    	  	
+       	  <div class="BoxChange">
+       	  <?php echo $this->error?>
+   	  	  <form id="submit" name="submit" action="<?php echo $this->url(array(),'reviews_writereview')?>" method="post">
+           	<div>
+            	<div class="LeftTitle">You reviews</div>
+                <div class="CenterTitle"><img src="../images/create-review.jpg" width="152" height="43" border="0" alt="Image" /></a></div>
+                <div class="RightTitle">&nbsp;</div>
+                <div class="ClearBoth"></div>
+            </div>
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="ReferFriend">      
+               <tr>             	
+                 <td colspan="4" class="Bold"><span id="report" name="report" style="color: red; display: none; font-size: 12px;">Write review complete!</span></td>                                     
+              </tr>
+               <tr>             	
+                 <td colspan="4" class="Bold"><input type="hidden" name="hotelid" id="hotelid" value="<?php echo $this->Hotel->id?>"></input><span>Review for:</span><span style="color: red;">&nbsp;<?php echo $this->Hotel->name?></span></td>                                     
+              </tr>  
+              <tr>                	
+                    <td colspan="4" class="Bold">Your name:   &nbsp;&nbsp;&nbsp;&nbsp;<input id="name" name="name" type="text" value="<?php echo $this->Review->name?>"></input><span id="titlename" name="titlename" style="display: none; color: red;"> Name is not empty! </span></td>
+              </tr>
+              <tr>               	
+                    <td colspan="4" class="Bold">Your email:  &nbsp;&nbsp;&nbsp;&nbsp;<input id="email" name="email" type="text" value="<?php echo $this->Review->email?>"></input></td>
+              </tr>
+              <tr>               	
+                    <td colspan="4" class="Bold">Your country: 
+                    <select id="customer_countries_id" name="customer_countries_id">
+                    <option selected="selected">Select your country</option>
+                    <?php $Country = Countries::getAll();
+                    foreach ($Country as $listcountry):                    
+                    ?>
+                    <option value="<?php echo $listcountry->id?>"><?php echo $listcountry->name ?></option>
+                    <?php endforeach;?>
+                    </select>
+                    </td>
+              </tr>             
+              <tr>                	
+                    <td colspan="4" class="Bold">Reviews</td>
+              </tr>
+              <tr>                	
+                    <td colspan="4" class="Bold"><textarea id="comment" name="comment" cols="85" rows="10" value="<?php echo $this->Review->comment?>"></textarea><span id="titlecomment" name="titlecomment" style="display: none; color: red;"> Comment is not empty! </span></td>
+              </tr>
+              
+            </table> 
+            <div class="BoxComment">
+            	<p class="Evaluate">Evaluate your hotel</p>
+                <p>Your assessment will help us improve our services better, thanks you for comment</p>
+                <?php $array = array('score_staff'=>'Staff','score_location'=>'Location','score_service'=>'Services','score_cleanliness'=>'Clean','score_facilities'=>'Comfort','score_value_for_money'=>'Value-for-money');
+                foreach($array as $name=>$item):?>
+                <div class="BoxPoll">
+                	<span class="LeftHotelReview"><?php echo $item?></span>
+                    <span class="CenterHotelReview">
+                    <?php for($i=1;$i<=10;$i++):?>
+                    <input value="<?php echo $i?>" id="star2" name="<?php echo $name?>" accept="star2" type="radio" class="<?php echo $item?>" onclick="$('#staff_score').text(this.value);" <?php if($i==5):?>checked="checked"<?php endif;?>/>
+                    <?php endfor;?>
+					</span>
+                    <span class="RightHotelReview" id="<?php echo $item?>">5</span>
+                    <div class="ClearBoth"></div>
+                </div>
+                    <script type="text/javascript">
+					$(function() {
+					    $('.<?php echo $item?>').rating({
+					    	callback: function(value, link){
+					    		$("#<?php echo $item?>").text(value);
+					   	 }
+					   });
+					    $("div[class=rating-cancel]").remove();
+					});
+				   </script>
+                <?php endforeach;?>
+                <p class="ParSubmit">Display this information with your review:</p>                
+                <p><input name="" type="checkbox" value="" /> &nbsp;Please keep me anonymoys</p>
+                <p class="TextAlign ParSubmit"><input name="button" type="button" value="Submit" class="ButtonBook" onclick="checkname();"/></p>
+                
+            </div>            
+      		  </form>  
+          </div>
+     
+   	  	</div>
+   	
+   	  	<!-- //Right -->
+   	  	<!-- InstanceEndEditable --> 
+   	  	<div class="ClearBoth"></div>
+   	  	<script type="text/javascript">   	  
+   	  	function checkname(){
+			var name =  document.getElementById("name").value;
+			var comment = document.getElementById("comment").value;
+			if(name ==''){
+				document.getElementById("titlename").style.display='';
+				document.getElementById("name").focus();
+				}
+			else{
+				if(comment == ''){
+					document.getElementById("titlecomment").style.display='';
+					document.getElementById("comment").focus();
+					}
+				else{					
+					document.getElementById("submit").submit();						
+					}
+				}
+   	   	  	}
+
+</script>
+    
+<!-- //Center -->

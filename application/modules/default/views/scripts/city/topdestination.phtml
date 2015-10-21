@@ -1,0 +1,19 @@
+<div class="TopDestinations">
+                	<div class="hdBlue">
+                    	<ul><li class="sprite left"></li>
+                        	<li class="sprite right"></li>
+                            <li class="center"><span>top destinations</span></li>
+                        </ul>
+                    </div>
+                    <div class="bdBlue">
+                    <?php $TopDestination = City::getTopDestinations()?>
+                    <?php foreach ($TopDestination as $Top):?>
+                    	<div class="colItem">
+                        	<a href="<?php echo $Top->getLink()?>"><img src="<?php echo $Top->getThumbImage()?>" width="82" height="82"></a><br>
+                            <a href="<?php echo $Top->getLink()?>" class="linkRed"><b><?php echo $Top->name?></b></a>
+                        </div>
+                    <?php endforeach;?>    
+                       
+                        <div class="ClearBoth"></div>
+                    </div>
+</div>

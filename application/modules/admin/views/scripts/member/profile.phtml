@@ -1,0 +1,40 @@
+ <?php if($this->error):?>
+    	<div class="response-msg error ui-corner-all">
+               <span>Error message:</span> <?php foreach($this->error as $error){echo '- '.$error.'<br/>';}?>
+         </div>
+         
+<?php endif;?>
+<div class="hastable">
+<form class="form" action="" method="post">
+<input type="hidden" name="id"/>	 
+<table>	
+	<tr>
+		<td>Username(email)</td>
+		<td><?php echo $this->formText('email',$this->Member->email)?></td>
+		<td>Member name</td>
+		<td><?php echo $this->formText('name',$this->Member->name)?></td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td><?php echo $this->formPassword('password',$this->Member->password)?></td>
+		<td>Confirm Password</td>
+		<td><?php echo $this->formPassword('confirmpassword','')?></td>					
+	</tr>		
+	<tr>
+		<td>Position</td>
+		<td><?php echo $this->formText('dept',$this->Member->dept)?></td>
+		<td>Address</td>
+		<td><?php echo $this->formText('address',$this->Member->address,array('size'=>40))?></td>
+	</tr>	
+	<tr>
+		<td>Mobile</td>
+		<td><?php echo $this->formText('mobile',$this->Member->mobile)?></td>
+		<td>Tel/Fax</td>
+		<td><?php echo $this->formText('tel',$this->Member->tel)?></td>
+	</tr>
+	<tr>
+		<td colspan="4"><button type="submit" value="Update">Update</button></td>
+	</tr>
+</table>
+</form>
+</div>

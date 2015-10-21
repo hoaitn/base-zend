@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+					<setting>
+<DOMAIN><![CDATA[mistabledev9.com]]></DOMAIN>
+<WEBSITE_NAME><![CDATA[Race Horse Trainers]]></WEBSITE_NAME>
+<FOOTER><![CDATA[]]></FOOTER>
+<GOOGLE_API_KEY><![CDATA[ABQIAAAAUge50bQ6RADMvUDY-nbmdhSSiBdX9sgls8epqa9Wj83OPH-YqxSnXXSi9kmchpAQcSiJSg4HEPNPWg]]></GOOGLE_API_KEY>
+<default_time_format><![CDATA[d/m/Y]]></default_time_format>
+<default_time_format_long><![CDATA[d/m/Y H:i]]></default_time_format_long>
+<EMAIL_SMTP_HOST><![CDATA[]]></EMAIL_SMTP_HOST>
+<EMAIL_SMTP_USER><![CDATA[]]></EMAIL_SMTP_USER>
+<EMAIL_SMTP_PASS><![CDATA[]]></EMAIL_SMTP_PASS>
+<EMAIL_SMTP_PORT><![CDATA[]]></EMAIL_SMTP_PORT>
+<EMAIL_SMTP_SSL><![CDATA[]]></EMAIL_SMTP_SSL>
+<webmaster_email><![CDATA[admin@mistable.com.au]]></webmaster_email>
+<TITLE><![CDATA[Racehorse trainers]]></TITLE>
+<KEYWORD><![CDATA[Australian Racehorse trainers, Australia, Racehorse, Race horse, trainers, New South Wales, Victoria, Queensland, Tasmania, South Australia, Western Australia, Northern Territory]]></KEYWORD>
+<DESCRIPTION><![CDATA[Australia\'s most comprehensive list of racehorse trainers in all states of Australia. Search by name or by state]]></DESCRIPTION>
+<payment_paypal_useId><![CDATA[hoaitn_1306812133_biz_api1.qsoftvietnam.com]]></payment_paypal_useId>
+<payment_paypal_pwd><![CDATA[1306812147]]></payment_paypal_pwd>
+<payment_paypal_signature><![CDATA[AFcWxV21C7fd0v3bYYYRCpSSRl31ALj4FyqKiKf0nx3T8fY7Jc88ms5P]]></payment_paypal_signature></setting>

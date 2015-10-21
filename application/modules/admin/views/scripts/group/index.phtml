@@ -1,0 +1,28 @@
+<div class="hastable">
+<div style="height:65px"><form action="">Search group: <input type="text" name="keyword" value="<?php echo $_GET['keyword']?>"> <input type="submit" value="Go"></form>
+<a href="<?php echo $this->url(array('controller'=>'group','action'=>'create','module'=>'admin'),'',true)?>"><button type="button">Add group</button></a></div>
+
+<div class="hastable">
+<table cellspacing="0" cellpadding="0" width="100%" class="tbl_list">	
+		<thead>
+			<tr>
+				<th>Group name</th>				
+				<th>Options</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach($this->Group as $Group):?>
+		
+		<tr class="<?php ++$i; echo($i%2)?'first':'second'?>">
+			<td><?php echo $Group->name?></td>			
+			<td align="center" width="80px;">
+			<a href="<?php echo $this->url(array('controller'=>'group','action'=>'edit','id'=>$Group->id))?>"><img src="<?php echo $this->baseUrl('images/image_edit.png');?>" width="24px;"/></a>
+			<a href="<?php echo $this->url(array('controller'=>'group','action'=>'delete','id'=>$Group->id))?>"><img src="<?php echo $this->baseUrl('images/Delete.png');?>" width="24px;"/></a>
+			</td>
+		</tr>
+		<?php endforeach;?>
+	</tbody>
+</table>
+</div>
+<?php //echo $this->Pagination($this->Pager,'?page={%page}')?>
+</div>

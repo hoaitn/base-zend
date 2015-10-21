@@ -1,0 +1,141 @@
+<div id="Center">
+<div class="LeftCol">     	 
+		<?php echo $this->action('menu','hotelier')?>
+		<div class="BoxChat"><img src="../images/changes/chat.jpg" alt="Chat"
+	width="220" border="0" height="85"></div>
+        <?php echo $this->action('quicksupport','html')?>
+   	  	</div>
+
+<!-- //Left --> <!-- InstanceBeginEditable name="content" -->
+<div class="RightCol">
+
+<div class="BoxChange">
+<h3>Hotel's Booking</h3>
+<div class="BoxTopHotelBooking">
+<div class="BorderYellow">
+<ul>
+	<li class="FilterBooking">Filter Booking Status</li>
+	<li><input name="checkbox" value="" type="checkbox"> &nbsp;Processing</li>
+	<li><input name="checkbox" value="" type="checkbox"> &nbsp;Cancel</li>
+	<li><input name="checkbox" value="" type="checkbox"> &nbsp;Amend</li>
+	<li><input name="checkbox" value="" type="checkbox"> &nbsp;Confirmed</li>
+</ul>
+</div>
+<div class="ClearBoth"></div>
+</div>
+<table class="MarTop" border="0" cellpadding="0" cellspacing="0"
+	width="100%">
+	<tbody>
+		<tr>
+			<td width="269">
+			<form method="post" action="">
+			<div class="BoxSearchCity WidthGo"><span class="InputNameCity"><input
+				name="booking_id" class="BorderNone" value="<?php echo ($_POST['booking_id'])?$_POST['booking_id']:"BOOKING ID"?>" onfocus="this.value=''" type="text"></span>
+			<span class="BoxButtonGo"><input type="image" src="../images/button-go.jpg"></span>
+			<div class="ClearBoth"></div>
+			</div>
+			</form>
+			</td>
+			<form method="post" action="">
+			<td class="BookingID" width="107">ARRIVAL</td>
+			<td width="237">
+			<div class="BoxSearchCity WidthGo"><span class="InputNameCity"><input
+				name="check_in" id="check_in" class="BorderNone" value="<?php echo $_POST['check_in']?>" type="text" size="35"></span>			
+			<div class="ClearBoth"></div>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div>&nbsp;</div>
+			</td>
+			<td class="BookingID">BOOKING DATE</td>
+			<td>
+			<div class="BoxSearchCity WidthGo"><span class="InputNameCity"><input
+				name="created_date" id="created_date"  class="BorderNone" value="<?php echo $_POST['created_date']?>" type="text" size="35"></span>
+			
+
+			<div class="ClearBoth"></div>
+			</div>
+
+			</td>
+			<td width="97"><input type="image" src="../images/button-go.jpg"></td>
+		</tr>
+		</form>
+	</tbody>
+</table>
+<?php foreach ($this->Booking as $Booking):?>
+<div class="BoxInfoAmend">
+<table class="TableBooking" width="100%" border="0" cellpadding="0"
+	cellspacing="1">
+	<tbody>
+		<tr>
+			<td class="TitleBooking Bold">Booking ID</td>
+			<td class="TitleBooking">Name</td>
+			<td class="TitleBooking">Nationality</td>
+			<td class="TitleBooking">Arrival</td>
+			<td class="TitleBooking">Departure</td>
+			<td class="TitleBooking">Booking Status</td>
+			<td class="TitleBooking Bold">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="Bold BgWhiteBooking"><?php echo $Booking->getBookingId()?></td>
+			<td class="BgWhiteBooking"><?php echo $Booking->getHotel()?></td>
+			<td class="BgWhiteBooking"><?php echo $Booking->Customers->getCountry()?></td>
+			<td class="BgWhiteBooking" width="9%"><?php echo $Booking->getCheckIn()?></td>
+			<td class="BgWhiteBooking" width="9%"><?php echo $Booking->getCheckOut()?></td>
+			<td class="Processing BgWhiteBooking"><span id="status_<?php echo $Booking->id?>"><?php echo $Booking->status()?></span> <img src="../images/icon/info.jpg" alt="Image" width="15" onclick="$('#booking_info_<?php echo $Booking->id?>').slideToggle('fast');" style="cursor: pointer;" border="0"></td>
+			<td class="BgWhiteBooking ScoreBooking" valign="top" width="8%">
+			<p class="ParBottomHotelBooking"><input name="button2" onclick="setHotelierUpdateStatus(<?php echo $Booking->id?>,'confirm');" style="cursor: pointer;" value="Confirm" class="ButtonConfirm" type="button"></p>
+			<p><input name="button" value="No Room" class="ButtonConfirm" onclick="setHotelierUpdateStatus(<?php echo $Booking->id?>,'full');" style="cursor: pointer;" type="button"></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div class="BgAmendBooking" id="booking_info_<?php echo $Booking->id?>" style="display:none">
+<table class="TableInfoHotelBooking" width="100%" border="0"
+	cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td class="TextAlignRight" width="18%">Number of room:</td>
+			<td class="InfoHotelBooking" width="27%"><?php echo $Booking->getNumOfRoom()?></td>
+			<td class="TextAlignRight" width="19%">Number of Children:</td>
+			<td class="InfoHotelBooking" width="36%">&nbsp;</td>
+		</tr>
+	<?php foreach($Booking->BookingItem as $Item):?>
+		<tr>
+			<td class="TextAlignRight" width="18%">Room 1:</td>
+			<td class="InfoHotelBooking" width="27%"><?php echo $Item->getName()?></td>
+			<td class="TextAlignRight" width="19%">Promotion:</td>
+			<td class="InfoHotelBooking" width="36%"><?php echo $Item->discount?></td>
+		</tr>
+	<?php endforeach;?>
+		<tr>
+			<td class="TextAlignRight" width="18%">Number of Adults:</td>
+			<td class="InfoHotelBooking" width="27%"><?php echo $Booking->num_of_person?></td>
+			<td class="TextAlignRight" width="19%">Booking Date:</td>
+			<td class="InfoHotelBooking" width="36%"><?php echo $Booking->getBookingDay()?></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
+<?php endforeach;?>
+</div>
+
+</div>
+<!-- //Right --> <!-- InstanceEndEditable -->
+<script type="text/javascript">
+	$(function() {
+		$("#check_in").datepicker({
+			showOn: 'both',
+			buttonImage:  DOMAIN_NAME + '/images/icon/ca.jpg',
+			buttonImageOnly: true
+		});
+		$("#created_date").datepicker({
+			showOn: 'both',
+			buttonImage:  DOMAIN_NAME + '/images/icon/ca.jpg',
+			buttonImageOnly: true
+		});
+	});
+	</script>

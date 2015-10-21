@@ -1,0 +1,80 @@
+<div class="block-controls">	
+	<ul class="controls-tabs js-tabs same-height with-children-tip">
+		<li class="current" title="Basic info"><a title="" href="#tab-stats"><img height="24" width="24" src="<?php echo $this->baseUrl('images/icons/web-app/24/Profile.png');?>"></a></li>
+	</ul>	
+</div>
+<?php if($this->error):?>
+<div class="block-content no-title dark-bg">
+    <p class="mini-infos">          
+          <?php foreach($this->error as $error){echo '- '.$error.'<br/>';}?>
+    </p>
+</div>    
+<?php endif;?>
+<div class="hastable">
+<h1>Create new member</h1>
+<form method="post" name="member" class="form">
+<input type="hidden" name="id" value="<?php echo $this->Customer->id?>" />
+<div id="tab-stats">
+<center>	
+<table align="center" width="450px">
+	<tr>
+		<td style="padding-top: 10px">Email</td>
+		<td style="padding-top: 10px"><?php echo $this->formText('email',$this->Member->email,array('size'=>'30'))?></td>
+	</tr>
+	<tr>
+		<td style="padding-top: 10px">Password</td>
+		<td style="padding-top: 10px"><?php echo $this->formPassword('password',$this->Member->password,array('size'=>'30'))?></td>
+	</tr>
+	<tr>
+		<td style="padding-top: 10px">Confirm Password</td>
+		<td style="padding-top: 10px"><?php echo $this->formPassword('confirmpassword','',array('size'=>'30'))?></td>
+	</tr>
+	<tr>
+		<td style="padding-top: 10px">Full name</td>
+		<td style="padding-top: 10px"><?php echo $this->formText('name',$this->Member->name,array('size'=>'30'))?></td>
+	</tr>
+	<tr>
+		<td style="padding-top: 10px">Position</td>
+		<td style="padding-top: 10px"><?php echo $this->formText('dept',$this->Member->dept,array('size'=>'30'))?></td>
+	</tr>
+	<tr>
+		<td style="padding-top: 10px">Address</td>
+		<td style="padding-top: 10px"><?php echo $this->formText('address',$this->Member->address,array('size'=>'30'))?></td>
+	</tr>
+	<tr>
+		<td style="padding-top: 10px">Identification number</td>
+		<td style="padding-top: 10px"><?php echo $this->formText('passport_no',$this->Member->passport_no,array('size'=>'30'))?></td>
+	</tr>
+	<tr>
+		<td style="padding-top: 10px">Date of issue</td>
+		<td style="padding-top: 10px"><?php echo $this->formText('passport_date',$this->Member->passport_date,array('size'=>'30'))?></td>
+	</tr>
+	<tr>
+		<td style="padding-top: 10px">Place of issue</td>
+		<td style="padding-top: 10px"><?php echo $this->formText('passport_address',$this->Member->passport_address,array('size'=>'30')) ?></td>
+	</tr>
+	<tr>
+		<td style="padding-top: 10px">Mobile</td>
+		<td style="padding-top: 10px"><?php echo $this->formText('mobile',$this->Member->mobile,array('size'=>'30'))?></td>
+	</tr>
+	<tr>
+		<td style="padding-top: 10px">Tel/Fax</td>
+		<td style="padding-top: 10px"><?php echo $this->formText('tel',$this->Member->tel,array('size'=>'30'))?></td>
+	</tr>
+
+	<tr>
+		<td style="padding-top: 10px">Roles</td>
+		<td style="padding-top: 10px"><?php echo $this->formSelect('member_type',$this->Member->member_type,null,Groups::getOption(array('--Select roles--')))?></td>
+	</tr>
+	<tr>
+		<td style="padding-top: 10px">Status</td>
+		<td style="padding-top: 10px"><?php echo $this->formSelect('status',$this->Member->status,'',array('Disable','Enable'))?></td>
+	</tr>
+	<tr> 
+		<td colspan="2" align="left"><button type="submit">Save</button>&nbsp;<a href="<?php echo $this->url(array("controller"=>"member","action"=>"index","modeule"=>"admin"));?>"><button type="button">Cancel</button></a></td>
+	</tr>
+</table>
+</center>
+</div>
+</form>
+</div>

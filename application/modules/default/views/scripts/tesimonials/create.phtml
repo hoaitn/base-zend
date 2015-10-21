@@ -1,0 +1,141 @@
+<link type="text/css" rel="stylesheet" href="css/newcss.css" />
+ <script type="text/javascript" src="js/star-rating/jquery.rating.pack.js"></script>
+    <link href='js/star-rating/jquery.rating.css' type="text/css" rel="stylesheet"/>
+    <style>
+		div.star-rating, div.star-rating a {height:20px;width:33px}
+		div.star-rating, div.star-rating a {background:url("/images/icon/smile.gif");}
+		div.star-rating-on a {background-position:-4px -34px !important;}
+		div.rating-cancel a, div.star-rating a {background-position:-4px -9px;}
+		div.star-rating-hover a{background-position:-4px -34px }
+		</style>
+<div id="maincol">
+            <div class="boxInfo NoMargin">
+            	<div class="boxInfo_bg">
+                	<div class="boxInfo_ct">
+                        <h4 class="titleNews">Write tesimonial</h4>
+                        <div class="writeTesimonial">
+                        <?php if ($this->Error):?>
+				        <?php foreach ($this->Error as $error):?>				        
+				        <b style="color: red;"><?php echo $error.'<br/>'?></b>
+				        <?php endforeach; endif;?>
+                        <form action="" method="post" enctype="multipart/form-data">
+                        	<table cellpadding="2" cellspacing="2" border="0" width="100%" class="tbl_writeTesimonial">
+                            	<tr><td width="110">Full name*</td>
+                                	<td><input name="name" type="text" class="inputText-write" value="<?php echo $this->Session['name'];?>"/></td>
+                                </tr>
+                                <tr><td>Email*</td>
+                                	<td><input name="email" type="text" class="inputText-write" value="<?php echo $this->Session['email'];?>"/></td>
+                                </tr>
+                                <tr><td>Avantar</td>
+                                	<td><input name="avantar" type="file" class="inputText-write"  />
+                                    </td>
+                                </tr>
+                                <tr><td>Your country </td>
+                                	<td>
+                                	  <select name="customer_countries_id" class="cbo_yourCountry">
+					                  <option selected="selected" value="<?php echo $this->Session[customer_countries_id];?>"><?php $Session_country = CustomerCountries::getById($this->Session[customer_countries_id]);if($Session_country){ echo $Session_country->name;}else{echo 'Select your country';}?></option>
+					                  <?php $Country = CustomerCountries::getAll(); foreach ($Country as $Countries):?>
+					                  <option value="<?php echo $Countries->id?>"><?php echo $Countries->name?></option>
+					                  <?php endforeach;?>
+					                  </select>
+                                	</td>
+                                </tr>
+                                <tr><td>Title*</td>
+                                	<td><input name="title" type="text" class="inputText-write" value="<?php echo $this->Session['title'];?>"/></td>
+                                </tr>
+                                <tr><td valign="top">Detail*</td>
+                                	<td><textarea name="detail" class="txtarea-detail"  value="<?php echo $this->Session['detail'];?>"></textarea></td>
+                                </tr>
+                                <tr><td>Score</td>
+                                	<td>
+                                	  <div class="BoxPoll">                	
+                    <span >
+                     <?php $array = array('score'=>'score');
+                foreach($array as $name=>$item):?>
+                <div class="BoxPoll">
+                	
+                    <span class="CenterHotelReview">
+                    <?php for($i=1;$i<=5;$i++):?>
+                    <input value="<?php echo $i?>" id="star2" name="<?php echo $name?>" accept="star2" type="radio" class="<?php echo $item?>" onclick="$('#staff_score').text(this.value);" <?php if($i==$this->Session['score']):?>checked="checked"<?php endif;?>/>
+                    <?php endfor;?>
+					</span>                   
+                    <div class="ClearBoth"></div>
+                </div>
+                    <script type="text/javascript">
+					$(function() {
+					    $('.<?php echo $item?>').rating({
+					    	callback: function(value, link){
+					    		$("#<?php echo $item?>").text(value);
+					   	 }
+					   });
+					    $("div[class=rating-cancel]").remove();
+					})
+				   </script>
+                <?php endforeach;?>
+                    </span>
+                   
+                    <div class="ClearBoth"></div>
+                </div>
+                                	</td>
+                                </tr>
+                                <tr><td>&nbsp;</td>
+                                	<td><p class="btSumnit_write"><input type="submit" value="Sumit" /></p></td>
+                                </tr>
+                            </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div><!--e: boxInfo-->            
+        </div><!--maincol-->
+        <div id="rightcol">
+        	<div class="boxSearch">
+            	<div class="boxSearch_bottom">
+                	<div class="boxSearch_ct">
+                    	<p class="titleTour">Search Tours</p>
+                    	<table cellpadding="0" cellspacing="0" border="0" class="" width="100%">
+                        	<tr><td width="85">Tour Type</td>
+                            	<td><select><option> Private Journeys </option></select></td>
+                            </tr>
+                            <tr><td width="85">Country</td>
+                            	<td><select><option>Vietnam</option></select></td>
+                            </tr>
+                            <tr><td width="85">Destination</td>
+                            	<td><select><option>Ha Noi</option></select></td>
+                            </tr>
+                            <tr><td width="85">Price</td>
+                            	<td><select><option>$100 - $200</option></select></td>
+                            </tr>
+                            <tr><td width="85">Length of Stay</td>
+                            	<td><select><option>2 - 5 days</option></select></td>
+                            </tr>
+                            <tr><td colspan="2" align="right"><div class="divButtonSearch"><input type="button" value="Search &raquo;" class="buttonSearch" /></div></td></tr>
+                        </table>
+                        <br /><br />
+                    </div>
+                </div>
+            </div><!--e: boxSearch-->
+            <div class="boxNewsLetter">
+            	<div class="hdOrange">
+                	<ul><li class="sprite left"></li>
+                    	<li class="sprite right"></li>
+                        <li class="center"><span>Newsletter Sign Up</span></li>
+                    </ul>
+                </div>
+                <div class="bdNewsLetter">
+                	<div class="contentNewsLetter">
+	                	<p class="description">Sign up to receive exclusive offers and inspirational travel ideas for holidays, hotels, flights, cruises, European holidays, UK breaks, long-haul trips and many more products direct to your</p>
+                    	<p class="tags-NewsLetter"><input type="text" class="inputNewsLetter" value="" /><input type="button" value="SIGN UP &raquo;" class="button_SignUp" /></p>
+                    </div>
+                </div>
+           </div><!--e: boxOrange-->
+           <div class="boxWeather">
+           		<p class="titleWeather"><b>WEATHER FORECAST</b></p>
+                <p class="weather">
+                	<span class="cbo_city"><select><option>Ha Noi</option></select></span>
+                	<span class="txt-weather">31 <sup>0</sup>C</span>
+                    <span class="img-weather"><img src="images/icon/icon_weather.gif" width="39" height="25" /></span>
+                </p>
+           </div><!--e: boxWeather-->
+        </div><!--e: rightcol-->
+        <div class="ClearBoth"></div>

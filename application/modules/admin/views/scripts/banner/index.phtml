@@ -1,0 +1,26 @@
+<div class="hastable">
+<h1>Management banner</h1>
+<div id="qlqg" style="padding-bottom: 10px;">
+<a class="btn_no_text btn ui-state-default ui-corner-all tooltip" href="<?php echo $this->url(array('controller'=>'banner','action'=>'create'))?>"><button>Add banner</button></a>
+<?php echo $this->Pagination($this->Pager,$this->url().'?page={%page}')?>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" class="tbl_list">
+		<thead>
+			<th>Name</th>
+ 			<th>Description</th>
+			<th>Images</th>
+			<th>Link</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</thead>
+		<?php foreach($this->Banner as $Banner):?>
+		<tr class="<?php ++$i; echo($i%2)?'first':'second'?>">
+			<td><?php echo $Banner->name;?></td>
+			<td><?php echo $Banner->description;?></td>
+			<td align="center"><img style="max-width:250px;" alt="" src="<?php echo $Banner->getThumbImage();?>"></td>
+			<td><?php echo $Banner->link;?></td>				
+			<td align="center" width="40px;"><a href="<?php echo $this->url(array('controller'=>'banner','action'=>'edit','id'=>$Banner->id))?>"><img src="<?php echo $this->baseUrl('images/image_edit.png');?>" width="24px;"/></a></td>
+			<td align="center" width="40px;"><a href="<?php echo $this->url(array('controller'=>'banner','action'=>'delete','id'=>$Banner->id))?>"><img src="<?php echo $this->baseUrl('images/Delete.png');?>" width="24px;"/></a></td>
+		</tr>
+		<?php endforeach;?>
+</table>

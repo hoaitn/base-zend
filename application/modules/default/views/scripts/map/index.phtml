@@ -1,0 +1,92 @@
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="/js/Fluster2.packed.js"></script>
+<script type="text/javascript">
+var map;
+var gmarker =[];
+var infoWindow;
+var geocoder;
+function initialize() {	
+	geocoder = new google.maps.Geocoder();
+	var myLatlng = new google.maps.LatLng(-33.891693, 151.224838);
+	var myOptions = {
+	center: myLatlng,
+	zoom: 3,
+	mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    
+	var data = <?php echo $this->data?>;
+
+	infoWindow = new google.maps.InfoWindow();
+	setMarker(data);
+}
+function setMarker(data) {
+	var bounds = new google.maps.LatLngBounds();
+
+	var fluster = new Fluster2(map);
+
+	$.each(data.data.cities.city, function(j, _dataJ){
+		
+		var _html = '<iframe src="http://mistable.com.au/iframe.php?postcode=' + _dataJ.postcode + '&city=' + _dataJ.name + '" width="300" height="200" frameborder=0 style="background:#FFF url(http://mistable.com.au/img/loading.gif) no-repeat 50% 50%">';
+			_html += '</iframe>';
+			var myLatlng = new google.maps.LatLng( _dataJ.lat,  _dataJ.lon);			
+			var marker = new google.maps.Marker({
+				//map: map, 
+				position: myLatlng,
+				icon: '/js/blue.png',
+				title: _dataJ.name
+			});
+			bounds.extend(myLatlng);
+
+			// Add the marker to the Fluster
+			fluster.addMarker(marker);
+
+			
+			google.maps.event.addListener(marker, 'click', function() {
+				infoWindow.setContent(_html);
+				infoWindow.open(map, marker);
+			});
+			
+	});	
+	map.fitBounds(bounds);
+	/*var myLatlng = new google.maps.LatLng( -27,133);		
+	map.setCenter(myLatlng);
+	map.setZoom(4);
+	*/
+	// Set styles
+	// These are the same styles as default, assignment is only for demonstration ...
+	fluster.styles = {
+		// This style will be used for clusters with more than 0 markers
+		0: {
+			image: 'http://gmaps-utility-library.googlecode.com/svn/trunk/markerclusterer/1.0/images/m1.png',
+			textColor: '#FFFFFF',
+			width: 53,
+			height: 52
+		},
+		// This style will be used for clusters with more than 10 markers
+		10: {
+			image: 'http://gmaps-utility-library.googlecode.com/svn/trunk/markerclusterer/1.0/images/m2.png',
+			textColor: '#FFFFFF',
+			width: 56,
+			height: 55
+		},
+		20: {
+			image: 'http://gmaps-utility-library.googlecode.com/svn/trunk/markerclusterer/1.0/images/m3.png',
+			textColor: '#FFFFFF',
+			width: 66,
+			height: 65
+		}
+	};
+	
+	// Initialize Fluster
+	// This will set event handlers on the map and calculate clusters the first time.
+	fluster.initialize();	
+}
+$(document).ready(function(){
+	initialize();
+});
+</script>
+
+
+
+<div id="map_canvas" style="width:728px;height:540px;background:#FFF url(http://mistable.com.au/img/loading.gif) no-repeat 50% 50%"></div>

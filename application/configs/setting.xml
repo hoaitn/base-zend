@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+					<setting>
+<DOMAIN><![CDATA[]]></DOMAIN>
+<WEBSITE_NAME><![CDATA[]]></WEBSITE_NAME>
+<FOOTER><![CDATA[
+
+]]></FOOTER>
+<GOOGLE_API_KEY><![CDATA[ABQIAAAAUge50bQ6RADMvUDY-nbmdhQTY77iyKAuTrJwXNQRQnhL18TqNxTPZhhw8Zq7fdvxDsEUXaxw-Mt5hA]]></GOOGLE_API_KEY>
+<default_time_format><![CDATA[d/m/Y]]></default_time_format>
+<default_time_format_long><![CDATA[d/m/Y H:i]]></default_time_format_long>
+<EMAIL_SMTP_HOST><![CDATA[]]></EMAIL_SMTP_HOST>
+<EMAIL_SMTP_USER><![CDATA[]]></EMAIL_SMTP_USER>
+<EMAIL_SMTP_PASS><![CDATA[]]></EMAIL_SMTP_PASS>
+<EMAIL_SMTP_PORT><![CDATA[]]></EMAIL_SMTP_PORT>
+<EMAIL_SMTP_SSL><![CDATA[]]></EMAIL_SMTP_SSL>
+<webmaster_email><![CDATA[]]></webmaster_email>
+<TITLE><![CDATA[]]></TITLE>
+<KEYWORD><![CDATA[]]></KEYWORD>
+<DESCRIPTION><![CDATA[]]></DESCRIPTION>
+<Yahoo_nick1><![CDATA[]]></Yahoo_nick1>
+<Phone1><![CDATA[]]></Phone1>
+<Yahoo_nick2><![CDATA[]]></Yahoo_nick2>
+<Phone2><![CDATA[]]></Phone2>
+<Yahoo_nick3><![CDATA[]]></Yahoo_nick3>
+<Phone3><![CDATA[]]></Phone3>
+<Hotline><![CDATA[]]></Hotline></setting>

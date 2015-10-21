@@ -1,0 +1,30 @@
+
+<div class="LeftColAcc"><?php echo $this->action('menu','customers')?></div>
+<!-- //Left -->
+<!-- InstanceBeginEditable name="content" -->
+<div class="RightColAcc">
+<div class="BoxChange">
+<h3><?php echo $this->Title?></h3>
+<table cellspacing="0" cellpadding="0" border="0" width="100%"
+	class="BgReferFriend">
+	<tbody>
+	<?php for($i=1;$i<=4;$i++):?>
+		<tr>
+			<td width="4%" class="OrderNumber"><?php echo $i?></td>
+			<td width="11%">First Name</td>
+			<td width="32%"><input type="text" class="InputName" name="refer[<?php echo $i?>][first]"></td>
+			<td width="11%">Last Name</td>
+			<td width="42%"><input type="text" class="InputName" name="refer[<?php echo $i?>][last]"></td>
+		</tr>
+		<tr>
+			<td width="4%" class="OrderNumber">&nbsp;</td>
+			<td width="11%" class="Bold">Email</td>
+			<td colspan="3"><input type="text" class="InputEmail" name="refer[<?php echo $i?>][email]"></td>
+		</tr>
+	<?php endfor;?>		
+	</tbody>
+</table>
+
+
+</div>
+</div>

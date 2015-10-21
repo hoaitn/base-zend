@@ -1,0 +1,30 @@
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+	<tr>
+		<td class="ParTitle"><b>Credit Card Type</b></td>
+		<td class="ParTitle" colspan="2"><b>Card Number</b></td>
+	</tr>
+	<tr>
+		<td><?php echo $this->formSelect('payment[card_type]',$_SESSION['Booking']['creditcard']['card_type'],array(),array('-- Select --','American Express','Visa','MasterCard'))?>
+		</td>
+		<td colspan="2"><input type="text" name="payment[card_number]" value="<?php echo $_SESSION['Booking']['creditcard']['card_number']?>" class="WidthInput"><br/><span class="price"><?php echo $this->error['other'][2]?></span></td>
+	</tr>
+	<tr>
+		<td class="ParTitle"><b>Card Holder Name</b></td>
+		<td width="35%" class="ParTitle"><b>Expiry Date</b></td>
+		<td width="25%" class="ParTitle"><b>CVC-code</b></td>
+	</tr>
+	<tr>
+		<td><input type="text" name="payment[card_holder_name]" value="<?php echo $_SESSION['Booking']['creditcard']['card_holder_name']?>" class="WidthInput"><br/><span class="price"><?php echo $this->error['other'][0]?></span></td>
+		<td><select class="SelectDate" name="payment[expiry_month]">          
+            <?php for($i=1;$i<=12;$i++):?>
+            <option value="<?php echo $i?>" <?php if($i==$_SESSION['Booking']['creditcard']['expiry_month']):?>selected<?php endif;?>><?php echo number_format($i)?></option>       
+            <?php endfor;?>
+		</select> &nbsp;/ &nbsp;<select class="SelectDate" name="payment[expiry_year]">
+			<?php for($i=date('Y');$i<=(date('Y')+10);$i++):?>
+            <option value="<?php echo $i?>" <?php if($i==$_SESSION['Booking']['creditcard']['expiry_year']):?>selected<?php endif;?>><?php echo $i?></option>       
+            <?php endfor;?>
+		</select></td>
+		<td><input type="text" size="4" name="payment[card_cvc_code]" value="<?php echo $_SESSION['Booking']['creditcard']['card_cvc_code']?>"> 
+		<span class="tTip" title="<?php echo Zend_Registry::get('Setting')->credit_card_cvc?>"><img height="20" border="0" width="20" src="../images/icon/icon-code.jpg"></span><br/><span class="price"><?php echo $this->error['other'][1]?></span></td>
+	</tr>
+</table>

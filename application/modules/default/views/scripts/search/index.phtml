@@ -1,0 +1,97 @@
+<?php $Product = $this->Search; if($Product[0]['id'] != ""){?>
+<div id="primary" class="column">
+					<div class="block_content">
+						<div class="highslide-gallery">
+							<a href="uploads/<?php echo $Product[0]['id'];?>/gallery/1.jpg" class="highslide" onclick="return hs.expand(this)">
+								<img width="95px" height="60px" src="uploads/<?php echo $Product[0]['id'];?>/gallery/1.jpg" alt="Highslide JS"
+									title="Click to enlarge" />
+							</a>
+							<div class="highslide-caption">
+								<?php echo $Product[0]['product_name'];?>
+							</div>
+							<a href="uploads/<?php echo $Product[0]['id'];?>/gallery/2.jpg" class="highslide" onclick="return hs.expand(this)">
+								<img width="95px" height="60px" src="uploads/<?php echo $Product[0]['id'];?>/gallery/2.jpg" alt="Highslide JS"
+									title="Click to enlarge" />
+							</a>
+							<div class="highslide-caption">
+								<?php echo $Product[0]['product_name'];?>
+							</div>
+							<a href="uploads/<?php echo $Product[0]['id'];?>/gallery/3.jpg" class="highslide" onclick="return hs.expand(this)">
+								<img width="95px" height="60px" src="uploads/<?php echo $Product[0]['id'];?>/gallery/2.jpg" alt="Highslide JS"
+									title="Click to enlarge" />
+							</a>
+							<div class="highslide-caption">
+								<?php echo $Product[0]['product_name'];?>
+							</div>
+							<a href="uploads/<?php echo $Product[0]['id'];?>/gallery/4.jpg" class="highslide" onclick="return hs.expand(this)">
+								<img width="95px" height="60px" src="uploads/<?php echo $Product[0]['id'];?>/gallery/2.jpg" alt="Highslide JS"
+									title="Click to enlarge" />
+							</a>
+							<div class="highslide-caption">
+								<?php echo $Product[0]['product_name'];?>
+							</div>
+							<a href="uploads/<?php echo $Product[0]['id'];?>/gallery/5.jpg" class="highslide" onclick="return hs.expand(this)">
+								<img width="95px" height="60px" src="uploads/<?php echo $Product[0]['id'];?>/gallery/5.jpg" alt="Highslide JS"
+									title="Click to enlarge" />
+							</a>
+							<div class="highslide-caption">
+								<?php echo $Product[0]['product_name'];?>
+							</div>
+							<a href="uploads/<?php echo $Product[0]['id'];?>/gallery/6.jpg" class="highslide" onclick="return hs.expand(this)">
+								<img width="95px" height="60px" src="uploads/<?php echo $Product[0]['id'];?>/gallery/6.jpg" alt="Highslide JS"
+									title="Click to enlarge" />
+							</a>
+							<div class="highslide-caption">
+								<?php echo $Product[0]['product_name'];?>
+							</div>
+							<div class="click">Click vào để xem ảnh to</div>
+						</div>
+						<div class="info_product">
+							<h2><?php echo $Product[0]['product_name'];?></h2>
+							<ul>
+								<li><b>Hãng sản xuất :</b> <?php echo $Product[0]['manufacturer']?></li>
+								<li><b>Dung tích xi lanh:</b><?php echo $Product[0]['product_cylinder']?> cc</li>
+								<li><b>Loại xe :</b><?php echo $Product[0]['type_of_car']?></li>
+								<li><b>Hộp số :</b><?php echo $Product[0]['transmission']?></li>
+								<li><b>Số chỗ ngồi :</b><?php echo $Product[0]['number_of_seats']?> chỗ</li>
+								<li><b>Bảo hành :</b><?php echo $Product[0]['warranty']?> năm</li>
+								<li><b>Giá tiền :</b><?php echo number_format($Product[0]['product_price'],0,".",",")?> VNĐ</li>
+							</ul>
+							<a href="/buy/product/<?php echo $Product[0]['id'];?>" class="product_items_buy">Đặt mua</a>
+						</div>
+						<div class="clear"></div>
+						<div class="container">
+							<ul class="tabs">
+								<li><a href="#tab1">Động cơ</a></li>
+								<li><a href="#tab2">Options theo xe</a></li>
+								<li><a href="#tab3">Options vùng</a></li>
+								<li><a href="#tab4">Options lựa chọn</a></li>
+							</ul>
+							<div class="tab_container">
+								<div id="tab1" class="tab_content">
+									<?php echo $Product[0]['product_engine'];?>
+								</div>
+								<div id="tab2" class="tab_content">
+									<?php echo $Product[0]['product_details'];?>
+								</div>
+								<div id="tab3" class="tab_content">
+									<?php echo $Product[0]['product_description'];?>
+								</div>
+								<div id="tab4" class="tab_content">
+									<?php echo $Product[0]['product_option'];?>
+								</div>
+								<div class="clear"></div>
+							</div><!--End .tab_container-->
+						</div><!--End .container-->
+						<div class="clear"></div><br></br>
+						<h2>Sản phẩm khác</h2>	
+											
+					</div><!--End .block_content-->
+                </div><!--End #content-->
+<?php }else{?>     
+ <div id="primary" class="column">
+		<div class="block_content" style="color:#ff0000;font-weight: bold;">
+		<?php echo "Sản phẩm bạn tìm không tồn tại, hãy thử lại với thông tin chính xác hơn!"?>
+		</div>
+</div>     
+<?php }?>     

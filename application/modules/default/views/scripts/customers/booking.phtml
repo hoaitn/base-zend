@@ -1,0 +1,62 @@
+   	  	<div class="LeftColAcc"><?php echo $this->action('menu','customers')?></div>
+   	  	<!-- //Left -->
+   	  	<!-- InstanceBeginEditable name="content" -->
+   	  	<div class="RightColAcc"> 
+       	  <div class="BoxChange">
+           	<h3>Booking</h3>
+           	<form method="post" action="">
+            <table class="MarTop" width="100%" border="0" cellpadding="0" cellspacing="0">
+            	<tbody><tr>
+                	<td class="BookingID">Booking ID</td>
+                    <td>                    	
+						<div class="BoxSearchCity WidthGo">
+                         <span class="InputNameCity"><input name="input" class="BorderNone" value="" type="text"></span>
+                         <span class="BoxButtonGo"><a href="#"><img src="../images/button-go.jpg" alt="Image" width="45" border="0" height="18"></a></span>
+                         <div class="ClearBoth"></div>
+                  		</div>
+                  </td>
+                  <td class="BookingID">Hotel name</td>
+                    <td>                    	
+						<div class="BoxSearchCity WidthGo">
+                         <span class="InputNameCity"><input name="input" class="BorderNone" value="" type="text"></span>
+                         <span class="BoxButtonGo"><a href="#"><img src="../images/button-go.jpg" alt="Image" width="45" border="0" height="18"></a></span>
+                         <div class="ClearBoth"></div>
+                  		</div>
+                  </td>
+              </tr>
+            </tbody></table>
+            </form>
+            <div class="BoxInfoAmend">
+                <table class="TableBooking" width="100%" border="0" cellpadding="0" cellspacing="1">
+                    <tbody><tr>
+                        <td width="70" class="TitleBooking Bold">Booking ID</td>
+						<td width="127" class="TitleBooking">Customer Name</td>
+                        <td class="TitleBooking">Hotel name</td>
+                        <td width="52" class="TitleBooking">City</td>
+                        <td width="80" class="TitleBooking">Arrival</td>
+                        <td width="80" class="TitleBooking">Departure</td>
+                        <td width="87" class="TitleBooking Bold">Booking Status</td>                    
+                    </tr>
+                   	<?php foreach ($this->Booking as $Booking):?>
+                    <tr>
+                        <td class="Bold BgWhiteBooking"><span class="aShowMap" style="cursor: pointer;" onclick="CustomerShowBooking(<?php echo $Booking->id?>);toggleThis(this,'active');"><?php echo $Booking->getBookingId()?></span></td>
+						<td class="BgWhiteBooking"><?php echo $Booking->getCustomer()?></td>
+                        <td class="BgWhiteBooking"><?php echo $Booking->getHotel()?></td>
+                        <td class="BgWhiteBooking"><?php echo $Booking->Hotels->City->name?></td>
+                        <td class="BgWhiteBooking"><?php echo $Booking->getCheckIn()?></td>
+                        <td class="BgWhiteBooking"><?php echo $Booking->getCheckOut()?></td>
+                        <?php $status=str_replace(' ','_','booking_status_'.$Booking->status())?>
+                        <td class="Processing BgWhiteBooking"><span id="status_<?php echo $Booking->id?>"><?php echo $Booking->status()?></span> <img src="../images/icon/info.jpg"  name="<?php echo  Zend_Registry::get('Setting')->$status?>" class="tTip" width="15" border="0"></td>                    
+                    </tr>
+                    <tr>
+                    	<td colspan="7"><div class="BgAmendBooking" id="booking_<?php echo $Booking->id?>" style="display:none;"></div></td>
+                    </tr>
+					<?php endforeach;?>
+                </tbody></table>
+                <input type="hidden" value="" name="booking_detail_handler"/>
+            </div>
+          </div>
+   	  	</div>
+   	  	<!-- //Right -->
+   	  	<!-- InstanceEndEditable -->
+   	  	<div class="ClearBoth"></div>

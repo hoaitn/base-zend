@@ -1,0 +1,28 @@
+<form action="" method="post">
+
+<div class="hastable">
+<?php foreach ( $this->Data->rows as $i => $row ) : ?>
+<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+	<div class="portlet-header ui-widget-header">
+	<span class="ui-icon ui-icon-circle-arrow-s"></span>
+    Name:&nbsp;&nbsp;&nbsp;<?php echo $this->formText ( 'rows[' . $i . '][name]', $row->name )?>&nbsp;&nbsp;&nbsp; Link:&nbsp;&nbsp;&nbsp; <?php echo $this->formText ( 'rows[' . $i . '][link]', $row->link )?></div>					
+</div>
+
+<?php endforeach;?>
+<div align="center"><input type="submit" value="Update" /></div>
+</div>
+</form>
+<script>
+var addItem = function(i,n){
+	n = parseInt($('#n_'+i).val())+1;
+	html='<tr id="item_' +i+ '_'+n+'">';
+	html+='<td><input type="text" value="" id="rows-0-0-name" name="rows['+i+']['+n+'][name]"></td>';
+	html+='<td><input type="text" value="" id="rows-0-0-name" name="rows['+i+']['+n+'][link]"></td>';
+	html+='<td><input type="text" value="" id="rows-0-0-name" name="rows['+i+']['+n+'][star]"></td>';
+	html+='<td><input type="text" value="" id="rows-0-0-value" name="rows['+i+']['+n+'][price]"></td>';
+	html+='<td><a class="btn_no_text btn ui-state-default ui-corner-all tooltip" onclick="$(\'#item_'+i+'_'+n+'\').remove();"><span class="ui-icon ui-icon-circle-close"></span></a></td>';
+	html+='</tr>';
+	$('#table_'+i+' > tbody:last').append(html);
+	$('#n_'+i).val(n);
+}
+</script>

@@ -1,0 +1,98 @@
+  <div class="rowFrist">
+    <div class="boxSearch">
+    <form  id="search_hotels"  method="post" action="<?php echo $this->url(array(),'hotels_search')?>">
+      <input type="hidden" name="location_id" value="<?php echo $_GET['location_id']?>"/>
+	  <input type="hidden" name="location" value="<?php echo $_GET['location']?>"/>
+			<div class="SearchHotel"> 
+            	<div class="TitleLeft">&nbsp;</div>
+				<div class="BgSearchHotel">
+                	<p class="ttSearch2">Search Hotels</p>
+                  	<div class="BoxSearchCity">                
+                  	 <input id="city" style="width: 343px; margin: 0pt; border:1px solid #fff" name="location_name" class="BorderNone ui-autocomplete-input" value="<?php echo $_GET['location_name']?>" type="text">
+                     <div class="ClearBoth"></div>
+                    </div>
+                    <div class="">
+                    	<div style="float: left; width: 50%;">
+                	<p><b>Check-in</b></p>
+                	<span id="check-in"></span>
+                </div>
+                        <div style="float: left; width: 50%;">
+                	<p><b>Check-out</b></p>
+                	<span id="check-out"></span>                 	            			
+                </div>
+                        <div class="ClearBoth"></div>
+                    </div>
+                  <p class="Length">Length of Stay: <span id="calc_night" class="countNight">0</span> <b>night(s)</b></p>                 
+                 <div class="ClearBoth"></div>
+                  <p class="BoxButtonSearch" style="padding:4px 0 0 0"><input type="submit" value="" class="ButtonSearch" name="button"></p>
+              </div><!-- //BgSearchHotel -->  
+              	<!--<div class="bottomSearch" align="center"><img src="images/bgr-search2Destination-bottom.gif" width="370" height="5" /></div>-->              
+       	  	</div>
+</form>
+    	<!-- -->
+    </div>
+    <!-- -->
+    <div class="boxIntro">
+      <h3><?php echo $this->Countries->name?></h3>
+      <div class="boxIntro-ct">
+          <div class="Padding10">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr><td width="50%" valign="top">
+               			<div class="textnone" style="height:201px;overflow:auto;width:204px;">
+						<?php echo nl2br($this->Countries->description)?></div>                       
+                    </td>
+                    <td width="10%" style="background:url(images/line_y.gif) repeat-y center top">&nbsp;</td>
+                    <td><p style="margin-bottom:5px" id="map2photo"></p>
+                    	<div class="viewmore" align="right"><span class="Map"><img height="17" width="19" border="0" align="bottom" alt="map" src="images/icon/map.gif"><a class="aShowMap" rel="<?php echo $this->Countries->map?>">View Map</a></span></div>
+                    </td>
+                </tr>
+              </table>
+          </div>      
+
+      </div>
+    </div>
+    <!-- -->
+    <div class="boxImg"><img src="images/thumbs_01.jpg" width="131" height="246" /></div>
+    <div class="ClearBoth"></div>
+  </div>
+  <!-- -->
+  <div class="cityMap"><div class="cityMapBg">
+    <div class="cityMap_content">
+      <div class="Landmarks">
+        <div class="Landmarks-title"><span>City in <?php echo $this->Countries->name?></span></div>
+            <div class="Landmarks-ct">
+         <?php $City = $this->City; 
+         if($City):
+          $i = 0;
+		  $counter = count($City);
+          $num_of_row = ceil($counter/3);		  
+          foreach ($City as $viewcity):
+          if(($i%$num_of_row)==0):?>
+            <div class="item"> <ul>
+            <?php endif;?>            
+              <li><a href="<?php echo $viewcity->getDestination();?>"><?php echo $viewcity->name?></a></li>              
+             <?php $i++; if(($i%$num_of_row)==0 || $i==$counter):?>
+            	</ul> </div>           
+            <?php endif;?>
+            <?php  endforeach;
+            endif;?>  
+          <!-- -->                  
+          <div class="ClearBoth"></div>
+        </div>
+      </div>
+    </div>
+  </div> </div>
+  <div id="init_showmap"></div>
+  <script type="text/javascript">  
+	$(function() {
+		initDateRange('check-in','<?php echo date(Zend_Registry::get('Setting')->default_time_format,$_SESSION['check_in'])?>','check-out','<?php echo date(Zend_Registry::get('Setting')->default_time_format,$_SESSION['check_out'])?>');
+		initAutoComplete("city");
+		$('#map2photo').html(initGoogleMap2Photo('<?php echo $this->Countries->map?>','200','173'));		
+		$('a.aShowMap').click(function(){			
+			 initializeGmap('init_showmap', $(this).attr('rel'),675,423);
+			 $("#init_showmap").dialog("open");
+		});
+		initShowMapDialog(); 
+	});
+	</script>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=<?php echo Zend_Registry::get('Setting')->GOOGLE_API_KEY?>" type="text/javascript"></script>

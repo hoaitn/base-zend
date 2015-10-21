@@ -1,0 +1,67 @@
+<?php 
+	$controllerName = Zend_Controller_Front::getInstance()->getRequest()->getControllerName();
+	$actionName = Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+?>
+<!--header -->
+			<div id="header">
+				<div class="h_logo">
+						<div class="left">
+						<img alt="" src="images/logo.gif" /><br />
+					</div>
+					<div class="right">
+					<strong>Sales: (+844) 3792 5145</strong><br>
+					<strong>Skype: qsoftvn </strong> & <strong> Yahoo: qsoftvn</strong>	
+							</div>
+					<div class="clear"></div>
+				</div>
+				<div id="menu">
+					<div class="rightbg">
+						<div class="leftbg">
+							<div class="padding">
+								<ul>
+									<?php if($controllerName == 'index'){?>								
+									<li><a href="/"><span>Home</span></a></li>
+									<?php }else{?>
+									<li><a href="/">Home</a></li>
+									<?php }?>
+									<?php if($controllerName == 'news' && $actionName == 'why'){?>								
+									<li><a href="<?php echo $this->url(array('controller'=>'news','action'=>'why','module'=>'default'));?>"><span>Why Qsoft Vietnam?</span></a></li>
+									<?php }else{?>
+									<li><a href="<?php echo $this->url(array('controller'=>'news','action'=>'why','module'=>'default'));?>">Why Qsoft Vietnam?</a></li>
+									<?php }?>
+									<?php if($controllerName == ''){?>								
+									<li><a href="/"><span>Services</span></a></li>
+									<?php }else{?>
+									<li><a href="/">Services</a></li>
+									<?php }?>
+									<?php if($controllerName == ''){?>								
+									<li><a href="/"><span>Portfolios</span></a></li>
+									<?php }else{?>
+									<li><a href="/">Portfolios</a></li>
+									<?php }?>
+									<?php if($controllerName == ''){?>								
+									<li><a href="/"><span>Events</span></a></li>
+									<?php }else{?>
+									<li><a href="/">Events</a></li>
+									<?php }?>									
+									<?php if($controllerName == 'contact'){?>								
+									<li><a href="/contact"><span>Contacts</span></a></li>
+									<?php }else{?>
+									<li><a href="/contact">Contacts</a></li>
+									<?php }?>
+								</ul>
+								<br class="clear" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="content">
+					<img alt="" src="images/icons/header_t1.jpg" /><br />
+					<img alt="" src="images/icons/header_t2.jpg" /><br />
+					<div class="text">
+						Web Design & Programming service for your business
+					</div>
+					<a href="#"><img alt="" src="images/icons/header_click_here_btn.jpg" /></a><div class="clear"></div>
+				</div>
+			</div>
+			<!--header end-->

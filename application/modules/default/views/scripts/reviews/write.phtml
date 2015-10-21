@@ -1,0 +1,104 @@
+    <script type="text/javascript" src="js/star-rating/jquery.rating.pack.js"></script>
+    <link href='js/star-rating/jquery.rating.css' type="text/css" rel="stylesheet"/>
+    <style>
+		div.star-rating, div.star-rating a {height:20px;width:33px}
+		div.star-rating, div.star-rating a {background:url("/images/icon/smile.gif");}
+		div.star-rating-on a {background-position:-4px -34px !important;}
+		div.rating-cancel a, div.star-rating a {background-position:-4px -9px;}
+		div.star-rating-hover a{background-position:-4px -31px }
+		</style>
+         <div class="LeftCol">
+	  <?php echo $this->action('getsearchform','hotel')?>
+    <div class="BoxChat">
+    <!--<img src="../images/changes/chat.jpg"	alt="Chat" width="220" border="0" height="85">-->
+    	<!-- BEGIN PHP Live! code, (c) OSI Codes Inc. -->
+<script language="JavaScript" src="http://tuntravel.com/support/js/status_image.php?base_url=http://tuntravel.com/support&amp;l=admin&amp;x=1&amp;deptid=1&amp;" type="text/javascript"></script>
+<!-- END PHP Live! code : (c) OSI Codes Inc. -->
+    </div>
+     </div>  
+   	  	<!-- InstanceBeginEditable name="content" -->
+   	  	<div class="RightCol">    	  	
+       	  <div class="BoxChange">
+       	  <?php echo $this->error?>
+   	  	  <form action="<?php echo $this->url(array(),'reviews_write')?>" method="post">
+           	<div>
+            	<div class="LeftTitle">You reviews</div>
+                <div class="CenterTitle"><img src="../images/create-review.jpg" width="152" height="43" border="0" alt="Image" /></a></div>
+                <div class="RightTitle">&nbsp;</div>
+                <div class="ClearBoth"></div>
+            </div>
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="ReferFriend">            
+                    	<tr>             	               	
+                    <td width="15%" class="Bold">Booking ID <span class="Red">*</span></td>
+                  <td width="28%"><?php echo $this->formSelect('booking_id','',array('id'=>'book_id','class'=>'Country','onchange'=>'getBookingJSon(this.value);'),$this->aBooking)?><span id="ajax_loader"></span></td>
+                    <td width="14%" class="Bold">Hotel name<span class="Red">*</input></span></td>
+                  <td width="46%" id="hotel"></td>
+              </tr>  
+               <tr>                	
+                <td width="15%" class="Bold">Date of stay</td>
+                <td colspan="3"><span id="check_in"></span> &nbsp;&nbsp;&nbsp;&nbsp; <span id="check_out"></span></td>                                 
+              </tr>
+              <tr>               	
+                    <td colspan="4" class="Bold">Your email:  &nbsp;&nbsp;&nbsp;&nbsp;<input id="email" name="email" type="text" value="<?php echo $this->Review->email?>"></input></td>
+              </tr> 
+              <tr>               	
+                    <td colspan="4" class="Bold">Your country: 
+                    <select id="customer_countries_id" name="customer_countries_id">
+                    <option selected="selected">Select your country</option>
+                    <?php $Country = Countries::getAll();
+                    foreach ($Country as $listcountry):                    
+                    ?>
+                    <option value="<?php echo $listcountry->id?>"><?php echo $listcountry->name ?></option>
+                    <?php endforeach;?>
+                    </select>
+                    </td>
+              </tr>                             
+              <tr>                	
+                    <td colspan="4" class="Bold">Reviews</td>
+              </tr>
+              <tr>                	
+                    <td colspan="4" class="Bold"><textarea name="comment" cols="85" rows="10" value="<?php echo $this->Review->comment?>"></textarea></td>
+              </tr>
+              
+            </table> 
+            <div class="BoxComment">
+            	<p class="Evaluate">Evaluate your hotel</p>
+                <p>Your assessment will help us improve our services better, thanks you for comment</p>
+                <?php $array = array('score_staff'=>'Staff','score_location'=>'Location','score_service'=>'Services','score_cleanliness'=>'Clean','score_facilities'=>'Comfort','score_value_for_money'=>'Value-for-money');
+                foreach($array as $name=>$item):?>
+                <div class="BoxPoll">
+                	<span class="LeftHotelReview"><?php echo $item?></span>
+                    <span class="CenterHotelReview">
+                    <?php for($i=1;$i<=10;$i++):?>
+                    <input value="<?php echo $i?>" id="star2" name="<?php echo $name?>" accept="star2" type="radio" class="<?php echo $item?>" onclick="$('#staff_score').text(this.value);" <?php if($i==5):?>checked="checked"<?php endif;?>/>
+                    <?php endfor;?>
+					</span>
+                    <span class="RightHotelReview" id="<?php echo $item?>">5</span>
+                    <div class="ClearBoth"></div>
+                </div>
+                    <script type="text/javascript">
+					$(function() {
+					    $('.<?php echo $item?>').rating({
+					    	callback: function(value, link){
+					    		$("#<?php echo $item?>").text(value);
+					   	 }
+					   });
+					    $("div[class=rating-cancel]").remove();
+					});
+				   </script>
+                <?php endforeach;?>
+                <p class="ParSubmit">Display this information with your review:</p>                
+                <p><input name="" type="checkbox" value="" /> &nbsp;Please keep me anonymoys</p>
+                <p class="TextAlign ParSubmit"><input name="button" type="submit" value="Submit" class="ButtonBook" /></p>
+                
+            </div>            
+      		  </form>  
+          </div>
+     
+   	  	</div>
+   	
+   	  	<!-- //Right -->
+   	  	<!-- InstanceEndEditable -->
+   	  	<div class="ClearBoth"></div>
+        
+<!-- //Center -->

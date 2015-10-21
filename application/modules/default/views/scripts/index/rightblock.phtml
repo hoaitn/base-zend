@@ -1,0 +1,36 @@
+<div class="block other">  
+                        <h2 class="title"><img src="images/friend.png" alt="" />Anh em BMW</h2>
+                        <ul>
+                        <?php $NewGroup = NewGroup::getBySetionId(5); foreach ($NewGroup as $Group):?>
+                        	<li><a href="news/index/group/<?php echo $Group->id?>" title=""><?php echo $Group->name?></a></li>                            
+                        <?php endforeach;?>                           
+                        </ul>
+                    </div><!--End .block-->
+                    <div class="block other">
+                        <h2 class="title"><img src="images/support.png" alt="" />LỊCH SỬ BMW</h2>
+                        <ul>
+                        <?php $NewGroup = NewGroup::getBySetionId(6); foreach ($NewGroup as $Group):?>
+                        	<li><a href="news/index/group/<?php echo $Group->id?>" title=""><?php echo $Group->name?></a></li>                            
+                        <?php endforeach;?>                            
+                        </ul>
+                    </div><!--End .block-->
+                    <div class="block other">
+                        <h2 class="title"><img src="images/history.png" alt="" />KỸ THUẬT LÁI XE AN TOÀN </h2>
+                        <ul>
+                        <?php $NewGroup = NewGroup::getBySetionId(7); foreach ($NewGroup as $Group):?>
+                        	<li><a href="news/index/group/<?php echo $Group->id?>" title=""><?php echo $Group->name?></a></li>                            
+                        <?php endforeach;?>                             
+                        </ul>
+                    </div><!--End .block-->					
+                    <div class="block other">
+                        <h2 class="title"><img src="images/funny.png" alt="" />BMW THƯ GIÃN</h2>
+                        <ul>
+                        <?php $NewGroup = NewGroup::getBySetionId(8); foreach ($NewGroup as $Group):?>
+                        	<li><a href="news/index/group/<?php echo $Group->id?>" title=""><?php echo $Group->name?></a></li>                            
+                        <?php endforeach;?>  
+                        </ul>
+                    </div><!--End .block-->
+                    <div class="block other">
+                        <h2 class="title"><img src="images/adv.png" alt="" />QUẢNG CÁO</h2>                        
+                        <a href="http://bmw.com" title=""><img width="198" alt="" src="images/adv4.jpg" /></a>
+                    </div><!--End .block-->

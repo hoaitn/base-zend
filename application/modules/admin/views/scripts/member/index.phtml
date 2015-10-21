@@ -1,0 +1,48 @@
+<div class="hastable">
+<h1>Management member</h1>
+<form action="" method="get" class="form">
+<table style="border-left: none;border-right: none;border-bottom: none;border-top: none;">
+	<tr>
+		<td style="border-left: none;border-right: none;border-bottom: none;border-top: none;">Enter keyword&nbsp;<?php echo $this->formText('keyword',($_GET['keyword'])?$_GET['keyword']:'')?>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select option&nbsp;<?php echo $this->formSelect('condition',$_GET['condition'],array('id'=>'s1'),array('name'=>'Member name','address'=>'Address','email'=>'Email'))?>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select group&nbsp;<?php echo $this->formSelect('type',$_GET['type'],array(),Groups::getOption(array(''=>'All')))?>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" src="/images/btn_submit.png">Search</button></td>
+	</tr>
+</table>
+</form>
+<a href="<?php echo $this->url(array('controller'=>'member','action'=>'create'))?>"><button style="padding-bottom: 5px;" type="button" value="Add member">Add member</button></a>
+<?php echo $this->Pagination($this->Pager,'?page={%page}{%Condition}')?>
+<br>
+<table cellpadding="0" cellspacing="0" width="100%" class="tbl_list">
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>Full name</th>
+			<th>Address</th>
+			<th>Email</th>
+			<th>Phone number</th>
+			<th>Roles</th>
+			<th>Status</th>
+			<th>Created date</th>
+			<th>Last login</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+    <?php foreach($this->Members as $Member):?>
+    <tr>
+    	<td><?php echo $Member->username?></td>
+		<td><?php echo $Member->name?></td>
+		<td><?php echo $Member->address?></td>
+		<td><?php echo $Member->email?></td>
+		<td><?php echo $Member->tel?></td>
+		<td><?php echo $Member->getMemberType()?></td>
+		<td><?php echo ($Member->status)?'Yes':'No'?></td>
+		<td><?php echo $Member->getCreatedDate()?></td>
+		<td><?php echo $Member->getLastLogin()?></td>
+		<td align="center" width="40px;"><a href="<?php echo $this->url(array('controller'=>'member','action'=>'edit','id'=>$Member->id))?>"><img src="<?php echo $this->baseUrl('images/image_edit.png');?>" width="24px;"/></a></td>
+		<td align="center" width="40px;"><a href="<?php echo $this->url(array('controller'=>'member','action'=>'delete','id'=>$Member->id))?>"><img src="<?php echo $this->baseUrl('images/Delete.png');?>" width="24px;"/></a></td>
+	</tr>
+    <?php endforeach;?>
+</table>
+</div>

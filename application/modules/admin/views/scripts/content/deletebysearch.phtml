@@ -1,0 +1,26 @@
+<div class="hastable">
+<form id="search" name="search" action="" method="post">
+<table>
+<tr>
+<th><span style="color:#1691FF; font-size: 16px; font-weight: bold;">Enter post name to delete</span></th>
+</tr>
+<tr>
+<td><input type="text" value="" id="textSearch" name="textSearch" size="60"></input>&nbsp;<input type="button" value="Search to edit" onclick="return Check();"></input></td>
+</tr>
+</table>
+</form>
+<?php if($this->Content != "false" && $this->Content->content_title){?>
+<span>System have found a post: "<?php echo $this->Content->content_title;?>"</span>
+<b><a href="<?php echo $this->url(array("controller"=>"content","action"=>"delete","module"=>"admin","id"=>$this->Content->content_id));?>">Click to delete this post</a></b>
+<?php }else{ if($this->Content == "false"){echo "Not found this post!";}}?>
+</div>
+<script>
+function Check(){
+	var textSearch = $("#textSearch").val();
+	if(textSearch != ""){
+		$("#search").submit();
+	}else{
+		alert("Post name is required!")
+	}	
+}
+</script>

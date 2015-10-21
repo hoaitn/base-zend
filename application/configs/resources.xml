@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<admin>			
+		<news name="News">
+			<role code="index" name="List news" />
+			<role code="create" name="Add news" />
+			<role code="edit" name="Edit news" />
+			<role code="delete" name="Delete news" />
+			<role code="editbysearch" name="Edit by search" />
+			<role code="deletebysearch" name="Delete by search" />
+		</news>	
+		<testimonials name="Testimonials">
+			<role code="index" name="Manage Testimonials" />
+			<role code="create" name="Add Testimonials" />
+			<role code="edit" name="Edit Testimonials" />
+			<role code="delete" name="Delete Testimonials" />
+		</testimonials>
+		<video name="Video">
+			<role code="index" name="List video" />
+			<role code="create" name="Add video" />
+			<role code="edit" name="Edit video" />
+			<role code="delete" name="Delete video" />
+		</video>
+		<banner name="Banner">
+			<role code="index" name="List banner" />
+			<role code="create" name="Add banner" />
+			<role code="edit" name="Edit banner" />
+			<role code="delete" name="Delete banner" />
+		</banner>
+		<category name="Category">
+			<role code="index" name="List categories" />
+			<role code="create" name="Add category" />
+			<role code="edit" name="Edit category" />
+			<role code="delete" name="Delete category" />
+		</category>
+		<sections name="Group news">
+			<role code="index" name="List setions" />
+			<role code="create" name="Add setion" />
+			<role code="edit" name="Edit setion" />
+			<role code="delete" name="Delete setion" />
+		</sections>
+		<productgroup name="Group product">
+			<role code="index" name="List group" />
+			<role code="create" name="Add group" />
+			<role code="edit" name="Edit group" />
+			<role code="delete" name="Delete group" />
+		</productgroup>
+		<product name="Product">
+			<role code="index" name="List product" />
+			<role code="create" name="Add product" />
+			<role code="edit" name="Edit product" />
+			<role code="delete" name="Delete product" />
+			<role code="uploadFile" name="Upload gallery" />
+		</product>		
+		<content name="Articles">
+			<role code="index" name="List articles" />
+			<role code="create" name="Add article" />
+			<role code="edit" name="Edit article" />
+			<role code="delete" name="Delete article" />
+			<role code="editbysearch" name="Edit article by search" />
+			<role code="deletebysearch" name="Delete article by search" />
+		</content>		
+		<contact name="Order">
+			<role code="index" name="List order" />
+			<role code="view" name="Details order" />	
+			<role code="delete" name="Delete order" />			
+		</contact>		
+		<group name="Role member">
+			<role code="index" name="List group" />
+			<role code="create" name="Add group" />
+			<role code="edit" name="Edit group" />
+			<role code="delete" name="Delete group" />
+		</group>
+		<index name="Home admin">
+			<role code="index" name="Home page" />
+		</index>
+		<member name="Member">
+			<role code="index" name="List member" />
+			<role code="create" name="Add member" />
+			<role code="edit" name="Edit member" />
+			<role code="history" name="History" />
+			<role code="export" name="Export history" />
+			<role code="delete" name="Delete member" />
+			<role code="my" name="Details profile" />
+			<role code="profile" name="Edit profile" />			
+		</member>
+		<settings name="System config">
+			<role code="index" name="Setting" />			
+			<role code="route" name="Route" />
+			<role code="footer" name="Footer" />			
+		</settings>
+	</admin>
+</resources>

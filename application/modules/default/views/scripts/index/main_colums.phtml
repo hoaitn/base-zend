@@ -1,0 +1,138 @@
+<?php $Content = News::getRandomContent(2);?>
+<?php foreach ($Content as $content):
+	$title[] = $content['title'];
+	$des[] =  $content['description'];
+	$id[] =  $content['id'];
+	$group_id[] = $content['group_id'];
+endforeach;?>	
+<div id="middle">
+				<div class="indent">
+					<div class="columns1">
+						<div class="column1">
+							<div class="border">
+								<div class="btall">
+									<div class="ltall">
+										<div class="rtall">
+											<div class="tleft">
+												<div class="tright">
+													<div class="bleft">
+														<div class="bright">
+															<div class="ind">
+																<div class="h_text" style="font-weight: bold; color: #0270A7;text-align: center;">
+																	<?php echo $title[0];?><br />
+																</div>
+																<div class="padding">
+																	<strong></strong><br />
+																	<p class="p1">
+																		<?php echo $des[0]?><br />
+																	</p>
+																	<a href="<?php echo $this->url(array('controller'=>'news','action'=>'details','id'=>$id[0],'group'=>$group_id[0]))?>"><img alt="" src="images/icons/click_here.gif" /></a><br />
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="indent_column">&nbsp;</div>
+						<div class="column2">
+							<div class="border">
+								<div class="btall">
+									<div class="ltall">
+										<div class="rtall">
+											<div class="tleft">
+												<div class="tright">
+													<div class="bleft">
+														<div class="bright">
+															<div class="ind">
+																<div class="h_text" style="font-weight: bold; color: #F39035;text-align: center;">
+																	<?php echo $title[1]?><br />
+																</div>
+																<div class="padding">
+																	<strong></strong><br />
+																	<p class="p1">
+																		<?php echo $des[1];?><br />
+																	</p>
+																	<a href="<?php echo $this->url(array('controller'=>'news','action'=>'details','id'=>$id[1],'group'=>$group_id[1]))?>"><img alt="" src="images/icons/click_here.gif" /></a><br />
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="indent_column">&nbsp;</div>
+						<div class="column3">
+							<div class="border">
+								<div class="btall">
+									<div class="ltall">
+										<div class="rtall">
+											<div class="tleft">
+												<div class="tright">
+													<div class="bleft">
+														<div class="bright">
+															<div class="ind">
+																<div class="h_text" style="font-weight: bold; color: #0270A7;text-align: center;">
+																	<?php echo $title[2];?><br />
+																</div>
+																<div class="padding">
+																	<strong></strong><br />
+																	<p class="p1">
+																		<?php echo $des[2];?><br />
+																	</p>
+																	<a href="<?php echo $this->url(array('controller'=>'news','action'=>'details','id'=>$id[2],'group'=>$group_id[2]))?>"><img alt="" src="images/icons/click_here.gif" /></a><br />
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="columns2">
+						<div class="ver_line">
+							<div class="column1">
+								<div class="padding">
+									<img alt="" src="images/1-t4.gif" /><br />
+									<p class="p1">
+									<?php $About = News::getByName('About QSoft Vietnam Corporation, an ISO 9001:2008 company');?>
+										<strong class="b_text"><?php echo $About->title;?></strong><br /><br />
+										<?php echo $About->description;?>
+										</p>
+									<div class="more"><a href="<?php echo $this->url(array('controller'=>'news','action'=>'details','id'=>$About->id,'group'=>1));?>">learn more</a></div>
+								</div>
+							</div>
+							<div class="column2">
+								<div class="padding">
+									<img alt="" src="images/1-t5.gif" /><br />
+									<div class="content">
+										<span class="date">October 20, 2007</span><br />
+										<p class="p1">
+											<a href="#">Time Management Tools</a>									</p>
+										Maecenas ttique o ultricies paretra magna. Doec accumsanlesuada...								</div>
+									<div class="content">
+										<span class="date">November 16, 2007</span><br />
+										<p class="p1">
+											<a href="#">The New Project Launched</a>									</p>
+										 &nbsp;Lorem ipsum consectetuer adipisc- ing elit. Mauris fermentum dict...								</div>
+									<div class="more"><a href="#">view all news</a></div>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			</div>		

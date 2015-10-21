@@ -1,0 +1,18 @@
+<?php if($this->News):?>
+<div class="block_content">	
+<?php foreach($this->News as $news){?>
+<div class="items">
+<div class="items_images">
+	<img src="<?php echo $news->getThumbImage();?>" alt="<?php echo $news->title;?>">
+</div>
+<h2 class="items_title"><a href="<?php echo $this->url(array("controller"=>"news","action"=>"details","id"=>$news->id));?>"><?php echo $news->title;?></a></h2>
+<div class="items_intro"><?php echo $news->description?></div>
+<div class="clear"></div>
+</div><!--End .items-->
+<?php }?>
+</div><!--End .block_content-->
+<ul id="pagination-flickr">
+<?php echo $this->PaginationFront($this->Pager,'/news/index/group/'.$this->Group.'/page/{%page}')?>		
+</ul>
+<?php endif;?>
+ 

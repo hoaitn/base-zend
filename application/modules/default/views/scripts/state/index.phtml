@@ -1,0 +1,44 @@
+<?php if($this->trainers->toArray()){?>
+<div id="mainTable">
+	<ul>
+	<?php foreach($this->trainers as $trainer) {
+			if ($trainer->websiteNo > 0) {
+		?>
+	
+	<li class="mistablePro">
+        <div class="list1a"><h3><?php if($trainer->firstName || $trainer->lastName){echo $trainer->firstName . ' ' . $trainer->lastName;}else{echo "No Name";}?></h3></div>
+        <div class="list2"><strong><?php echo $trainer->city?></strong></div>
+        <div class="list3"><strong><?php 
+				$state = State::getById($trainer->stateNo);
+				echo $state->name;
+			 ?></strong></div>
+        <div class="list4"><span rel="<?php echo $trainer->phone?>"><?php echo substr($trainer->phone,0,8)?>...</span></div>
+        <br style="clear:both;line-height:1px">
+        <p><?php echo $this->link($trainer->website,$trainer->website);?></p>
+        <p><?php echo $trainer->website_descript;?></p>
+        <br style="clear:both;line-height:1px">
+    </li>	
+	<?php } else { ?>		
+                 <li class="list1"><?php if($trainer->firstName || $trainer->lastName){echo $trainer->firstName . ' ' . $trainer->lastName;}else{echo "No Name";}?></li>
+        <li class="list2"><?php echo $trainer->city?></li>
+        <li class="list3"><?php 
+				$state = State::getById($trainer->stateNo);
+				echo $state->name;
+			 ?></li>
+        <li class="list4"><span rel="<?php echo $trainer->phone?>"><?php echo substr($trainer->phone,0,8)?>...</span></li>
+                 
+      <?php 
+		} // end if check websiteNo
+	} // end foreach 
+	?>  
+     	</ul>
+ </div>
+ <br style="clear:both;line-height:0px">
+<div id="pagination">
+	<div class="pages">			
+		 <?php echo $this->PaginationFront($this->Pager,'/state/'.$trainer->stateNo.'/'.$this->nameplain.'/page/{%page}')?>		 
+	</div>
+</div>   
+ <?php }else{
+ 	echo "<span style='color:#ff0000;'>Not found data in this state!</span>";
+ }?>   

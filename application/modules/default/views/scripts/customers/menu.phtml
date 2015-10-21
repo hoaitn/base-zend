@@ -1,0 +1,52 @@
+
+<div class="BoxAccount">
+<div class="TitleLeftAcc"><span class="LeftAcc">Welcome</span><a href="<?php echo $this->url(array(),'customers_logout')?>"><span
+	class="RightAcc">Logout</span></a></div>
+<div class="BorderAcc">
+<p class="Bold">Hello, <?php echo $this->Customer->getName()?></p>
+<p>Last visit: <?php echo $this->Customer->getLastLogin()?></p>
+<p>Mail / Messaging: Unread <span class="Red">0</span>, Total 6.</p>
+</div>
+</div>
+
+<div class="BoxMemberMenu">
+<div class="TitleLeftAcc">Member Menu</div>
+<div style="background: none repeat scroll 0% 0% rgb(255, 232, 154);">
+<ul class="slidedoormenu">
+	<li><a href="<?php echo $this->url(array(),'customers_booking')?>"><img src="../images/icon/arrow-red.jpg" alt="Image"
+		width="5" border="0" height="5">My Booking</a>	
+	<!-- <ul>
+		<li><a href="<?php echo $this->url(array(),'customers_booking')?>">Hotel Booking</a></li>
+		<li><a href="#">Tour Booking</a></li>
+		<li><a href="#">Ticket Booking</a></li>
+		<li><a href="#">Visa application</a></li>
+	</ul> -->
+	</li>
+	<li><a href="<?php echo $this->url(array(),'customers_profile')?>"><img src="../images/icon/arrow-red.jpg" alt="Image"
+		width="5" border="0" height="5">Customer Profile</a></li>
+	<li><a href="<?php echo $this->url(array(),'customers_password')?>"><img src="../images/icon/arrow-red.jpg" alt="Image"
+		width="5" border="0" height="5">Change your password</a></li>
+	<li><a href="<?php echo $this->url(array(),'reviews_write')?>"><img src="../images/icon/arrow-red.jpg" alt="Image"
+		width="5" border="0" height="5">Submit Hotel Review <br/>
+	<span class="MessageAcc">You have 0 hotel to review</span></a></li>
+	<li><a href="<?php echo $this->url(array(),'customers_refer')?>"><img src="../images/icon/arrow-red.jpg" alt="Image"
+		width="5" border="0" height="5">Refer A Friend</a></li>
+	<li><a href="<?php echo $this->url(array(),'helpdesk')?>"><img src="../images/icon/arrow-red.jpg" alt="Image"
+		width="5" border="0" height="5">Help Desk</a>
+		<ul>
+             <li><a href="<?php echo $this->url(array(),'helpdesk')?>">Ticket List</a></li>
+             <li><a href="<?php echo $this->url(array(),'helpdesk_create')?>">New Ticket</a></li>                                
+        </ul>
+	</li>
+</ul>
+</div>
+</div>
+<div class="BoxChat"><img src="../images/changes/chat.jpg" alt="Chat"
+	width="220" border="0" height="85"></div>
+<div class="SupportAcc">
+<ul>
+	<li><a href="<?php echo $this->url(array(),'faqs')?>">FAQ</a></li>
+	<li><a href="<?php echo $this->url(array(),'page_term')?>">Terms &amp; Conditions</a></li>
+	<li><a href="<?php echo $this->url(array(),'customers_support_faq')?>">Customer Support</a></li>
+</ul>
+</div>

@@ -1,0 +1,74 @@
+<div class="LeftColAcc"><?php echo $this->action('menu','customers')?></div>
+<!-- //Left -->
+<!-- InstanceBeginEditable name="content" -->
+<div class="RightColAcc">
+<div class="BoxChange">
+<h3>Customers Reiews</h3>
+<table class="MarTop" border="0" cellpadding="0" cellspacing="0"
+	width="100%">
+	<tbody>
+	<?php foreach($this->Reviews as $Review):
+	++$i;
+	?>
+		<tr>
+			<td class="<?php echo ($i%2)?'BgGrayPar':'BgWhitePar'?>" valign="top">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tbody>
+					<tr>
+						<td class="PointDetailHotel" width="7%"><?php echo $Review->score_average?></td>
+						<td class="ParLeft" width="93%">
+						<p class="NameHotel"><?php echo $Review->getCustomer()?> &nbsp;<img
+							src="../images/icon/vn.jpg" alt="Image" border="0" height="8"
+							width="12"></p>
+						<p class="Date"><?php echo $Review->getCreatedDate()?></p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="Comment">“<?php echo $Review->detail?>”</td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+			<td class="<?php echo ($i%2)?'BgGrayPar':'BgWhitePar'?>" valign="top" width="20%">
+			<table class="TableBorder" border="0" cellpadding="0" cellspacing="0"
+				width="100%">
+				<tbody>
+					<tr>
+						<td width="75%">Staff</td>
+						<td width="25%"><?php echo $Review->score_staff?></td>
+					</tr>
+					<tr>
+						<td>Location</td>
+						<td><?php echo $Review->score_location?></td>
+					</tr>
+					<tr>
+						<td>Services</td>
+						<td><?php echo $Review->score_service?></td>
+					</tr>
+					<tr>
+						<td>Clean</td>
+						<td><?php echo $Review->score_cleanliness?></td>
+					</tr>
+					<tr>
+						<td>Comfort</td>
+						<td><?php echo $Review->score_facilities?></td>
+					</tr>
+					<tr>
+						<td>Value for money</td>
+						<td><?php echo $Review->score_value_for_money?></td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+		<?php endforeach;?>
+	</tbody>
+</table>
+<div><?php echo $this->Pagination($this->Pager)?></div>
+
+</div>
+</div>
+<!-- //Right -->
+<!-- InstanceEndEditable -->
+<div class="ClearBoth"></div>
+
